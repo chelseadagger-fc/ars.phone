@@ -1,4 +1,4 @@
-export default function ShortcutBar() {
+export default function PushNotification() {
     
     return(
         <>

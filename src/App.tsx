@@ -1,14 +1,13 @@
 import './App.css'
-import ShortcutBar from './components/ShortcutBar'
-import StatusBar from './components/StatusBar'
+import PushNotification from './components/PushNotification'
+import CurrentScreen from './components/CurrentScreen'
 
 export default function App() {
 
   return (
       <div className="h-dvh w-dvw bg-slate-400">
-        <StatusBar />
-          <p className="text-3xl text-black-700">Hello.</p>
-        <ShortcutBar />
+        <PushNotification />
+        <CurrentScreen />
       </div>
   )
 }
