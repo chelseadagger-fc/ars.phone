@@ -5,11 +5,9 @@ import StatusBar from './components/StatusBar'
 export default function App() {
 
   return (
-      <div className="main">
+      <div className="h-dvh w-dvw bg-slate-400">
         <StatusBar />
-        <div>
-          <p className="text-3xl text-green-700">Hello.</p>
-        </div>
+          <p className="text-3xl text-black-700">Hello.</p>
         <ShortcutBar />
       </div>
   )
