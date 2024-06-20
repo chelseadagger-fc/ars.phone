@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -7,7 +11,6 @@
 .main {
   height: 100vh;
   width: 100vw;
-  // max-width: ;
   background-color: #fff;
   margin: 0;
   padding: 0;

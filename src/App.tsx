@@ -8,9 +8,10 @@ export default function App() {
       <div className="main">
         <StatusBar />
         <div>
-          
+          <p className="text-3xl text-green-700">Hello.</p>
         </div>
         <ShortcutBar />
       </div>
   )
 }
+
