@@ -1,13 +1,17 @@
 import MainHomeArea from "./MainHomeArea";
 import ShortcutBar from "./ShortcutBar";
 
-export default function HomeScreen() {
-    
-    return(
-        <div className="h-dvh">
-            <MainHomeArea />
-            <ShortcutBar />
-        </div>
+interface HomeScreenProps {
+    onAppPress: (newScreen: string) => void;
+  }
 
-    )
-}
+  const HomeScreen: React.FC<HomeScreenProps> = ({ onAppPress }) => {
+    return (
+      <div className="h-dvh">
+        <MainHomeArea />
+        <ShortcutBar onAppPress={onAppPress} />
+      </div>
+    );
+  };
+  
+  export default HomeScreen;

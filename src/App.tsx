@@ -1,14 +1,27 @@
+import React from 'react'
 import './App.css'
-import PushNotification from './components/PushNotification'
-import CurrentScreen from './components/CurrentScreen'
+import Contacts from './components/ContactsScreen/Contacts'
+import HomeScreen from './components/HomeScreen/HomeScreen'
+import Messages from './components/MessagesScreen/Messages'
 
 export default function App() {
 
-  return (
-      <div className="h-dvh w-dvw bg-slate-400">
-        <PushNotification />
-        <CurrentScreen />
-      </div>
+  interface StateTypes {
+    screenTitle: string;
+  }
+
+  const [activeScreen, setActiveScreen] = React.useState<StateTypes>({screenTitle: 'home'})
+
+  const handleChangeScreen = (newScreen: string) => { setActiveScreen({screenTitle: newScreen});};
+
+  const showActiveScreen = (activeScreen.screenTitle === 'home' ? <HomeScreen onAppPress={handleChangeScreen} /> :
+      activeScreen.screenTitle === 'contacts' ? (<Contacts />) :
+      activeScreen.screenTitle === 'messages' ? (<Messages onAppPress={handleChangeScreen} />) : null ) 
+
+  return(
+    <div>
+      {showActiveScreen}
+    </div>
+
   )
 }
-
