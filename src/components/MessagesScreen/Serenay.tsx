@@ -11,47 +11,24 @@ interface MessagesProps {
     setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
-type Message = {
-    id: number;
-    type: "message";
-    content: string;
-    delay: number;
-    alignment: "left" | "right" | "center";
-    next: number | null;
-    flag?: string;
-};
-
 type ChoiceOption = {
     text: string;
     delay: number;
     alignment: "left" | "right" | "center";
 };
 
-type Choice = {
-    id: number;
-    type: "choice";
-    content?: {
-        text: string;
-        delay: number;
-        alignment: "left" | "right" | "center";
-    };
-    choices: { option: ChoiceOption; next: number }[];
-    next: number | null;
-    flag?: string;
-};
-
 const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDisplayedMessages, msgSereData, setMsgSereData }) => {
 
-    const [currentId, setCurrentId] = useState<number | null>(null);
     const [showChoices, setShowChoices] = useState<boolean>(false);
     const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
     const [showStartButton, setShowStartButton] = useState<boolean>(true);
     const { story } = useContext(StoryContext);
+    const { currentId, setCurrentId } = useContext(StoryContext);
 
     useEffect(() => {
         if (currentId === null) return;
 
-        const currentElement = story.find(element => element.id === currentId);
+        const currentElement = story.find((element: { id: number; }) => element.id === currentId);
 
         if (!currentElement) return;
 
@@ -88,7 +65,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDi
                 setShowChoices(true);
             }
         }
-    }, [currentId, setMsgSereData]);
+    }, [currentId, setCurrentId, setDisplayedMessages, setMsgSereData, story]);
 
     const handleChoice = (next: number, option: ChoiceOption) => {
         setShowChoices(false);

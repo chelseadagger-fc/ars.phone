@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import data from './components/StoryData/Ch01.json';
 
+interface StoryContextType {
+  currentId: number | null;
+  setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
 type Message = {
   id: number;
   type: "message";
@@ -32,12 +37,18 @@ type Choice = {
 
 type StoryElement = Message | Choice;
 
+const defaultState: StoryContextType = {
+  currentId: null,
+  setCurrentId: () => {},
+};
+
 const storyData: StoryElement[] = data as StoryElement[];
 
-const StoryContext = createContext<StoryElement | undefined>(undefined);
+const StoryContext = createContext<StoryContextType>(defaultState);
 
 const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [story, setStory] = useState<typeof storyData | null>(null);
+  const [currentId, setCurrentId] = useState<number | null>(null);
 
   useEffect(() => {
     // Load story data here if it was asynchronous. Since it's a static import, set it directly.
@@ -45,7 +56,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <StoryContext.Provider value={{ story }}>
+    <StoryContext.Provider value={{ story, currentId, setCurrentId }}>
       {children}
     </StoryContext.Provider>
   );
