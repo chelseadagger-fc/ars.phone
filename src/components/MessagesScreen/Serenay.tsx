@@ -5,11 +5,11 @@ import { StoryContext } from '../../StoryContext';
 
 interface MessagesProps {
     navigateTo: (newScreen: string) => void;
-    msgSereData: { name: string };
-    setMsgSereData: (name: (prevState: { name: string }) => { name: string }) => void;
+    contactDataSere: { name: string };
+    setContactDataSere: (name: (prevState: { name: string }) => { name: string }) => void;
 }
 
-const Serenay: React.FC<MessagesProps> = ({ navigateTo, msgSereData, setMsgSereData }) => {
+const Serenay: React.FC<MessagesProps> = ({ navigateTo, contactDataSere, setContactDataSere }) => {
 
     const { story, displayedMessages, setDisplayedMessages } = useContext(StoryContext);
     const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice } = useContext(StoryContext);
@@ -22,7 +22,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, msgSereData, setMsgSereD
         if (!currentElement) return;
 
         if (currentElement.flag === 'updateSereNameToSerenay') {
-            setMsgSereData((prevState: { name: string }) => ({ ...prevState, name: "Serenay" }));
+            setContactDataSere((prevState: { name: string }) => ({ ...prevState, name: "Serenay" }));
         }
 
         if (currentElement.type === 'message') {
@@ -54,7 +54,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, msgSereData, setMsgSereD
                 setShowChoices(true);
             }
         }
-    }, [currentId, setChoices, setCurrentId, setDisplayedMessages, setMsgSereData, setShowChoices, story]);
+    }, [currentId, setChoices, setCurrentId, setDisplayedMessages, setContactDataSere, setShowChoices, story]);
 
     // const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
     //     setShowChoices(false);
@@ -84,7 +84,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, msgSereData, setMsgSereD
                     <MdArrowBackIosNew size={"2em"} color="white" />
                 </div>
                 <div className="text-2xl font-bold pb-1 text-white">
-                    <p>{msgSereData.name}</p>
+                    <p>{contactDataSere.name}</p>
                 </div>
             </div>
             <div className="h-[82%] flex flex-col justify-end mt-12 text-left text-white overflow-y-auto">

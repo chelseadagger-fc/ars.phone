@@ -5,12 +5,12 @@ import React from "react";
 
 interface MessagesProps {
     navigateTo: (newScreen: string) => void;
-    msgSereData: { name: string };
+    contactDataSere: { name: string };
 }
 
 
 
-const Messages: React.FC<MessagesProps> = ({ navigateTo, msgSereData }) => {
+const Messages: React.FC<MessagesProps> = ({ navigateTo, contactDataSere }) => {
 
 
 
@@ -28,7 +28,7 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo, msgSereData }) => {
                 <div className="flex flex-row pt-4 px-3" onClick={() => navigateTo('TextingSerenay')}>
                     <IoMdContact size="5em" className="mr-2"/>
                     <div className="flex flex-col justify-center items-start">
-                        <p className="text-2xl font-bold">{msgSereData.name}</p>
+                        <p className="text-2xl font-bold">{contactDataSere.name}</p>
                         <p className="text-slate-500">Contact request: an unknown n...</p>
                     </div>
 

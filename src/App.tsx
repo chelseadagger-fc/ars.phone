@@ -6,12 +6,12 @@ import Serenay from './components/MessagesScreen/Serenay'
 
 export default function App() {
 
-  interface MessagesTypes {
+  interface ContactsTypes {
     name: string;
 }
 
   const [activeScreen, setActiveScreen] = React.useState<string>('HomeScreen')
-  const [msgSereData, setMsgSereData] = React.useState<MessagesTypes>({name: 'UNKNOWN'})
+  const [contactDataSere, setContactDataSere] = React.useState<ContactsTypes>({name: 'UNKNOWN'})
 
   const navigateTo = (newScreen: string) => {
     setActiveScreen(newScreen);
@@ -20,17 +20,17 @@ export default function App() {
   // const handleChangeScreen = (newScreen: string) => { setActiveScreen({screenTitle: newScreen});};
   // const showActiveScreen = (activeScreen.screenTitle === 'home' ? <HomeScreen onAppPress={handleChangeScreen} /> :
   //     activeScreen.screenTitle === 'contacts' ? (<Contacts />) :
-  //     activeScreen.screenTitle === 'messages' ? (<Messages onAppPress={handleChangeScreen} msgSereData={msgSereData} />) :
-  //     activeScreen.screenTitle === 'sere' ? (<Serenay onAppPress={handleChangeScreen} msgSereData={msgSereData} setMsgSereData={setMsgSereData} />) : null ) 
+  //     activeScreen.screenTitle === 'messages' ? (<Messages onAppPress={handleChangeScreen} contactDataSere={contactDataSere} />) :
+  //     activeScreen.screenTitle === 'sere' ? (<Serenay onAppPress={handleChangeScreen} contactDataSere={contactDataSere} setcontactDataSere={setcontactDataSere} />) : null ) 
 
   return(
     <div>
         {activeScreen === 'HomeScreen' && <HomeScreen navigateTo={navigateTo} />}
-        {activeScreen === 'Messages' && <Messages navigateTo={navigateTo} msgSereData={msgSereData} />}
+        {activeScreen === 'Messages' && <Messages navigateTo={navigateTo} contactDataSere={contactDataSere} />}
         {activeScreen === 'TextingSerenay' && <Serenay
           navigateTo={navigateTo}
-          msgSereData={msgSereData}
-          setMsgSereData={setMsgSereData} />}
+          contactDataSere={contactDataSere}
+          setContactDataSere={setContactDataSere} />}
     </div>
 
   )
