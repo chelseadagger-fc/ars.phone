@@ -2,14 +2,15 @@ import MainHomeArea from "./MainHomeArea";
 import ShortcutBar from "./ShortcutBar";
 
 interface HomeScreenProps {
-    onAppPress: (newScreen: string) => void;
+    // onAppPress: (newScreen: string) => void;
+    navigateTo: (newScreen: string) => void;
   }
 
-  const HomeScreen: React.FC<HomeScreenProps> = ({ onAppPress }) => {
+  const HomeScreen: React.FC<HomeScreenProps> = ({ navigateTo }) => {
     return (
       <div className="h-dvh">
         <MainHomeArea />
-        <ShortcutBar onAppPress={onAppPress} />
+        <ShortcutBar navigateTo={navigateTo} />
       </div>
     );
   };

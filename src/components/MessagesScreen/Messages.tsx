@@ -4,20 +4,20 @@ import React from "react";
 
 
 interface MessagesProps {
-    onAppPress: (newScreen: string) => void;
+    navigateTo: (newScreen: string) => void;
     msgSereData: { name: string };
 }
 
 
 
-const Messages: React.FC<MessagesProps> = ({ onAppPress, msgSereData }) => {
+const Messages: React.FC<MessagesProps> = ({ navigateTo, msgSereData }) => {
 
 
 
     return (
         <div className="h-dvh">
             <div className="bg-neutral-400 flex flex-row justify-center items-center h-14" >
-                <div className="absolute left-0 top-3 pl-1" onClick={() => onAppPress('home')}>
+                <div className="absolute left-0 top-3 pl-1" onClick={() => navigateTo('HomeScreen')}>
                     <MdArrowBackIosNew size={"2em"}/>
                 </div>
                 <div className="text-3xl font-bold pb-1">
@@ -25,7 +25,7 @@ const Messages: React.FC<MessagesProps> = ({ onAppPress, msgSereData }) => {
                 </div>
             </div>
             <div>
-                <div className="flex flex-row pt-4 px-3" onClick={() => onAppPress('sere')}>
+                <div className="flex flex-row pt-4 px-3" onClick={() => navigateTo('TextingSerenay')}>
                     <IoMdContact size="5em" className="mr-2"/>
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-bold">{msgSereData.name}</p>

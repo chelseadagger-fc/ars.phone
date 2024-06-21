@@ -1,13 +1,13 @@
 import React from 'react';
 
 interface ShortcutBarProps {
-  onAppPress: (newScreen: string) => void;
+  navigateTo: (newScreen: string) => void;
 }
 
-const ShortcutBar: React.FC<ShortcutBarProps> = ({ onAppPress }) => {
+const ShortcutBar: React.FC<ShortcutBarProps> = ({ navigateTo }) => {
   return (
     <div className="bg-neutral-600 h-1/6 w-full flex flex-row justify-around items-center">
-      <div className="h-24 w-20 bg-red-200 flex flex-col justify-between items-center" onClick={() => onAppPress('messages')}>
+      <div className="h-24 w-20 bg-red-200 flex flex-col justify-between items-center" onClick={() => navigateTo('Messages')}>
         <div></div>
         <p>MESSAGES</p>
       </div>

@@ -1,13 +1,14 @@
 import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import './Messages.css';
-import chatData from './MessagesContent/Ch01.json'
+import chatData from '../StoryData/Ch01.json'
 
 interface MessagesProps {
-    onAppPress: (newScreen: string) => void;
-    sereName: string;
+    navigateTo: (newScreen: string) => void;
     msgSereData: { name: string };
-    setMsgSereData: (data: string) => void;
+    setMsgSereData: (name: (prevState: { name: string }) => { name: string }) => void;
+    displayedMessages: JSX.Element[];
+    setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
 type Message = {
@@ -43,12 +44,11 @@ type StoryElement = Message | Choice;
 
 const storyData: StoryElement[] = chatData as StoryElement[];
 
-const Serenay: React.FC<MessagesProps> = ({ onAppPress, msgSereData, setMsgSereData }) => {
+const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDisplayedMessages, msgSereData, setMsgSereData }) => {
 
     const [currentId, setCurrentId] = useState<number | null>(null);
     const [showChoices, setShowChoices] = useState<boolean>(false);
     const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
-    const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
     const [showStartButton, setShowStartButton] = useState<boolean>(true);
 
     useEffect(() => {
@@ -59,7 +59,7 @@ const Serenay: React.FC<MessagesProps> = ({ onAppPress, msgSereData, setMsgSereD
         if (!currentElement) return;
 
         if (currentElement.flag === 'updateSereNameToSerenay') {
-            setMsgSereData("Serenay");
+            setMsgSereData((prevState: { name: string }) => ({ ...prevState, name: "Serenay" }));
         }
 
         if (currentElement.type === 'message') {
@@ -117,7 +117,7 @@ const Serenay: React.FC<MessagesProps> = ({ onAppPress, msgSereData, setMsgSereD
     return (
         <div className="h-dvh flex flex-col justify-between bg-neutral-800">
             <div className="absolute w-full bg-neutral-700 flex flex-row justify-center items-center h-[8%]" >
-                <div className="absolute left-0 top-3 pl-1" onClick={() => onAppPress('messages')}>
+                <div className="absolute left-0 top-3 pl-1" onClick={() => navigateTo('Messages')}>
                     <MdArrowBackIosNew size={"2em"} color="white" />
                 </div>
                 <div className="text-2xl font-bold pb-1 text-white">
