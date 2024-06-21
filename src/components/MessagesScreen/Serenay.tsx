@@ -1,7 +1,7 @@
 import { MdArrowBackIosNew } from "react-icons/md";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Messages.css';
-import chatData from '../StoryData/Ch01.json'
+import { StoryContext } from '../../StoryContext';
 
 interface MessagesProps {
     navigateTo: (newScreen: string) => void;
@@ -40,21 +40,18 @@ type Choice = {
     flag?: string;
 };
 
-type StoryElement = Message | Choice;
-
-const storyData: StoryElement[] = chatData as StoryElement[];
-
 const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDisplayedMessages, msgSereData, setMsgSereData }) => {
 
     const [currentId, setCurrentId] = useState<number | null>(null);
     const [showChoices, setShowChoices] = useState<boolean>(false);
     const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
     const [showStartButton, setShowStartButton] = useState<boolean>(true);
+    const { story } = useContext(StoryContext);
 
     useEffect(() => {
         if (currentId === null) return;
 
-        const currentElement = storyData.find(element => element.id === currentId);
+        const currentElement = story.find(element => element.id === currentId);
 
         if (!currentElement) return;
 
