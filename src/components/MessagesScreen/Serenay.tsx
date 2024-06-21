@@ -1,5 +1,5 @@
 import { MdArrowBackIosNew } from "react-icons/md";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
 
@@ -11,19 +11,10 @@ interface MessagesProps {
     setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
-type ChoiceOption = {
-    text: string;
-    delay: number;
-    alignment: "left" | "right" | "center";
-};
-
 const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDisplayedMessages, msgSereData, setMsgSereData }) => {
 
-    const [showChoices, setShowChoices] = useState<boolean>(false);
-    const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
-    const [showStartButton, setShowStartButton] = useState<boolean>(true);
     const { story } = useContext(StoryContext);
-    const { currentId, setCurrentId } = useContext(StoryContext);
+    const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton } = useContext(StoryContext);
 
     useEffect(() => {
         if (currentId === null) return;
@@ -65,9 +56,9 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDi
                 setShowChoices(true);
             }
         }
-    }, [currentId, setCurrentId, setDisplayedMessages, setMsgSereData, story]);
+    }, [currentId, setChoices, setCurrentId, setDisplayedMessages, setMsgSereData, setShowChoices, story]);
 
-    const handleChoice = (next: number, option: ChoiceOption) => {
+    const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
         setShowChoices(false);
         const choiceMessage = (
             <p key={`choice-${next}`} className={`message ${option.alignment}`}>
