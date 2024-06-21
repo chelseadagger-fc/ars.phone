@@ -18,12 +18,6 @@ interface StoryContextType {
   setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
-interface Story {
-  id: string;
-  title: string;
-  content: string;
-}
-
 type Message = {
   id: number;
   type: "message";
@@ -81,7 +75,7 @@ const storyData: StoryElement[] = data as StoryElement[];
 const StoryContext = createContext<StoryContextType>(defaultState);
 
 const StoryProvider = ({ children }: { children: ReactNode }) => {
-  const [story, setStory] = useState<Story | null>(null);
+  const [story, setStory] = useState({ messages: [] });
   const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
@@ -103,13 +97,21 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     }, option.delay);
   };
 
+  const addMessageInSequence = () => {
+    if (story.messages && displayedMessages.length < story.messages.length) {
+        const nextMessage = story.messages[displayedMessages.length];
+        setDisplayedMessages([...displayedMessages, <div key={nextMessage.id} className={`message ${nextMessage.alignment}`}>{nextMessage.content}</div>]);
+    }
+};
+
   useEffect(() => {
-    // Load story data here if it was asynchronous. Since it's a static import, set it directly.
-    setStory(storyData);
-  }, []);
+    const storyData: StoryElement[] = data as StoryElement[];
+    setStory({ messages: storyData });
+
+  } , [currentId]);
 
   return (
-    <StoryContext.Provider value={{ story, displayedMessages, setDisplayedMessages, contactDataSere, setContactDataSere, currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice }}>
+    <StoryContext.Provider value={{ story, contactDataSere, displayedMessages, addMessageInSequence }}>
       {children}
     </StoryContext.Provider>
   );

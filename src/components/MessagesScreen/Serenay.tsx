@@ -1,5 +1,5 @@
 import { MdArrowBackIosNew } from "react-icons/md";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
 
@@ -9,71 +9,7 @@ interface MessagesProps {
 
 const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { story, displayedMessages, setDisplayedMessages, contactDataSere, setContactDataSere } = useContext(StoryContext);
-    const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice } = useContext(StoryContext);
-
-    useEffect(() => {
-        if (currentId === null) return;
-
-        const currentElement = story.find((element: { id: number; }) => element.id === currentId);
-
-        if (!currentElement) return;
-
-        if (currentElement.flag === 'updateSereNameToSerenay') {
-            setContactDataSere((prevState: { name: string }) => ({ ...prevState, name: "Serenay" }));
-        }
-
-        if (currentElement.type === 'message') {
-            const newMessage = (
-                <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
-                    {currentElement.content}
-                </p>
-            );
-            setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-
-            setTimeout(() => {
-                setCurrentId(currentElement.next);
-            }, currentElement.delay);
-        } else if (currentElement.type === 'choice') {
-            if (currentElement.content) {
-                const choiceContent = (
-                    <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
-                        {currentElement.content.text}
-                    </p>
-                );
-                setDisplayedMessages(prevMessages => [...prevMessages, choiceContent]);
-
-                setTimeout(() => {
-                    setChoices(currentElement.choices);
-                    setShowChoices(true);
-                }, currentElement.content.delay);
-            } else {
-                setChoices(currentElement.choices);
-                setShowChoices(true);
-            }
-        }
-    }, [currentId, setChoices, setCurrentId, setDisplayedMessages, setContactDataSere, setShowChoices, story]);
-
-    // const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
-    //     setShowChoices(false);
-    //     const choiceMessage = (
-    //         <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-    //             {option.text}
-    //         </p>
-    //     );
-    //     setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
-
-    //     setTimeout(() => {
-    //         setCurrentId(next);
-    //     }, option.delay);
-    // };
-
-    const startStory = () => {
-        setCurrentId(1);
-        setDisplayedMessages([]);
-        setShowStartButton(false);
-    };
-
+    const { story, contactDataSere, displayedMessages, addMessageInSequence } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -86,19 +22,12 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                 </div>
             </div>
             <div className="h-[82%] flex flex-col justify-end mt-12 text-left text-white overflow-y-auto">
-                {displayedMessages}
+                {displayedMessages.map((message, index) => (
+                    <div key={index} className="message">{message}</div>
+                ))}
             </div>
-            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
-                {showStartButton && <button onClick={startStory}>Start Story</button>}
-                {showChoices && (
-                    <div>
-                        {choices.map((choice, index) => (
-                            <button className="bg-neutral-700 rounded-lg text-white text-lg mx-3 my-1 px-5 py-2 w-72" key={index} onClick={() => handleChoice(choice.next, choice.option)}>
-                                {choice.option.text}
-                            </button>
-                        ))}
-                    </div>
-                )}
+            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2" onClick={addMessageInSequence}>
+                <button onClick={addMessageInSequence}>Show Next Message</button>
             </div>
         </div>
     );
