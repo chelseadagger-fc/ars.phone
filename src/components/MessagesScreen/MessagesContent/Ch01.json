@@ -1,423 +1,97 @@
 [
-    {
-        "id": 1,
-        "content": "Heyyy",
-        "delay": 10,
-        "component": "Serenay",
-        "options": []
-    },
-    {
-        "id": 2,
-        "content": "Did you get your phone fixed yet?",
-        "delay": 10,
-        "component": "Serenay",
-        "options": [
-            { "text": "Sort of", "nextMessageID":3 }
-        ]
-    },
+    { "id": 1, "type": "message", "content": "Heyyy", "delay": 1600, "alignment": "left", "next": 2 },
+    { "id": 2, "type": "message", "content": "So", "delay": 1200, "alignment": "left", "next": 3 },
     {
         "id": 3,
-        "content": "Sort of?",
-        "delay": 10,
-        "component": "Serenay",
-        "options": [
-            { "text": "Sooooo", "nextMessageID":4 }
-        ]
+        "type": "choice",
+        "content": {
+            "text": "I guess you got your phone fixed then?",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Sort of", "delay": 1500, "alignment": "right" }, "next": 4 }
+        ],
+        "next": null
     },
     {
         "id": 4,
-        "content": "Who is this anyway?",
-        "delay": 1000,
-        "component": "toSere",
-        "options": []
+        "type": "choice",
+        "content": {
+            "text": "Sort of?",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Yeahhhhh", "delay": 0, "alignment": "right" }, "next": 5 }
+        ],
+        "next": null
     },
     {
         "id": 5,
-        "content": "?",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
+        "type": "choice",
+        "choices": [
+            { "option": { "text": "Sooooo", "delay": 0, "alignment": "right" }, "next": 6 }
+        ],
+        "next": null
     },
     {
         "id": 6,
-        "content": "Wait...",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
+        "type": "choice",
+        "choices": [
+            { "option": { "text": "Who is this anyway?", "delay": 1500, "alignment": "right" }, "next": 7 }
+        ],
+        "next": null
     },
-    {
-        "id": 7,
-        "content": "Don't tell me",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
-    },
-    {
-        "id": 8,
-        "content": "You lost your contact",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "I lost my contacts", "nextMessageID": 9 }
-        ]
-    },
-    {
-        "id": 9,
-        "content": "All of them?",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "🙂", "nextMessageID":10 }
-        ]
-    },
+    { "id": 7, "type": "message", "content": "?", "delay": 1800, "alignment": "left", "next": 8 },
+    { "id": 8, "type": "message", "content": "Wait...", "delay": 1400, "alignment": "left", "next": 9 },
+    { "id": 9, "type": "message", "content": "Please don't tell me", "delay": 600, "alignment": "left", "next": 10 },
     {
         "id": 10,
-        "content": "Did you at least have them backed up?",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "🙃", "nextMessageID":11 }
-        ]
+        "type": "choice",
+        "content": {
+            "text": "You lost all your contacts",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "🙂", "delay": 1500, "alignment": "right" }, "next": 11 }
+        ],
+        "next": null
     },
     {
         "id": 11,
-        "content": "😓",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
-    },
-    {
-        "id": 12,
-        "content": "You're hopeless",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
-    },
-    {
-        "id": 13,
-        "content": "Hold on a sec",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": []
-    },
-    {
-        "id": 14,
-        "imageUrl": "url",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 15,
-        "content": "Did you get that?",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "Yeah, I got it", "nextMessageID":16 }
+        "type": "choice",
+        "content": {
+            "text": "Did you at least back them up?",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "🙃", "delay": 1500, "alignment": "right" }, "next": 12 }
         ],
-        "functionToRun": null
+        "next": null
     },
-    {
-        "id": 16,
-        "content": "Alright",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
+    { "id": 12, "type": "message", "content": "😓", "delay": 1600, "alignment": "left", "next": 13 },
+    { "id": 13, "type": "message", "content": "You're hopeless", "delay": 1600, "alignment": "left", "next": 14 },
+    { "id": 14, "type": "message", "content": "Hold on a sec", "delay": 1600, "alignment": "left", "next": 15 },
+    { "id": 15, "type": "message", "content": "[New contact: Serenay Soylu]", "delay": 1600, "alignment": "left", "next": 16, "flag": "updateSereNameToSerenay" },
+    { "id": 16, "type": "message", "content": "Did you get that?", "delay": 1600, "alignment": "left", "next": 17 },
     {
         "id": 17,
-        "content": "Well",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 18,
-        "content": "If you're going to have one conatct on your phone",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 19,
-        "content": "It might as well be your girlfriend's",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 20,
-        "content": "Right?",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "Of course 🥰", "nextMessageID": 21 },
-            { "text": "Could you send me Kaede’s too?", "nextMessageID": 21 }
+        "type": "choice",
+        "content": {
+            "text": "I sent my contact info",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Yeah, I got it", "delay": 1500, "alignment": "right" }, "next": 18 }
         ],
-        "functionToRun": null
+        "next": null
     },
-    {
-        "id": 21,
-        "content": "🥰",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 22,
-        "content": "Correct answer",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 23,
-        "content": "Good boy",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null,
-        "nextMessageID": 24
-    },
-    {
-        "id": 24,
-        "content": "😒",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 25,
-        "content": "You're actually",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 26,
-        "content": "So stupid",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "She's an emergency contact. I'm just being responsible", "nextMessageID": 27 }
-        ],
-        "functionToRun": null
-    },
-    {
-        "id": 27,
-        "content": "'Responsible'",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 28,
-        "content": "Responsible my ass",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 29,
-        "content": "🙄",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 30,
-        "content": "You're lucky you're KINDA cute",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 31,
-        "imageUrl": "url kaede",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 32,
-        "imageUrl": "url willian",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 33,
-        "imageUrl": "url ishtar",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 34,
-        "content": "There",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 35,
-        "content": "I sent the group's info",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "Got it 👍", "nextMessageID": 36 }
-        ],
-        "functionToRun": null
-    },
-    {
-        "id": 36,
-        "content": "Good",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 37,
-        "content": "Anyway",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 38,
-        "content": "I have to get back to studying",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 39,
-        "content": "We'll be done by 7",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 40,
-        "content": "Err",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 41,
-        "content": "That's local time",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 42,
-        "content": "😓",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 43,
-        "content": "That's in four hours",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "Call me then?", "nextMessageID": 44 }
-        ],
-        "functionToRun": null
-    },
-    {
-        "id": 44,
-        "content": "Okay",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 45,
-        "content": "Will do",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 46,
-        "content": "I hope you have a good day",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 47,
-        "content": "And",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 48,
-        "content": "I miss you",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "I miss you too", "nextMessageID": 49 }
-        ],
-        "functionToRun": null
-    },
-    {
-        "id": 49,
-        "content": "❤",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 50,
-        "content": "Alright",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [],
-        "functionToRun": null
-    },
-    {
-        "id": 51,
-        "content": "Bye bye love!",
-        "delay": 1000,
-        "component": "Serenay",
-        "options": [
-            { "text": "Bye sweetheart", "nextMessageID": 52 }
-        ],
-        "functionToRun": null
-    }
+    { "id": 18, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 19 },
+    { "id": 19, "type": "message", "content": "Well", "delay": 1600, "alignment": "left", "next": 20 },
+    { "id": 20, "type": "message", "content": "If you're going to have one contact on your phone", "delay": 1600, "alignment": "left", "next": 21 },
+    { "id": 21, "type": "message", "content": "It might as well be mine", "delay": 1600, "alignment": "left", "next": null }
 ]

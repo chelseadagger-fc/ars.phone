@@ -5,12 +5,12 @@ import React from "react";
 
 interface MessagesProps {
     onAppPress: (newScreen: string) => void;
-    sereName: string;
+    msgSereData: { name: string };
 }
 
 
 
-const Messages: React.FC<MessagesProps> = ({ onAppPress, sereName }) => {
+const Messages: React.FC<MessagesProps> = ({ onAppPress, msgSereData }) => {
 
 
 
@@ -25,10 +25,10 @@ const Messages: React.FC<MessagesProps> = ({ onAppPress, sereName }) => {
                 </div>
             </div>
             <div>
-                <div className="flex flex-row pt-4 px-3" onClick={() => onAppPress('unknownstart')}>
+                <div className="flex flex-row pt-4 px-3" onClick={() => onAppPress('sere')}>
                     <IoMdContact size="5em" className="mr-2"/>
                     <div className="flex flex-col justify-center items-start">
-                        <p className="text-2xl font-bold">{sereName}</p>
+                        <p className="text-2xl font-bold">{msgSereData.name}</p>
                         <p className="text-slate-500">Contact request: an unknown n...</p>
                     </div>
 
