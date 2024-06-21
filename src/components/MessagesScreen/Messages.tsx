@@ -2,16 +2,17 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { IoMdContact } from "react-icons/io";
 import React from "react";
 
+
 interface MessagesProps {
     onAppPress: (newScreen: string) => void;
     sereName: string;
 }
 
-interface MessagesTypes {
-    name: string;
-}
+
 
 const Messages: React.FC<MessagesProps> = ({ onAppPress, sereName }) => {
+
+
 
     return (
         <div className="h-dvh">
@@ -24,11 +25,11 @@ const Messages: React.FC<MessagesProps> = ({ onAppPress, sereName }) => {
                 </div>
             </div>
             <div>
-                <div className="flex flex-row pt-4 px-3" onClick={() => onAppPress('sere')}>
+                <div className="flex flex-row pt-4 px-3" onClick={() => onAppPress('unknownstart')}>
                     <IoMdContact size="5em" className="mr-2"/>
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-bold">{sereName}</p>
-                        <p className="text-slate-500">Did you get your phone fi . . .</p>
+                        <p className="text-slate-500">Contact request: an unknown n...</p>
                     </div>
 
                 </div>
