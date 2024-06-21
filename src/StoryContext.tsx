@@ -12,6 +12,8 @@ interface StoryContextType {
   setChoices: React.Dispatch<React.SetStateAction<string[]>>;
   showStartButton: boolean;
   setShowStartButton: React.Dispatch<React.SetStateAction<boolean>>;
+  displayedMessages: JSX.Element[];
+  setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
 interface Story {
@@ -74,10 +76,25 @@ const StoryContext = createContext<StoryContextType>(defaultState);
 
 const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [story, setStory] = useState<Story | null>(null);
+  const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<string[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
+
+  const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
+    setShowChoices(false);
+    const choiceMessage = (
+        <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+            {option.text}
+        </p>
+    );
+    setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
+
+    setTimeout(() => {
+        setCurrentId(next);
+    }, option.delay);
+  };
 
   useEffect(() => {
     // Load story data here if it was asynchronous. Since it's a static import, set it directly.
@@ -85,7 +102,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <StoryContext.Provider value={{ story, currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton }}>
+    <StoryContext.Provider value={{ story, displayedMessages, setDisplayedMessages, currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice }}>
       {children}
     </StoryContext.Provider>
   );

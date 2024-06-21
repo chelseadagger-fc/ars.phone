@@ -12,7 +12,6 @@ export default function App() {
 
   const [activeScreen, setActiveScreen] = React.useState<string>('HomeScreen')
   const [msgSereData, setMsgSereData] = React.useState<MessagesTypes>({name: 'UNKNOWN'})
-  const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
 
   const navigateTo = (newScreen: string) => {
     setActiveScreen(newScreen);
@@ -31,9 +30,7 @@ export default function App() {
         {activeScreen === 'TextingSerenay' && <Serenay
           navigateTo={navigateTo}
           msgSereData={msgSereData}
-          setMsgSereData={setMsgSereData}
-          displayedMessages={displayedMessages}
-          setDisplayedMessages={setDisplayedMessages} />}
+          setMsgSereData={setMsgSereData} />}
     </div>
 
   )

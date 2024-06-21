@@ -7,14 +7,12 @@ interface MessagesProps {
     navigateTo: (newScreen: string) => void;
     msgSereData: { name: string };
     setMsgSereData: (name: (prevState: { name: string }) => { name: string }) => void;
-    displayedMessages: JSX.Element[];
-    setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
-const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDisplayedMessages, msgSereData, setMsgSereData }) => {
+const Serenay: React.FC<MessagesProps> = ({ navigateTo, msgSereData, setMsgSereData }) => {
 
-    const { story } = useContext(StoryContext);
-    const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton } = useContext(StoryContext);
+    const { story, displayedMessages, setDisplayedMessages } = useContext(StoryContext);
+    const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice } = useContext(StoryContext);
 
     useEffect(() => {
         if (currentId === null) return;
@@ -58,19 +56,19 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, displayedMessages, setDi
         }
     }, [currentId, setChoices, setCurrentId, setDisplayedMessages, setMsgSereData, setShowChoices, story]);
 
-    const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
-        setShowChoices(false);
-        const choiceMessage = (
-            <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-                {option.text}
-            </p>
-        );
-        setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
+    // const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
+    //     setShowChoices(false);
+    //     const choiceMessage = (
+    //         <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+    //             {option.text}
+    //         </p>
+    //     );
+    //     setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
 
-        setTimeout(() => {
-            setCurrentId(next);
-        }, option.delay);
-    };
+    //     setTimeout(() => {
+    //         setCurrentId(next);
+    //     }, option.delay);
+    // };
 
     const startStory = () => {
         setCurrentId(1);
