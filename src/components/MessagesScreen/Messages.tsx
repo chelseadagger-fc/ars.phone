@@ -1,21 +1,21 @@
 import { MdArrowBackIosNew } from "react-icons/md";
 import { IoMdContact } from "react-icons/io";
-import React from "react";
+import React, { useContext } from "react";
+import { StoryContext } from "../../StoryContext";  
 
 
 interface MessagesProps {
     navigateTo: (newScreen: string) => void;
-    contactDataSere: { name: string };
 }
 
 
 
-const Messages: React.FC<MessagesProps> = ({ navigateTo, contactDataSere }) => {
+const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-
+    const { contactDataSere } = useContext(StoryContext);
 
     return (
-        <div className="h-dvh">
+        <div className="h-dvh max-w-full">
             <div className="bg-neutral-400 flex flex-row justify-center items-center h-14" >
                 <div className="absolute left-0 top-3 pl-1" onClick={() => navigateTo('HomeScreen')}>
                     <MdArrowBackIosNew size={"2em"}/>

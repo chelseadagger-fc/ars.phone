@@ -5,13 +5,11 @@ import { StoryContext } from '../../StoryContext';
 
 interface MessagesProps {
     navigateTo: (newScreen: string) => void;
-    contactDataSere: { name: string };
-    setContactDataSere: (name: (prevState: { name: string }) => { name: string }) => void;
 }
 
-const Serenay: React.FC<MessagesProps> = ({ navigateTo, contactDataSere, setContactDataSere }) => {
+const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { story, displayedMessages, setDisplayedMessages } = useContext(StoryContext);
+    const { story, displayedMessages, setDisplayedMessages, contactDataSere, setContactDataSere } = useContext(StoryContext);
     const { currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice } = useContext(StoryContext);
 
     useEffect(() => {
@@ -78,8 +76,8 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo, contactDataSere, setCont
 
  
     return (
-        <div className="h-dvh flex flex-col justify-between bg-neutral-800">
-            <div className="absolute w-full bg-neutral-700 flex flex-row justify-center items-center h-[8%]" >
+        <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
+            <div className="absolute w-full max-w-xl bg-neutral-700 flex flex-row justify-center items-center h-[8%]" >
                 <div className="absolute left-0 top-3 pl-1" onClick={() => navigateTo('Messages')}>
                     <MdArrowBackIosNew size={"2em"} color="white" />
                 </div>

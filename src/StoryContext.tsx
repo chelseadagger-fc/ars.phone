@@ -1,9 +1,11 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useState, useEffect, ReactNode, SetStateAction } from 'react';
 import data from './components/StoryData/Ch01.json';
 
 interface StoryContextType {
   story: Story;
   setStory: React.Dispatch<React.SetStateAction<Story>>;
+  contactDataSere: { name: string };
+  setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
@@ -59,15 +61,19 @@ const defaultState: StoryContextType = {
     title: '',
     content: ''
   },
-  setStory: () => {},
+  setStory: () => { },
+  displayedMessages: [],
+  setDisplayedMessages: () => { },
   currentId: null,
-  setCurrentId: () => {},
+  setCurrentId: () => { },
   choices: [],
-  setChoices: () => {},
+  setChoices: () => { },
   showStartButton: false,
-  setShowStartButton: () => {},
+  setShowStartButton: () => { },
   showChoices: false,
-  setShowChoices: () => {}
+  setShowChoices: () => { },
+  contactDataSere: { name: 'Unknown' },
+  setContactDataSere: () => { }
 };
 
 const storyData: StoryElement[] = data as StoryElement[];
@@ -81,6 +87,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<string[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
+  const [contactDataSere, setContactDataSere] = useState<{ name: string }>({ name: 'Unknown' });
 
   const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
     setShowChoices(false);
@@ -102,7 +109,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <StoryContext.Provider value={{ story, displayedMessages, setDisplayedMessages, currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice }}>
+    <StoryContext.Provider value={{ story, displayedMessages, setDisplayedMessages, contactDataSere, setContactDataSere, currentId, setCurrentId, showChoices, setShowChoices, choices, setChoices, showStartButton, setShowStartButton, handleChoice }}>
       {children}
     </StoryContext.Provider>
   );
