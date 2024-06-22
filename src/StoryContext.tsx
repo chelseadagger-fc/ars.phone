@@ -28,19 +28,21 @@ type Message = {
   alignment: "left" | "right" | "center";
   next: number | null;
   flag?: string;
+  width?: string;
 };
 
 type ChoiceOption = {
   text: string;
   delay: number;
   alignment: "left" | "right" | "center";
+  subtype?: "text" | "image" | "emoji";
 };
 
 type Choice = {
   id: number;
   type: "choice";
   content?: {
-      text: string;
+      text?: string;
       delay: number;
       alignment: "left" | "right" | "center";
   };
@@ -84,7 +86,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string }>({ name: 'Unknown' });
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string }>({ name: 'Unknown', profileImg: 'Unknown.png' });
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -97,13 +99,13 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     if (!currentElement) return;
 
     if (currentElement.flag === 'updateSereNameToSerenay') {
-      setContactDataSere({ name: "Serenay" });
+      setContactDataSere({ name: "Serenay", profileImg: "Serenay01.png"});
     }
 
     if (currentElement.type === "message") {
       if (currentElement.subtype === "image") {
         const newMessage = (
-          <img key={currentElement.id} className={`image ${currentElement.alignment} w-64 my-3`} src={`/images/attachments/${currentElement.content}`} />
+          <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/attachments/${currentElement.content}`} />
         );
         setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
   

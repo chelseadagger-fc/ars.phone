@@ -26,7 +26,7 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
             </div>
             <div>
                 <div className="flex flex-row pt-4 px-3" onClick={() => navigateTo('TextingSerenay')}>
-                    <IoMdContact size="5em" className="mr-2"/>
+                    <img className="w-20 mr-4 rounded-full" src={`/images/contacts/${contactDataSere.profileImg}`} />
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-bold">{contactDataSere.name}</p>
                         <p className="text-slate-500">Contact request: an unknown n...</p>
