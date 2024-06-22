@@ -21,16 +21,14 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <p>{contactDataSere.name}</p>
                 </div>
             </div>
-            <div className="h-[82%] flex flex-col justify-end mt-12 text-left text-white overflow-y-auto">
-                {displayedMessages.map((message, index) => (
-                    <div key={index} className="message">{message}</div>
-                ))}
+            <div className="h-[82%] w-full flex flex-col justify-end mt-12 text-left text-white overflow-y-auto">
+                {displayedMessages}
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showChoices && choices.map((choice, index) => (
                     <button
-                    className="bg-red-500 rounded-lg text-white text-lg mx-3 my-1 px-5 py-2 w-72"
+                    className="bg-neutral-600/75 rounded-lg text-white text-lg mx-3 my-1 px-5 py-2 w-72"
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >

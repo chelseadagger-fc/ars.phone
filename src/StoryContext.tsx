@@ -85,27 +85,6 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
   const [contactDataSere, setContactDataSere] = useState<{ name: string }>({ name: 'Unknown' });
 
-  const handleChoice = (next: number, option: ChoiceOption) => {
-    setShowChoices(false);
-    const choiceMessage = (
-        <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-            {option.text}
-        </p>
-    );
-    setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
-
-    setTimeout(() => {
-        setCurrentId(next);
-    }, option.delay);
-};
-
-  const addMessageInSequence = () => {
-    if (story.messages && displayedMessages.length < story.messages.length) {
-        const nextMessage = story.messages[displayedMessages.length];
-        setDisplayedMessages([...displayedMessages, <div key={nextMessage.id} className={`message ${nextMessage.alignment}`}>{nextMessage.content}</div>]);
-    }
-};
-
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
     setStory({ messages: storyData });
@@ -117,23 +96,18 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     if (!currentElement) return;
 
     if (currentElement.type === "message") {
-        const message = currentElement as Message;
-        const messageElement = (
-            <p key={message.id} className={`message ${message.alignment}`}>
-                {message.content}
-            </p>
-        );
-        setDisplayedMessages(prevMessages => [...prevMessages, messageElement]);
+      const newMessage = (
+        <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+            {currentElement.content}
+        </p>
+    );
+    setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
 
-        setTimeout(() => {
-            if (message.next !== null) {
-                setCurrentId(message.next);
-            } else {
-                setShowChoices(true);
-            }
-        }, message.delay);
-    } else if (currentElement.type === "choice") {
-      if (currentElement.content) {
+    setTimeout(() => {
+        setCurrentId(currentElement.next);
+    }, currentElement.delay);
+} else if (currentElement.type === 'choice') {
+    if (currentElement.content) {
         const choiceContent = (
             <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
                 {currentElement.content.text}
@@ -145,14 +119,11 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setChoices(currentElement.choices);
             setShowChoices(true);
         }, currentElement.content.delay);
-        } else {
-            setChoices(currentElement.choices);
-            setShowChoices(true);
-        }
+    } else {
+        setChoices(currentElement.choices);
+        setShowChoices(true);
     }
-
-
-
+}
   } , [currentId]);
 
   const startStory = () => {
@@ -160,6 +131,20 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');
+};
+
+const handleChoice = (next: number, option: ChoiceOption) => {
+  setShowChoices(false);
+  const choiceMessage = (
+      <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+          {option.text}
+      </p>
+  );
+  setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
+
+  setTimeout(() => {
+      setCurrentId(next);
+  }, option.delay);
 };
   
 
