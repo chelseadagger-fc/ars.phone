@@ -17,6 +17,14 @@
     margin-right: 1rem;
 }
 
+.message.center {
+    background-color: #525252;
+    align-self: center;
+    font-weight: 600;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
 .message.choice {
     background-color: #d1d1d1;
     align-self: center;

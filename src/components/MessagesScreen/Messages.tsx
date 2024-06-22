@@ -31,7 +31,6 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                         <p className="text-2xl font-bold">{contactDataSere.name}</p>
                         <p className="text-slate-500">Contact request: an unknown n...</p>
                     </div>
-
                 </div>
             </div>
         </div>

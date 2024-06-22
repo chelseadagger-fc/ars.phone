@@ -4,7 +4,9 @@ import data from './components/StoryData/Ch01.json';
 interface StoryContextType {
   story: Story;
   setStory: React.Dispatch<React.SetStateAction<Story>>;
-  contactDataSere: { name: string };
+  contactDataSere: {
+      profileImg: any; name: string 
+};
   setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -44,6 +46,7 @@ type Choice = {
   content?: {
       text?: string;
       delay: number;
+      subtype?: "text" | "image" | "emoji";
       alignment: "left" | "right" | "center";
   };
   choices: string[];
@@ -105,7 +108,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     if (currentElement.type === "message") {
       if (currentElement.subtype === "image") {
         const newMessage = (
-          <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/attachments/${currentElement.content}`} />
+          <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
         );
         setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
   
@@ -138,7 +141,27 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     }
     
     else if (currentElement.type === 'choice') {
-      if (currentElement.content) {
+      if (currentElement.content?.subtype === 'image') {
+        const choiceContent = (
+            <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, choiceContent]);
+
+        setTimeout(() => {
+            setChoices(currentElement.choices);
+            setShowChoices(true);
+        }, currentElement.content.delay);
+      } else if (currentElement.content?.subtype === 'emoji') {
+        const choiceContent = (
+            <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, choiceContent]);
+
+        setTimeout(() => {
+            setChoices(currentElement.choices);
+            setShowChoices(true);
+        }, currentElement.content.delay);
+      } else if (currentElement.content) {
         const choiceContent = (
             <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
                 {currentElement.content.text}

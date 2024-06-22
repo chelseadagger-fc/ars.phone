@@ -2,7 +2,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
-import { FaVideo, FaPhoneAlt  } from "react-icons/fa";
+import { FaVideo  } from "react-icons/fa";
 import { TbDotsVertical } from "react-icons/tb";
 import { MdPhone } from "react-icons/md";
 
@@ -10,7 +10,7 @@ interface MessagesProps {
     navigateTo: (newScreen: string) => void;
 }
 
-const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
+const Ishtar: React.FC<MessagesProps> = ({ navigateTo }) => {
 
     const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, displayedMessages, setCurrentId } = useContext(StoryContext);
  
@@ -33,11 +33,11 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
             <div className="h-[82%] w-full flex flex-col justify-end text-left text-white overflow-y-auto">
                 {displayedMessages}
             </div>
-            <div className="bg-neutral-600 h-[10%] flex flex-col justify-around items-stretch rounded-xl mx-3 my-2 px-2">
+            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showChoices && choices.map((choice, index) => (
                     <button
-                    className="bg-neutral-500 rounded-lg w-full text-white text-lg py-1"
+                    className="bg-neutral-600 rounded-lg w-full text-white text-lg mx-3 my-1 px-5 py-2 w-72"
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >
@@ -49,4 +49,4 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
     );
 };
 
-export default Serenay;
+export default Ishtar;
