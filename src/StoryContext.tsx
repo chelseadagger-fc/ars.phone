@@ -16,6 +16,7 @@ interface StoryContextType {
   setShowStartButton: React.Dispatch<React.SetStateAction<boolean>>;
   displayedMessages: JSX.Element[];
   setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
+  handleChoice: (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => void;
 }
 
 type Message = {
@@ -42,7 +43,7 @@ type Choice = {
       delay: number;
       alignment: "left" | "right" | "center";
   };
-  choices: { option: ChoiceOption; next: number }[];
+  choices: string[];
   next: number | null;
   flag?: string;
 };
@@ -67,7 +68,8 @@ const defaultState: StoryContextType = {
   showChoices: false,
   setShowChoices: () => { },
   contactDataSere: { name: 'Unknown' },
-  setContactDataSere: () => { }
+  setContactDataSere: () => { },
+  handleChoice: () => { }
 };
 
 const storyData: StoryElement[] = data as StoryElement[];
@@ -79,11 +81,11 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
-  const [choices, setChoices] = useState<string[]>([]);
+  const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
   const [contactDataSere, setContactDataSere] = useState<{ name: string }>({ name: 'Unknown' });
 
-  const handleChoice = (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => {
+  const handleChoice = (next: number, option: ChoiceOption) => {
     setShowChoices(false);
     const choiceMessage = (
         <p key={`choice-${next}`} className={`message ${option.alignment}`}>
@@ -95,7 +97,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     setTimeout(() => {
         setCurrentId(next);
     }, option.delay);
-  };
+};
 
   const addMessageInSequence = () => {
     if (story.messages && displayedMessages.length < story.messages.length) {
@@ -108,10 +110,61 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     const storyData: StoryElement[] = data as StoryElement[];
     setStory({ messages: storyData });
 
+    if (currentId === null) return;
+
+    const currentElement = storyData.find(element => element.id === currentId);
+
+    if (!currentElement) return;
+
+    if (currentElement.type === "message") {
+        const message = currentElement as Message;
+        const messageElement = (
+            <p key={message.id} className={`message ${message.alignment}`}>
+                {message.content}
+            </p>
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, messageElement]);
+
+        setTimeout(() => {
+            if (message.next !== null) {
+                setCurrentId(message.next);
+            } else {
+                setShowChoices(true);
+            }
+        }, message.delay);
+    } else if (currentElement.type === "choice") {
+      if (currentElement.content) {
+        const choiceContent = (
+            <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
+                {currentElement.content.text}
+            </p>
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, choiceContent]);
+
+        setTimeout(() => {
+            setChoices(currentElement.choices);
+            setShowChoices(true);
+        }, currentElement.content.delay);
+        } else {
+            setChoices(currentElement.choices);
+            setShowChoices(true);
+        }
+    }
+
+
+
   } , [currentId]);
 
+  const startStory = () => {
+    setCurrentId(1);
+    setDisplayedMessages([]);
+    setShowStartButton(false);
+    console.log('Story started');
+};
+  
+
   return (
-    <StoryContext.Provider value={{ story, contactDataSere, displayedMessages, addMessageInSequence }}>
+    <StoryContext.Provider value={{ handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );

@@ -9,7 +9,7 @@ interface MessagesProps {
 
 const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { story, contactDataSere, displayedMessages, addMessageInSequence } = useContext(StoryContext);
+    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, displayedMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -26,8 +26,17 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <div key={index} className="message">{message}</div>
                 ))}
             </div>
-            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2" onClick={addMessageInSequence}>
-                <button onClick={addMessageInSequence}>Show Next Message</button>
+            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
+                {showStartButton && <button onClick={startStory}>Start Story</button>}
+                {showChoices && choices.map((choice, index) => (
+                    <button
+                    className="bg-red-500 rounded-lg text-white text-lg mx-3 my-1 px-5 py-2 w-72"
+                    key={index}
+                    onClick={() => handleChoice(choice.next, choice.option)}
+                    >
+                        {choice.option.text}
+                    </button>
+                ))}
             </div>
         </div>
     );
