@@ -22,6 +22,7 @@ interface StoryContextType {
 type Message = {
   id: number;
   type: "message";
+  subtype?: "text" | "image" | "emoji";
   content: string;
   delay: number;
   alignment: "left" | "right" | "center";
@@ -95,19 +96,47 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
     if (!currentElement) return;
 
+    if (currentElement.flag === 'updateSereNameToSerenay') {
+      setContactDataSere({ name: "Serenay" });
+    }
+
     if (currentElement.type === "message") {
-      const newMessage = (
+      if (currentElement.subtype === "image") {
+        const newMessage = (
+          <img key={currentElement.id} className={`image ${currentElement.alignment} w-64 my-3`} src={`/images/attachments/${currentElement.content}`} />
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
+  
+        setTimeout(() => {
+          setCurrentId(currentElement.next);
+        }, currentElement.delay);
+      } else if (currentElement.subtype === "emoji") {
+        const newMessage = (
+          <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+              {currentElement.content}
+          </p>
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
+  
+        setTimeout(() => {
+          setCurrentId(currentElement.next);
+        }, currentElement.delay);
+      } else {
+        const newMessage = (
         <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
             {currentElement.content}
         </p>
-    );
-    setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
+        );
+        setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
 
-    setTimeout(() => {
-        setCurrentId(currentElement.next);
-    }, currentElement.delay);
-} else if (currentElement.type === 'choice') {
-    if (currentElement.content) {
+        setTimeout(() => {
+          setCurrentId(currentElement.next);
+        }, currentElement.delay);
+      } 
+    }
+    
+    else if (currentElement.type === 'choice') {
+      if (currentElement.content) {
         const choiceContent = (
             <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
                 {currentElement.content.text}
@@ -119,11 +148,11 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setChoices(currentElement.choices);
             setShowChoices(true);
         }, currentElement.content.delay);
-    } else {
+      } else {
         setChoices(currentElement.choices);
         setShowChoices(true);
     }
-}
+  }
   } , [currentId]);
 
   const startStory = () => {

@@ -75,7 +75,7 @@
     { "id": 12, "type": "message", "content": "😓", "delay": 1600, "alignment": "left", "next": 13 },
     { "id": 13, "type": "message", "content": "You're hopeless", "delay": 1600, "alignment": "left", "next": 14 },
     { "id": 14, "type": "message", "content": "Hold on a sec", "delay": 1600, "alignment": "left", "next": 15 },
-    { "id": 15, "type": "message", "content": "[New contact: Serenay Soylu]", "delay": 1600, "alignment": "left", "next": 16, "flag": "updateSereNameToSerenay" },
+    { "id": 15, "type": "message", "subtype": "image", "content": "ContactDetailsSerenay.png", "delay": 1600, "alignment": "left", "next": 16, "flag": "updateSereNameToSerenay" },
     { "id": 16, "type": "message", "content": "Did you get that?", "delay": 1600, "alignment": "left", "next": 17 },
     {
         "id": 17,

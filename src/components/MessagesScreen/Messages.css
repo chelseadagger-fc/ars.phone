@@ -21,3 +21,15 @@
     background-color: #d1d1d1;
     align-self: center;
 }
+
+.image.left {
+    background-color: #525252;
+    align-self: flex-start;
+    margin-left: 0.75rem;
+}
+
+.image.right {
+    background-color: #0ea5e9;
+    align-self: flex-end;
+    margin-right: 1rem;
+}

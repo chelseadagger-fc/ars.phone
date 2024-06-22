@@ -28,7 +28,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showChoices && choices.map((choice, index) => (
                     <button
-                    className="bg-neutral-600/75 rounded-lg text-white text-lg mx-3 my-1 px-5 py-2 w-72"
+                    className="bg-neutral-600 rounded-lg w-full text-white text-lg mx-3 my-1 px-5 py-2 w-72"
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >
