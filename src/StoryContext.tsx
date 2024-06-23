@@ -9,15 +9,15 @@ interface StoryContextType {
   };
   setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataKaede: {
-    profileImg: string; name: string; discovered: boolean;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
   setContactDataKaede: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataWillian: {
-    profileImg: string; name: string; discovered: boolean;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
   setContactDataWillian: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataIshtar: {
-    profileImg: string; name: string; discovered: boolean;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
   setContactDataIshtar: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
@@ -122,11 +122,11 @@ const defaultState: StoryContextType = {
   setShowIshtarChoices: () => { },
   contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: ''},
   setContactDataSere: () => { },
-  contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false },
+  contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataKaede: () => { },
-  contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false },
+  contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataWillian: () => { },
-  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false },
+  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataIshtar: () => { },
   handleChoice: () => { }
 };
@@ -154,10 +154,10 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showIshtarChoices, setShowIshtarChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: ''});
-  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
-  const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false});
-  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false});
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '' });
+  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' });
+  const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]' });
+  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' });
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -272,6 +272,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setKaedeMessages(prevMessages => [...prevMessages, newKaedeMessage]);
+            setContactDataKaede(prevState => ({ ...prevState, latestMessage: currentElement.content }));
             console.log(`${currentElement.id} added to kaedeMessages`)
         
             setTimeout(() => {
@@ -286,6 +287,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setWillianMessages(prevMessages => [...prevMessages, newWillianMessage]);
+            setContactDataWillian(prevState => ({ ...prevState, latestMessage: currentElement.content }));
             console.log(`${currentElement.id} added to willianMessages`)
 
             setTimeout(() => {
@@ -300,6 +302,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setIshtarMessages(prevMessages => [...prevMessages, newIshtarMessage]);
+            setContactDataIshtar(prevState => ({ ...prevState, latestMessage: currentElement.content }));
             console.log(`${currentElement.id} added to ishtarMessages`)
         
             setTimeout(() => {
@@ -421,6 +424,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setKaedeMessages(prevMessages => [...prevMessages, choiceContent]);
+            setContactDataKaede(prevState => ({ ...prevState, latestMessage: currentElement.content.text || "[missing string]" }));
         
             setTimeout(() => {
               setKaedeChoices(currentElement.choices);
@@ -435,6 +439,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setWillianMessages(prevMessages => [...prevMessages, choiceContent]);
+            setContactDataWillian(prevState => ({ ...prevState, latestMessage: currentElement.content.text || "[missing string]" }));
         
             setTimeout(() => {
               setWillianChoices(currentElement.choices);
@@ -449,6 +454,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setIshtarMessages(prevMessages => [...prevMessages, choiceContent]);
+            setContactDataIshtar(prevState => ({ ...prevState, latestMessage: currentElement.content.text || "[missing string]" }));
         
             setTimeout(() => {
               setIshtarChoices(currentElement.choices);
@@ -490,7 +496,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   } , [currentId]);
 
   const startStory = () => {
-    setCurrentId(1);
+    setCurrentId(176);
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');
@@ -523,6 +529,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
           </p>
         );
         setKaedeMessages(prevMessages => [...prevMessages, choiceMessage]);
+        setContactDataKaede(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
           setCurrentId(next);
@@ -538,6 +545,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
           </p>
         );
         setWillianMessages(prevMessages => [...prevMessages, choiceMessage]);
+        setContactDataWillian(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
           setCurrentId(next);
@@ -553,6 +561,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
           </p>
         );
         setIshtarMessages(prevMessages => [...prevMessages, choiceMessage]);
+        setContactDataIshtar(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
           setCurrentId(next);

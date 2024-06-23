@@ -16,7 +16,7 @@ const Ishtar: React.FC<MessagesProps> = ({ navigateTo }) => {
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
-            <div className="w-full max-w-xl bg-neutral-700 flex flex-row justify-between items-center h-[8%]" >
+            <div className="absolute w-full max-w-xl bg-neutral-700 flex flex-row justify-between items-center h-[8%]" >
                 <div className="flex flex-row text-white items-center">
                     <div className="left-0 top-3 pl-1" onClick={() => navigateTo('Messages')}>
                         <MdArrowBackIosNew size={"2em"} color="white" className="mr-4 ml-1" />
@@ -30,7 +30,7 @@ const Ishtar: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <TbDotsVertical size={"1em"} color="white" className="mr-2" />
                 </div>
             </div>
-            <div className="h-[82%] w-full flex flex-col justify-end text-left text-white overflow-y-auto">
+            <div className="h-full w-full flex flex-col justify-end text-left text-white overflow-y-auto">
                 {ishtarMessages}
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">

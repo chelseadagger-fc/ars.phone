@@ -710,7 +710,7 @@
     { "id": 174, "type": "message", "recipient": "sere", "content": "I'll ttyl then!", "delay": 4000, "alignment": "left", "next": 175 },
     { "id": 175, "type": "message", "recipient": "sere", "content": "Oh", "delay": 1000, "alignment": "left", "next": 176 },
     { "id": 176, "type": "message", "recipient": "sere", "content": "Also", "delay": 1800, "alignment": "left", "next": 177 },
-    { "id": 177, "type": "message", "recipient": "sere", "content": "Make sure to text the others", "delay": 1650, "alignment": "left", "next": 178 },
+    { "id": 177, "type": "message", "recipient": "sere", "content": "Make sure to text the others", "delay": 1650, "alignment": "left", "next": 178, "flag":"friendsDiscovered" },
     {
         "id": 178,
         "type": "choice",
@@ -757,7 +757,7 @@
         "recipient": "willian",
         "content": {
             "text": "Took you long enough.",
-            "delay": 500,
+            "delay": 1200,
             "alignment": "left"
         },
         "choices": [
@@ -784,8 +784,8 @@
         "type": "choice",
         "recipient": "willian",
         "content": {
-            "text": "So the other times?",
-            "delay": 800,
+            "text": "And the other times then?",
+            "delay": 1200,
             "alignment": "left"
         },
         "choices": [
@@ -874,12 +874,12 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "kaede", "text": "You don’t seem that sorry 🧐", "delay": 2300, "alignment": "right" }, "next": 193 }
+            { "option": { "recipient": "kaede", "text": "You don’t seem that sorry 🧐", "delay": 1500, "alignment": "right" }, "next": 193 }
         ],
         "next": null
     },
-    { "id": 193, "type": "message", "recipient": "kaede", "content": "yeah", "delay": 1800, "alignment": "left", "next": 194 },
-    { "id": 194, "type": "message", "recipient": "kaede", "content": "i guess not", "delay": 1000, "alignment": "left", "next": 195 },
+    { "id": 193, "type": "message", "recipient": "kaede", "content": "yeah", "delay": 1500, "alignment": "left", "next": 194 },
+    { "id": 194, "type": "message", "recipient": "kaede", "content": "i guess not", "delay": 800, "alignment": "left", "next": 195 },
     {
         "id": 195,
         "recipient": "kaede",
@@ -908,15 +908,15 @@
         "next": null
     },
     { "id": 197, "type": "message", "recipient": "kaede", "content": "ikr!!", "delay": 2300, "alignment": "left", "next": 198 },
-    { "id": 198, "type": "message", "recipient": "kaede", "content": "she makes the rest of us look bad", "delay": 1500, "alignment": "left", "next": 199 },
-    { "id": 199, "type": "message", "recipient": "kaede", "content": "😩", "delay": 3000, "alignment": "left", "next": 200 },
+    { "id": 198, "type": "message", "recipient": "kaede", "content": "she makes the rest of us look bad", "delay": 2600, "alignment": "left", "next": 199 },
+    { "id": 199, "type": "message", "recipient": "kaede", "content": "and", "delay": 1000, "alignment": "left", "next": 200 },
     { "id": 200, "type": "message", "recipient": "kaede", "content": "ESPECIALLY you", "delay": 1300, "alignment": "left", "next": 201 },
     {
         "id": 201,
         "recipient": "kaede",
         "type": "choice",
         "content": {
-            "text": "😂",
+            "text": "🤭",
             "delay": 2000,
             "alignment": "left"
         },
@@ -961,7 +961,7 @@
         "type": "choice",
         "content": {
             "text": "how are things up in space?",
-            "delay": 1000,
+            "delay": 1800,
             "alignment": "left"
         },
         "choices": [
@@ -1008,12 +1008,12 @@
             "alignment": "none"
         },
         "choices": [
-            { "option": { "recipient": "kaede", "text": "You're not going to study too, are you??", "delay": 1900, "alignment": "right" }, "next": 214 }
+            { "option": { "recipient": "kaede", "text": "You're not going to study too, are you??", "delay": 1600, "alignment": "right" }, "next": 214 }
         ],
         "next": null
     },
-    { "id": 214, "type": "message", "recipient": "kaede", "content": "what", "delay": 1200, "alignment": "left", "next": 215 },
-    { "id": 215, "type": "message", "recipient": "kaede", "content": "no", "delay": 500, "alignment": "left", "next": 216 },
+    { "id": 214, "type": "message", "recipient": "kaede", "content": "what", "delay": 1100, "alignment": "left", "next": 215 },
+    { "id": 215, "type": "message", "recipient": "kaede", "content": "no", "delay": 400, "alignment": "left", "next": 216 },
     { "id": 216, "type": "message", "recipient": "kaede", "content": "LOL", "delay": 2800, "alignment": "left", "next": 217 },
     { "id": 217, "type": "message", "recipient": "kaede", "content": "i’m gonna go eat 🥗", "delay": 2500, "alignment": "left", "next": 218 },
     { "id": 218, "type": "message", "recipient": "kaede", "content": "wait, no", "delay": 1900, "alignment": "left", "next": 219 },
@@ -1045,7 +1045,7 @@
         "next": null
     },
     { "id": 221, "type": "message", "recipient": "kaede", "content": "you know i always do", "delay": 1600, "alignment": "left", "next": 222 },
-    { "id": 222, "type": "message", "recipient": "kaede", "content": "ciao bella", "delay": 1600, "alignment": "left", "next": 223 },
+    { "id": 222, "type": "message", "recipient": "kaede", "content": "ciao bella", "delay": 1000, "alignment": "left", "next": 223 },
     {
         "id": 223,
         "recipient": "kaede",
@@ -1056,8 +1056,77 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "kaede", "text": "😙", "delay": 2300, "alignment": "right" }, "next": 224 }
+            { "option": { "recipient": "kaede", "text": "😙", "delay": 1000, "alignment": "right" }, "next": 224 }
         ],
         "next": null
-    }
+    },
+    {
+        "id": 224,
+        "recipient": "ishtar",
+        "type": "choice",
+        "content": {
+            "delay": 0,
+            "alignment": "none"
+        },
+        "choices": [
+            { "option": { "recipient": "ishtar", "text": "Yo", "delay": 2600, "alignment": "right" }, "next": 225 }
+        ],
+        "next": null
+    },
+    {
+        "id": 225,
+        "type": "choice",
+        "recipient": "ishtar",
+        "content": {
+            "text": "yo",
+            "delay": 2500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "ishtar", "text": "What's up", "delay": 2600, "alignment": "right" }, "next": 226 }
+        ],
+        "next": null
+    },
+    {
+        "id": 226,
+        "type": "choice",
+        "recipient": "ishtar",
+        "content": {
+            "text": "not much, u?",
+            "delay": 2500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "ishtar", "text": "Same", "delay": 2500, "alignment": "right" }, "next": 227 }
+        ],
+        "next": null
+    },    {
+        "id": 227,
+        "type": "choice",
+        "recipient": "ishtar",
+        "content": {
+            "text": "cool",
+            "delay": 2500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "ishtar", "text": "Alright, good talk", "delay": 1600, "alignment": "right" }, "next": 228 }
+        ],
+        "next": null
+    },
+    {
+        "id": 228,
+        "type": "choice",
+        "recipient": "ishtar",
+        "content": {
+            "text": "dumbass",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "ishtar", "text": "✌", "delay": 1300, "alignment": "right" }, "next": 229 }
+        ],
+        "next": null
+    },
+    { "id": 229, "type": "message", "recipient": "ishtar", "content": "✌", "delay": 1600, "alignment": "left", "next": 230 }
 ]
