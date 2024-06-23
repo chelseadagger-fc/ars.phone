@@ -51,6 +51,7 @@ type ChoiceOption = {
   delay: number;
   alignment: "left" | "right" | "center";
   subtype?: "text" | "image" | "emoji";
+  recipient?: "sere" | "kaede" | "ishtar" | "willian";
 };
 
 type Choice = {
@@ -129,19 +130,67 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     if (!currentElement) return;
 
     if (currentElement.flag === 'updateSereNameToSerenay') {
-      setContactDataSere({ name: "Serenay", profileImg: "Serenay01.png"});
+      setContactDataSere(prevState => ({ ...prevState, name: "Serenay", profileImg: "Serenay01.png"}));
     }
 
     if (currentElement.type === "message") {
       if (currentElement.subtype === "image") {
-        const newMessage = (
-          <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
-        );
-        setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-  
-        setTimeout(() => {
-          setCurrentId(currentElement.next);
-        }, currentElement.delay);
+        switch (currentElement.recipient) {
+          case 'sere': {
+            const newSereMessage = (
+              <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
+            );
+            setSereMessages(prevMessages => [...prevMessages, newSereMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+          case 'kaede': {
+            const newKaedeMessage = (
+              <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
+            );
+            setKaedeMessages(prevMessages => [...prevMessages, newKaedeMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+        case 'willian': {
+          const newWillianMessage = (
+            <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
+          );
+          setWillianMessages(prevMessages => [...prevMessages, newWillianMessage]);
+      
+          setTimeout(() => {
+            setCurrentId(currentElement.next);
+          }, currentElement.delay);
+          break;
+        }
+        case 'ishtar': {
+          const newIshtarMessage = (
+            <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
+          );
+          setIshtarMessages(prevMessages => [...prevMessages, newIshtarMessage]);
+      
+          setTimeout(() => {
+            setCurrentId(currentElement.next);
+          }, currentElement.delay);
+          break;
+        }
+        default : {
+          const newMessage = (
+            <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
+          );
+          setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
+    
+          setTimeout(() => {
+            setCurrentId(currentElement.next);
+          }, currentElement.delay);
+        }
+      }
       } else if (currentElement.subtype === "emoji") {
         const newMessage = (
           <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
@@ -215,10 +264,11 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-        
+          
             setTimeout(() => {
               setCurrentId(currentElement.next);
             }, currentElement.delay);
+            break;
           }
         }
       } 
@@ -246,6 +296,65 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setShowChoices(true);
         }, currentElement.content.delay);
       } else if (currentElement.content) {
+        switch (currentElement.recipient) {
+          case 'sere': {
+            const choiceContent = (
+              <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
+                  {currentElement.content.text}
+              </p>
+            );
+            setSereMessages(prevMessages => [...prevMessages, choiceContent]);
+            console.log(`${currentElement.id} added to sereMessages`);
+        
+            setTimeout(() => {
+              setChoices(currentElement.choices);
+              setShowChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'kaede': {
+            const choiceContent = (
+              <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
+                  {currentElement.content.text}
+              </p>
+            );
+            setKaedeMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setChoices(currentElement.choices);
+              setShowChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'willian': {
+            const choiceContent = (
+              <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
+                  {currentElement.content.text}
+              </p>
+            );
+            setWillianMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setChoices(currentElement.choices);
+              setShowChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'ishtar': {
+            const choiceContent = (
+              <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
+                  {currentElement.content.text}
+              </p>
+            );
+            setIshtarMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setChoices(currentElement.choices);
+              setShowChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+        }
         const choiceContent = (
             <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
                 {currentElement.content.text}
@@ -273,17 +382,63 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
 const handleChoice = (next: number, option: ChoiceOption) => {
   setShowChoices(false);
-  const choiceMessage = (
-      <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-          {option.text}
-      </p>
-  );
-  setDisplayedMessages(prevMessages => [...prevMessages, choiceMessage]);
+  
+    switch (option.recipient) {
+      case 'sere': {
+        const choiceMessage = (
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
+          </p>
+        );
+        setSereMessages(prevMessages => [...prevMessages, choiceMessage]);
 
-  setTimeout(() => {
-      setCurrentId(next);
-  }, option.delay);
-};
+        setTimeout(() => {
+          setCurrentId(next);
+      }, option.delay);
+        break;
+      }
+      case 'kaede': {
+        const choiceMessage = (
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
+          </p>
+        );
+        setKaedeMessages(prevMessages => [...prevMessages, choiceMessage]);
+
+        setTimeout(() => {
+          setCurrentId(next);
+      }, option.delay);
+        break;
+      }
+      case 'willian': {
+        const choiceMessage = (
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
+          </p>
+        );
+        setWillianMessages(prevMessages => [...prevMessages, choiceMessage]);
+
+        setTimeout(() => {
+          setCurrentId(next);
+      }, option.delay);
+        break;
+      }
+      case 'ishtar': {
+        const choiceMessage = (
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
+          </p>
+        );
+        setIshtarMessages(prevMessages => [...prevMessages, choiceMessage]);
+
+        setTimeout(() => {
+          setCurrentId(next);
+      }, option.delay);
+        break;
+      } 
+    };
+  }
+
   
 
   return (

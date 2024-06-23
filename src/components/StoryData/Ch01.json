@@ -656,13 +656,14 @@
     {
         "id": 176,
         "type": "choice",
+        "recipient": "sere",
         "content": {
             "text": "Let them know you fixed your phone",
             "delay": 800,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "👍", "delay": 1000, "alignment": "right" }, "next": 177 }
+            { "option": { "recipient": "sere", "text": "👍", "delay": 1000, "alignment": "right" }, "next": 177 }
         ],
         "next": null
     },
@@ -671,7 +672,7 @@
     { "id": 179, "type": "message", "recipient": "kaede", "content": "kaede msg3", "delay": 1600, "alignment": "left", "next": 180 },
     { "id": 180, "type": "message", "recipient": "kaede", "content": "kaede msg4", "delay": 1600, "alignment": "left", "next": 181 },
     { "id": 181, "type": "message", "recipient": "willian", "content": "willian msg1", "delay": 1600, "alignment": "left", "next": 182 },
-    { "id": 182, "type": "message", "recipient": "willian", "content": "willian msg2", "delay": 1600, "alignment": "left", "next": 183 },
+    { "id": 182, "type": "message", "recipient": "willian", "subtype": "image", "content": "attachments/ContactDetailsSerenay.png", "width": "w-", "delay": 1800, "alignment": "left", "next": 183 },
     { "id": 183, "type": "message", "recipient": "ishtar", "content": "ishtar msg1", "delay": 1600, "alignment": "left", "next": 184 },
     { "id": 184, "type": "message", "recipient": "ishtar", "content": "ishtar msg2", "delay": 1600, "alignment": "left", "next": 185 },
     { "id": 185, "type": "message", "recipient": "sere", "content": "sere msg1", "delay": 1600, "alignment": "left", "next": 186 },
