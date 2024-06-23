@@ -131,8 +131,6 @@ const defaultState: StoryContextType = {
   handleChoice: () => { }
 };
 
-const storyData: StoryElement[] = data as StoryElement[];
-
 const StoryContext = createContext<StoryContextType>(defaultState);
 
 const StoryProvider = ({ children }: { children: ReactNode }) => {
@@ -496,7 +494,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   } , [currentId]);
 
   const startStory = () => {
-    setCurrentId(176);
+    setCurrentId(1);
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');

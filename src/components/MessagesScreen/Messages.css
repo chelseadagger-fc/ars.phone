@@ -1,6 +1,6 @@
 .message {
     padding: 7px 12px;
-    margin: 3px 0;
+    margin: 6px 0;
     border-radius: 12px;
     max-width: 80%;
 }
@@ -12,7 +12,7 @@
 }
 
 .message.right {
-    background-color: #0ea5e9;
+    background-color: rgb(3 105 161);
     align-self: flex-end;
     margin-right: 1rem;
 }
@@ -41,7 +41,7 @@
 }
 
 .image.right {
-    background-color: #0ea5e9;
+    background-color: rgb(3 105 161);
     align-self: flex-end;
     margin-right: 1rem;
 }

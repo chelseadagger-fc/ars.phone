@@ -177,14 +177,14 @@
         ],
         "next": null
     },
-    { "id": 38, "recipient": "sere", "type": "message", "content": "Good", "delay": 1600, "alignment": "left", "next": 39 },
-    { "id": 39, "recipient": "sere", "type": "message", "content": "Anyway", "delay": 2400, "alignment": "left", "next": 40 },
-    { "id": 40, "recipient": "sere", "type": "message", "content": "I just wanted to make sure you got your phone working", "delay": 1800, "alignment": "left", "next": 41 },
+    { "id": 38, "recipient": "sere", "type": "message", "content": "Good", "delay": 1900, "alignment": "left", "next": 39 },
+    { "id": 39, "recipient": "sere", "type": "message", "content": "Anyway", "delay": 2700, "alignment": "left", "next": 40 },
+    { "id": 40, "recipient": "sere", "type": "message", "content": "I just wanted to make sure you got your phone working", "delay": 2300, "alignment": "left", "next": 41 },
     { "id": 41, "recipient": "sere", "type": "message", "content": "But I actually have to get back to studying", "delay": 1900, "alignment": "left", "next": 42 },
-    { "id": 42, "recipient": "sere", "type": "message", "content": "But we’ll be done by 7", "delay": 1900, "alignment": "left", "next": 43 },
-    { "id": 43, "recipient": "sere", "type": "message", "content": "Err", "delay": 1500, "alignment": "left", "next": 44 },
-    { "id": 44, "recipient": "sere", "type": "message", "content": "That’s local time btw", "delay": 2000, "alignment": "left", "next": 45 },
-    { "id": 45, "recipient": "sere", "type": "message", "content": "😓", "delay": 1700, "alignment": "left", "next": 46 },
+    { "id": 42, "recipient": "sere", "type": "message", "content": "But we’ll be done by 7", "delay": 2500, "alignment": "left", "next": 43 },
+    { "id": 43, "recipient": "sere", "type": "message", "content": "Err", "delay": 1800, "alignment": "left", "next": 44 },
+    { "id": 44, "recipient": "sere", "type": "message", "content": "That’s local time btw", "delay": 1000, "alignment": "left", "next": 45 },
+    { "id": 45, "recipient": "sere", "type": "message", "content": "😓", "delay": 2100, "alignment": "left", "next": 46 },
     {
         "id": 46,
         "recipient": "sere", 
@@ -209,7 +209,7 @@
         "type": "choice",
         "content": {
             "text": "Just a little bit",
-            "delay": 500,
+            "delay": 2000,
             "alignment": "left"
         },
         "choices": [
@@ -243,7 +243,7 @@
         "type": "choice",
         "content": {
             "text": "Baaabe...",
-            "delay": 1000,
+            "delay": 2000,
             "alignment": "left"
         },
         "choices": [
@@ -433,7 +433,7 @@
     { "id": 107, "recipient": "sere", "type": "message", "content": "😆", "delay": 1600, "alignment": "left", "next": 108 },
     { "id": 108, "recipient": "sere", "type": "message", "content": "Alright", "delay": 2000, "alignment": "left", "next": 109 },
     { "id": 109, "recipient": "sere", "type": "message", "content": "You always said you liked this one...", "delay": 2200, "alignment": "left", "next": 110 },
-    { "id": 110, "recipient": "sere", "type": "message", "content": "Hopefully you meant it", "delay": 5200, "alignment": "left", "next": 111 },
+    { "id": 110, "recipient": "sere", "type": "message", "content": "Hopefully you meant it 😓", "delay": 5200, "alignment": "left", "next": 111 },
     {
         "id": 111,
         "recipient": "sere", 
@@ -469,7 +469,7 @@
     { "id": 115, "recipient": "sere", "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 116 },
     { "id": 116, "recipient": "sere", "type": "message", "content": "Calm down horny boy 😂", "delay": 1900, "alignment": "left", "next": 117 },
     { "id": 117, "recipient": "sere", "type": "message", "content": "It's just a little skin", "delay": 2600, "alignment": "left", "next": 118 },
-    { "id": 118, "recipient": "sere", "type": "message", "content": "But", "delay": 2200, "alignment": "left", "next": 119 },
+    { "id": 118, "recipient": "sere", "type": "message", "content": "Though", "delay": 2200, "alignment": "left", "next": 119 },
     { "id": 119, "recipient": "sere", "type": "message", "content": "I'm glad you're still happy about an old pic like this", "delay": 1800, "alignment": "left", "next": 120 },
     { "id": 120, "recipient": "sere", "type": "message", "content": "Even one as tame as this", "delay": 2100, "alignment": "left", "next": 121 },
     { "id": 121, "recipient": "sere", "type": "message", "content": "...", "delay": 2600, "alignment": "left", "next": 122 },
@@ -540,9 +540,9 @@
             "alignment": "none"
         },
         "choices": [
-            { "option": { "recipient": "sere", "text": "But I thought you didn't like the beach?", "delay": 1500, "alignment": "right" }, "next": 142 },
+            { "option": { "recipient": "sere", "text": "Though I thought you didn't like the beach?", "delay": 1500, "alignment": "right" }, "next": 142 },
             { "option": { "recipient": "sere", "text": "What's the plan with the girls? (not implemented)", "delay": 1500, "alignment": "right" }, "next": 141 },
-            { "option": { "recipient": "sere", "text": "What're you doing with Will tomorrow? (not implemented)", "delay": 1500, "alignment": "right" }, "next": 141 }
+            { "option": { "recipient": "sere", "text": "What're you doing with Will tomorrow? (also n.i.)", "delay": 1500, "alignment": "right" }, "next": 141 }
         ],
         "next": null
     },
@@ -563,9 +563,9 @@
         "next": null
     },
     { "id": 145, "recipient": "sere", "type": "message", "content": "When there aren't lots of people", "delay": 2100, "alignment": "left", "next": 146 },
-    { "id": 146, "recipient": "sere", "type": "message", "content": "Or w the sun isn't too bright", "delay": 1900, "alignment": "left", "next": 147 },
+    { "id": 146, "recipient": "sere", "type": "message", "content": "Or when the sun isn't too bright", "delay": 1900, "alignment": "left", "next": 147 },
     { "id": 147, "recipient": "sere", "type": "message", "content": "And there's lots of shade", "delay": 2600, "alignment": "left", "next": 148 },
-    { "id": 148, "recipient": "sere", "type": "message", "content": "And when the sand isn't too coarse", "delay": 2300, "alignment": "left", "next": 149 },
+    { "id": 148, "recipient": "sere", "type": "message", "content": "Also, when the sand isn't too coarse", "delay": 2300, "alignment": "left", "next": 149 },
     { "id": 149, "recipient": "sere", "type": "message", "content": "And the water isn't too cold", "delay": 2700, "alignment": "left", "next": 150 },
     {
         "id": 150,
@@ -660,8 +660,8 @@
     { "id": 162, "recipient": "sere", "type": "message", "content": "As \"fun\" as this conversation is now 😒", "delay": 1900, "alignment": "left", "next": 163 },
     { "id": 163, "recipient": "sere", "type": "message", "content": "Some classmates are waiting for me", "delay": 1900, "alignment": "left", "next": 164 },
     { "id": 164, "recipient": "sere", "type": "message", "content": "So return to the books I must ", "delay": 3700, "alignment": "left", "next": 165 },
-    { "id": 165, "recipient": "sere", "type": "message", "content": "We just have a couple more chapters to go, so", "delay": 2500, "alignment": "left", "next": 166 },
-    { "id": 166, "recipient": "sere", "type": "message", "content": "Maybe another hour and a half", "delay": 2000, "alignment": "left", "next": 167 },
+    { "id": 165, "recipient": "sere", "type": "message", "content": "We just have a couple more chapters to go now, soo", "delay": 2500, "alignment": "left", "next": 166 },
+    { "id": 166, "recipient": "sere", "type": "message", "content": "Maybe another hour and a half", "delay": 2600, "alignment": "left", "next": 167 },
     { "id": 167, "recipient": "sere", "type": "message", "content": "So it’s the home stretch now 😤", "delay": 1800, "alignment": "left", "next": 168 },
     {
         "id": 168,
@@ -761,7 +761,7 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "willian", "text": "Hey I've got pilot training", "delay": 2600, "alignment": "right" }, "next": 182 }
+            { "option": { "recipient": "willian", "text": "Hey I've got pilot training", "delay": 3200, "alignment": "right" }, "next": 182 }
         ],
         "next": null
     },
@@ -1008,7 +1008,7 @@
             "alignment": "none"
         },
         "choices": [
-            { "option": { "recipient": "kaede", "text": "You're not going to study too, are you??", "delay": 1600, "alignment": "right" }, "next": 214 }
+            { "option": { "recipient": "kaede", "text": "You're not going to go study too, are you??", "delay": 1600, "alignment": "right" }, "next": 214 }
         ],
         "next": null
     },
@@ -1069,7 +1069,7 @@
             "alignment": "none"
         },
         "choices": [
-            { "option": { "recipient": "ishtar", "text": "Yo", "delay": 2600, "alignment": "right" }, "next": 225 }
+            { "option": { "recipient": "ishtar", "text": "Yo", "delay": 3500, "alignment": "right" }, "next": 225 }
         ],
         "next": null
     },
@@ -1083,7 +1083,7 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "ishtar", "text": "What's up", "delay": 2600, "alignment": "right" }, "next": 226 }
+            { "option": { "recipient": "ishtar", "text": "What's up", "delay": 3400, "alignment": "right" }, "next": 226 }
         ],
         "next": null
     },
@@ -1097,7 +1097,7 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "ishtar", "text": "Same", "delay": 2500, "alignment": "right" }, "next": 227 }
+            { "option": { "recipient": "ishtar", "text": "Same", "delay": 3200, "alignment": "right" }, "next": 227 }
         ],
         "next": null
     },    {

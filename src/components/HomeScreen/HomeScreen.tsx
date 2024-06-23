@@ -8,7 +8,7 @@ interface HomeScreenProps {
 
   const HomeScreen: React.FC<HomeScreenProps> = ({ navigateTo }) => {
     return (
-      <div className="h-dvh w-full">
+      <div className="h-dvh w-full bg-wallpaper01 bg-cover">
         <MainHomeArea />
         <ShortcutBar navigateTo={navigateTo} />
       </div>

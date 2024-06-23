@@ -17,7 +17,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
             <div className="absolute w-full max-w-xl bg-neutral-700 flex flex-row justify-between items-center h-[8%]" >
-                <div className="flex flex-row text-white items-center">
+                <div className="flex flex-row text-white items-center font-quicksand">
                     <div className="left-0 top-3 pl-1" onClick={() => navigateTo('Messages')}>
                         <MdArrowBackIosNew size={"2em"} color="white" className="mr-4 ml-1" />
                     </div>
@@ -30,14 +30,14 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <TbDotsVertical size={"1em"} color="white" className="mr-2" />
                 </div>
             </div>
-            <div className="h-full w-full flex flex-col justify-end text-left text-white overflow-y-auto">
+            <div className="h-full w-full flex flex-col justify-end text-left text-white overflow-y-auto font-noto">
                 {sereMessages}
             </div>
-            <div className="bg-neutral-600 h-[10%] flex flex-col justify-around items-stretch rounded-xl my-2 mx-3 px-2">
+            <div className="bg-neutral-600 h-[10%] flex flex-col justify-center items-center rounded-xl my-2 mx-3 px-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showSereChoices && sereChoices.map((choice, index) => (
                     <button
-                    className={`bg-neutral-500 rounded-lg w-full text-white py-1 ${sereChoices.length >= 3 ? 'text-sm' : 'text-lg'}`}
+                    className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${sereChoices.length === 1 ? 'text-lg py-2' : sereChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >

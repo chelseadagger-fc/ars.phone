@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdOutlineBackup, MdOutlinePhotoSizeSelectActual, MdOutlineSms } from "react-icons/md";
+import { RiContactsBookLine } from "react-icons/ri";
 
 interface ShortcutBarProps {
   navigateTo: (newScreen: string) => void;
@@ -6,22 +8,22 @@ interface ShortcutBarProps {
 
 const ShortcutBar: React.FC<ShortcutBarProps> = ({ navigateTo }) => {
   return (
-    <div className="bg-neutral-600 h-1/6 w-full flex flex-row justify-around items-center">
-      <div className="h-24 w-20 bg-red-200 flex flex-col justify-between items-center" onClick={() => navigateTo('Messages')}>
-        <div></div>
+    <div className="bg-zinc-900/90 h-1/6 w-full flex flex-row justify-around items-center p-1 font-titillium">
+      <div className="h-20 w-20 rounded-xl bg-blue-500/20 text-white font-semibold text-sm flex flex-col justify-around py-1 items-center" onClick={() => navigateTo('Messages')}>
+        <MdOutlineSms size={"3rem"} />
         <p>MESSAGES</p>
       </div>
-      <div className="h-24 w-20 bg-green-200 flex flex-col justify-between items-center">
-        <div></div>
+      <div className="h-20 w-20 rounded-xl bg-emerald-600/20 text-white font-semibold text-sm flex flex-col justify-around py-1 items-center">
+        <MdOutlinePhotoSizeSelectActual size={"3rem"} />
         <p>PHOTOS</p>
       </div>
-      <div className="h-24 w-20 bg-blue-200 flex flex-col justify-between items-center">
-        <div></div>
+      <div className="h-20 w-20 rounded-xl bg-rose-300/20 text-white font-semibold text-sm flex flex-col justify-around py-1 items-center">
+      <RiContactsBookLine size={"3rem"} />
         <p>CONTACTS</p>
       </div>
-      <div className="h-24 w-20 bg-yellow-200 flex flex-col justify-between items-center">
-        <div></div>
-        <p>LOGOUT</p>
+      <div className="h-20 w-20 rounded-xl bg-yellow-300/20 text-white font-semibold text-sm flex flex-col justify-around py-1 items-center">
+        <MdOutlineBackup size={"3rem"} />
+        <p>DATA</p>
       </div>
     </div>
   );
