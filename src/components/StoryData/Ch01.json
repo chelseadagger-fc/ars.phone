@@ -650,9 +650,9 @@
         ],
         "next": null
     },
-    { "id": 173, "type": "message", "content": "Okay", "delay": 1600, "alignment": "left", "next": 174 },
-    { "id": 174, "type": "message", "content": "I'll ttyl then!", "delay": 1600, "alignment": "left", "next": 175 },
-    { "id": 175, "type": "message", "content": "And text the others", "delay": 1600, "alignment": "left", "next": 176 },
+    { "id": 173, "type": "message", "recipient": "sere", "content": "Okay", "delay": 1600, "alignment": "left", "next": 174 },
+    { "id": 174, "type": "message", "recipient": "sere", "content": "I'll ttyl then!", "delay": 1600, "alignment": "left", "next": 175 },
+    { "id": 175, "type": "message", "recipient": "sere", "content": "And text the others", "delay": 1600, "alignment": "left", "next": 176 },
     {
         "id": 176,
         "type": "choice",
@@ -666,18 +666,8 @@
         ],
         "next": null
     },
-    {
-        "id": 177,
-        "recipient": "kaede",
-        "type": "choice",
-        "content": {
-            "text": "Let them know you fixed your phone",
-            "delay": 800,
-            "alignment": "left"
-        },
-        "choices": [
-            { "option": { "text": "👍", "delay": 2300, "alignment": "right" }, "next": 177 }
-        ],
-        "next": null
-    }
+    { "id": 177, "type": "message", "recipient": "kaede", "content": "kaede msg1", "delay": 1600, "alignment": "left", "next": 178 },
+    { "id": 178, "type": "message", "recipient": "kaede", "content": "kaede msg2", "delay": 1600, "alignment": "left", "next": 179 },
+    { "id": 179, "type": "message", "recipient": "kaede", "content": "kaede msg3", "delay": 1600, "alignment": "left", "next": 180 },
+    { "id": 180, "type": "message", "recipient": "kaede", "content": "kaede msg4", "delay": 1600, "alignment": "left", "next": null }
 ]

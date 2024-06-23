@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, ReactNode, SetStateAction } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
 import data from './components/StoryData/Ch01.json';
 
 interface StoryContextType {
@@ -93,6 +93,8 @@ const StoryContext = createContext<StoryContextType>(defaultState);
 const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [story, setStory] = useState({ messages: [] });
   const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
+  const [sereMessages, setSereMessages] = useState<JSX.Element[]>([]);
+  const [kaedeMessages, setKaedeMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
@@ -136,16 +138,47 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
           setCurrentId(currentElement.next);
         }, currentElement.delay);
       } else {
-        const newMessage = (
-        <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
-            {currentElement.content}
-        </p>
-        );
-        setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-
-        setTimeout(() => {
-          setCurrentId(currentElement.next);
-        }, currentElement.delay);
+        switch (currentElement.recipient) {
+          case 'sere': {
+            const newSereMessage = (
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            );
+            setSereMessages(prevMessages => [...prevMessages, newSereMessage]);
+            console.log(`${currentElement.id} added to sereMessages`)
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+          case 'kaede': {
+            const newKaedeMessage = (
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            );
+            setKaedeMessages(prevMessages => [...prevMessages, newKaedeMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+          default: {
+            const newMessage = (
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            );
+            setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+          }
+        }
       } 
     }
     
@@ -190,7 +223,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   } , [currentId]);
 
   const startStory = () => {
-    setCurrentId(1);
+    setCurrentId(173);
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');
@@ -212,7 +245,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
   
 
   return (
-    <StoryContext.Provider value={{ handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, displayedMessages }}>
+    <StoryContext.Provider value={{ sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );
