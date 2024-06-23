@@ -12,6 +12,14 @@ interface StoryContextType {
     profileImg: string; name: string; discovered: boolean;
   };
   setContactDataKaede: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  contactDataWillian: {
+    profileImg: string; name: string; discovered: boolean;
+  };
+  setContactDataWillian: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  contactDataIshtar: {
+    profileImg: string; name: string; discovered: boolean;
+  };
+  setContactDataIshtar: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
@@ -83,6 +91,10 @@ const defaultState: StoryContextType = {
   setContactDataSere: () => { },
   contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false },
   setContactDataKaede: () => { },
+  contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false },
+  setContactDataWillian: () => { },
+  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar01.png', discovered: false },
+  setContactDataIshtar: () => { },
   handleChoice: () => { }
 };
 
@@ -95,12 +107,16 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
   const [sereMessages, setSereMessages] = useState<JSX.Element[]>([]);
   const [kaedeMessages, setKaedeMessages] = useState<JSX.Element[]>([]);
+  const [willianMessages, setWillianMessages] = useState<JSX.Element[]>([]);
+  const [ishtarMessages, setIshtarMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true});
-  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true});
+  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
+  const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false});
+  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Ishtar', profileImg: 'Ishtar01.png', discovered: false});
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -160,6 +176,32 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setKaedeMessages(prevMessages => [...prevMessages, newKaedeMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+          case 'willian': {
+            const newWillianMessage = (
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            );
+            setWillianMessages(prevMessages => [...prevMessages, newWillianMessage]);
+        
+            setTimeout(() => {
+              setCurrentId(currentElement.next);
+            }, currentElement.delay);
+            break;
+          }
+          case 'ishtar': {
+            const newIshtarMessage = (
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            );
+            setIshtarMessages(prevMessages => [...prevMessages, newIshtarMessage]);
         
             setTimeout(() => {
               setCurrentId(currentElement.next);
@@ -245,7 +287,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
   
 
   return (
-    <StoryContext.Provider value={{ sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, displayedMessages }}>
+    <StoryContext.Provider value={{ willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );

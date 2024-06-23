@@ -4,6 +4,8 @@ import HomeScreen from './components/HomeScreen/HomeScreen'
 import Messages from './components/MessagesScreen/Messages'
 import Serenay from './components/MessagesScreen/Serenay'
 import Kaede from './components/MessagesScreen/Kaede'
+import Ishtar from './components/MessagesScreen/Ishtar'
+import Willian from './components/MessagesScreen/Willian'
 
 export default function App() {
 
@@ -19,6 +21,8 @@ export default function App() {
         {activeScreen === 'Messages' && <Messages navigateTo={navigateTo} />}
         {activeScreen === 'TextingSerenay' && <Serenay navigateTo={navigateTo} />}
         {activeScreen === 'TextingKaede' && <Kaede navigateTo={navigateTo} />}
+        {activeScreen === 'TextingWillian' && <Willian navigateTo={navigateTo} />}
+        {activeScreen === 'TextingIshtar' && <Ishtar navigateTo={navigateTo} />}
     </div>
 
   )

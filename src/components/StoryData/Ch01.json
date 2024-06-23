@@ -669,5 +669,11 @@
     { "id": 177, "type": "message", "recipient": "kaede", "content": "kaede msg1", "delay": 1600, "alignment": "left", "next": 178 },
     { "id": 178, "type": "message", "recipient": "kaede", "content": "kaede msg2", "delay": 1600, "alignment": "left", "next": 179 },
     { "id": 179, "type": "message", "recipient": "kaede", "content": "kaede msg3", "delay": 1600, "alignment": "left", "next": 180 },
-    { "id": 180, "type": "message", "recipient": "kaede", "content": "kaede msg4", "delay": 1600, "alignment": "left", "next": null }
+    { "id": 180, "type": "message", "recipient": "kaede", "content": "kaede msg4", "delay": 1600, "alignment": "left", "next": 181 },
+    { "id": 181, "type": "message", "recipient": "willian", "content": "willian msg1", "delay": 1600, "alignment": "left", "next": 182 },
+    { "id": 182, "type": "message", "recipient": "willian", "content": "willian msg2", "delay": 1600, "alignment": "left", "next": 183 },
+    { "id": 183, "type": "message", "recipient": "ishtar", "content": "ishtar msg1", "delay": 1600, "alignment": "left", "next": 184 },
+    { "id": 184, "type": "message", "recipient": "ishtar", "content": "ishtar msg2", "delay": 1600, "alignment": "left", "next": 185 },
+    { "id": 185, "type": "message", "recipient": "sere", "content": "sere msg1", "delay": 1600, "alignment": "left", "next": 186 },
+    { "id": 186, "type": "message", "recipient": "sere", "content": "sere msg2", "delay": 1600, "alignment": "left", "next": 187 }
 ]
