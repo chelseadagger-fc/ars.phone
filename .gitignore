@@ -14,7 +14,7 @@ dev-dist
 *.local
 nsfw/
 nsfw/*
-Ch01.json
+*Ch01.json
 
 # Editor directories and files
 .vscode/*

@@ -667,7 +667,19 @@
         ],
         "next": null
     },
-    { "id": 177, "type": "message", "recipient": "kaede", "content": "kaede msg1", "delay": 1600, "alignment": "left", "next": 178 },
+    {
+        "id": 177,
+        "recipient": "kaede",
+        "type": "choice",
+        "content": {
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "kaede", "text": "Hello blondie", "delay": 500, "alignment": "right" }, "next": 178 }
+        ],
+        "next": null
+    },
     { "id": 178, "type": "message", "recipient": "kaede", "content": "kaede msg2", "delay": 1600, "alignment": "left", "next": 179 },
     { "id": 179, "type": "message", "recipient": "kaede", "content": "kaede msg3", "delay": 1600, "alignment": "left", "next": 180 },
     { "id": 180, "type": "message", "recipient": "kaede", "content": "kaede msg4", "delay": 1600, "alignment": "left", "next": 181 },

@@ -24,13 +24,21 @@ interface StoryContextType {
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
   setShowChoices: React.Dispatch<React.SetStateAction<boolean>>;
+  sereChoices: string[];
+  setSereChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  showSereChoices: boolean;
+  setShowSereChoices: React.Dispatch<React.SetStateAction<boolean>>;
+  kaedeChoices: string[];
+  setKaedeChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  showKaedeChoices: boolean;
+  setShowKaedeChoices: React.Dispatch<React.SetStateAction<boolean>>;
   choices: string[];
   setChoices: React.Dispatch<React.SetStateAction<string[]>>;
   showStartButton: boolean;
   setShowStartButton: React.Dispatch<React.SetStateAction<boolean>>;
   displayedMessages: JSX.Element[];
   setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
-  handleChoice: (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center"; }) => void;
+  handleChoice: (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center" | "none"; }) => void;
 }
 
 type Message = {
@@ -40,7 +48,7 @@ type Message = {
   subtype?: "text" | "image" | "emoji";
   content: string;
   delay: number;
-  alignment: "left" | "right" | "center";
+  alignment: "left" | "right" | "center" | "none";
   next: number | null;
   flag?: string;
   width?: string;
@@ -49,7 +57,7 @@ type Message = {
 type ChoiceOption = {
   text: string;
   delay: number;
-  alignment: "left" | "right" | "center";
+  alignment: "left" | "right" | "center" | "none";
   subtype?: "text" | "image" | "emoji";
   recipient?: "sere" | "kaede" | "ishtar" | "willian";
 };
@@ -62,7 +70,7 @@ type Choice = {
       text?: string;
       delay: number;
       subtype?: "text" | "image" | "emoji";
-      alignment: "left" | "right" | "center";
+      alignment: "left" | "right" | "center" | "none";
   };
   choices: string[];
   next: number | null;
@@ -84,17 +92,25 @@ const defaultState: StoryContextType = {
   setCurrentId: () => { },
   choices: [],
   setChoices: () => { },
+  sereChoices: [],
+  setSereChoices: () => { },
+  kaedeChoices: [],
+  setKaedeChoices: () => { },
   showStartButton: false,
   setShowStartButton: () => { },
   showChoices: false,
   setShowChoices: () => { },
+  showSereChoices: false,
+  setShowSereChoices: () => { },
+  showKaedeChoices: false,
+  setShowKaedeChoices: () => { },
   contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true },
   setContactDataSere: () => { },
   contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false },
   setContactDataKaede: () => { },
   contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false },
   setContactDataWillian: () => { },
-  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar01.png', discovered: false },
+  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false },
   setContactDataIshtar: () => { },
   handleChoice: () => { }
 };
@@ -112,12 +128,16 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [ishtarMessages, setIshtarMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
+  const [sereChoices, setSereChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
+  const [showSereChoices, setShowSereChoices] = useState<boolean>(false);
+  const [kaedeChoices, setKaedeChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
+  const [showKaedeChoices, setShowKaedeChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
   const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true});
   const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
   const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false});
-  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Ishtar', profileImg: 'Ishtar01.png', discovered: false});
+  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false});
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -225,6 +245,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setKaedeMessages(prevMessages => [...prevMessages, newKaedeMessage]);
+            console.log(`${currentElement.id} added to kaedeMessages`)
         
             setTimeout(() => {
               setCurrentId(currentElement.next);
@@ -307,8 +328,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             console.log(`${currentElement.id} added to sereMessages`);
         
             setTimeout(() => {
-              setChoices(currentElement.choices);
-              setShowChoices(true);
+              setSereChoices(currentElement.choices);
+              setShowSereChoices(true);
             }, currentElement.content.delay);
             break;
           }
@@ -321,8 +342,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setKaedeMessages(prevMessages => [...prevMessages, choiceContent]);
         
             setTimeout(() => {
-              setChoices(currentElement.choices);
-              setShowChoices(true);
+              setKaedeChoices(currentElement.choices);
+              setShowKaedeChoices(true);
             }, currentElement.content.delay);
             break;
           }
@@ -355,22 +376,36 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             break;
           }
         }
-        const choiceContent = (
-            <p key={`choice-content-${currentElement.id}`} className={`message ${currentElement.content.alignment}`}>
-                {currentElement.content.text}
-            </p>
-        );
-        setDisplayedMessages(prevMessages => [...prevMessages, choiceContent]);
-
-        setTimeout(() => {
+      } else {
+        switch (currentElement.choices.recipient) {
+          case 'sere': {
+            setSereChoices(currentElement.choices);
+            setShowSereChoices(true);
+            break;
+          }
+          case 'kaede': {
+            setKaedeChoices(currentElement.choices);
+            setShowKaedeChoices(true);
+            break;
+          }
+          case 'willian': {
+            setWillianChoices(currentElement.choices);
+            setShowWillianChoices(true);
+            break;
+          }
+          case 'ishtar': {
+            setIshtarChoices(currentElement.choices);
+            setShowIshtarChoices(true);
+            break;
+          }
+          default: {
             setChoices(currentElement.choices);
             setShowChoices(true);
-        }, currentElement.content.delay);
-      } else {
-        setChoices(currentElement.choices);
-        setShowChoices(true);
+            break;
+          }
+        }
+      }
     }
-  }
   } , [currentId]);
 
   const startStory = () => {
@@ -381,10 +416,10 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 };
 
 const handleChoice = (next: number, option: ChoiceOption) => {
-  setShowChoices(false);
-  
     switch (option.recipient) {
       case 'sere': {
+        setShowChoices(false);
+        setShowSereChoices(false);
         const choiceMessage = (
           <p key={`choice-${next}`} className={`message ${option.alignment}`}>
               {option.text}
@@ -398,6 +433,8 @@ const handleChoice = (next: number, option: ChoiceOption) => {
         break;
       }
       case 'kaede': {
+        setShowChoices(false);
+        setShowKaedeChoices(false);
         const choiceMessage = (
           <p key={`choice-${next}`} className={`message ${option.alignment}`}>
               {option.text}
@@ -411,6 +448,8 @@ const handleChoice = (next: number, option: ChoiceOption) => {
         break;
       }
       case 'willian': {
+        setShowChoices(false);
+        setShowWillianChoices(false);
         const choiceMessage = (
           <p key={`choice-${next}`} className={`message ${option.alignment}`}>
               {option.text}
@@ -424,6 +463,8 @@ const handleChoice = (next: number, option: ChoiceOption) => {
         break;
       }
       case 'ishtar': {
+        setShowChoices(false);
+        setShowIshtarChoices(false);
         const choiceMessage = (
           <p key={`choice-${next}`} className={`message ${option.alignment}`}>
               {option.text}
@@ -442,7 +483,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
   
 
   return (
-    <StoryContext.Provider value={{ willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
+    <StoryContext.Provider value={{ sereChoices, kaedeChoices, showSereChoices, showKaedeChoices, willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );

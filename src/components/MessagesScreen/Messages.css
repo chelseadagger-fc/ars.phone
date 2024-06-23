@@ -25,6 +25,10 @@
     margin-bottom: 2rem;
 }
 
+.message.none {
+    display: none;
+}
+
 .message.choice {
     background-color: #d1d1d1;
     align-self: center;

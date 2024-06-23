@@ -2,7 +2,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
-import { FaVideo  } from "react-icons/fa";
+import { FaVideo } from "react-icons/fa";
 import { TbDotsVertical } from "react-icons/tb";
 import { MdPhone } from "react-icons/md";
 
@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { kaedeMessages, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataKaede, displayedMessages, setCurrentId } = useContext(StoryContext);
+    const { showKaedeChoices, kaedeChoices, kaedeMessages, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataKaede, displayedMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -35,7 +35,7 @@ const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
-                {showChoices && choices.map((choice, index) => (
+                {showKaedeChoices && kaedeChoices.map((choice, index) => (
                     <button
                     className="bg-neutral-600 rounded-lg w-full text-white text-lg mx-3 my-1 px-5 py-2 w-72"
                     key={index}

@@ -2,7 +2,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
-import { FaVideo, FaPhoneAlt  } from "react-icons/fa";
+import { FaVideo } from "react-icons/fa";
 import { TbDotsVertical } from "react-icons/tb";
 import { MdPhone } from "react-icons/md";
 
@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, sereMessages, displayedMessages, setCurrentId } = useContext(StoryContext);
+    const { startStory, sereChoices, showSereChoices, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, sereMessages, displayedMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -35,7 +35,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-col justify-around items-stretch rounded-xl mx-3 my-2 px-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
-                {showChoices && choices.map((choice, index) => (
+                {showSereChoices && sereChoices.map((choice, index) => (
                     <button
                     className={`bg-neutral-500 rounded-lg w-full text-white py-1 ${choices.length >= 3 ? 'text-sm' : 'text-lg'}`}
                     key={index}
