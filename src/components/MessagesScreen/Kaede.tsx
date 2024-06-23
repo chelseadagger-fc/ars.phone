@@ -2,7 +2,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
-import { FaVideo, FaPhoneAlt  } from "react-icons/fa";
+import { FaVideo  } from "react-icons/fa";
 import { TbDotsVertical } from "react-icons/tb";
 import { MdPhone } from "react-icons/md";
 
@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, displayedMessages, setCurrentId } = useContext(StoryContext);
+    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataKaede, displayedMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -21,8 +21,8 @@ const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <div className="left-0 top-3 pl-1" onClick={() => navigateTo('Messages')}>
                         <MdArrowBackIosNew size={"2em"} color="white" className="mr-4 ml-1" />
                     </div>
-                    <img className="h-12 mr-3 rounded-lg" src={`/images/contacts/${contactDataSere.profileImg}`} />
-                    <p className="text-2xl font-semibold mb-1">{contactDataSere.name}</p>
+                    <img className="h-12 mr-3 rounded-lg" src={`/images/contacts/${contactDataKaede.profileImg}`} />
+                    <p className="text-2xl font-semibold mb-1">{contactDataKaede.name}</p>
                 </div>
                 <div className="flex flex-row pb-1 items-center text-2xl">
                     <FaVideo size={".95em"} color="white" className="mr-4" />

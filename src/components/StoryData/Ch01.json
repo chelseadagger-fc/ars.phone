@@ -1,6 +1,6 @@
 [
-    { "id": 1, "type": "message", "content": "Heyyy", "delay": 1600, "alignment": "left", "next": 2 },
-    { "id": 2, "type": "message", "content": "So", "delay": 1200, "alignment": "left", "next": 3 },
+    { "id": 1, "type": "message", "content": "Heyyy", "delay": 2000, "alignment": "left", "next": 2 },
+    { "id": 2, "type": "message", "content": "So", "delay": 1750, "alignment": "left", "next": 3 },
     {
         "id": 3,
         "type": "choice",
@@ -23,7 +23,7 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Yeahhhhh", "delay": 200, "alignment": "right" }, "next": 5 }
+            { "option": { "text": "Yeahhhhh", "delay": 500, "alignment": "right" }, "next": 5 }
         ],
         "next": null
     },
@@ -31,7 +31,7 @@
         "id": 5,
         "type": "choice",
         "choices": [
-            { "option": { "text": "Sooooo", "delay": 200, "alignment": "right" }, "next": 6 }
+            { "option": { "text": "Sooo...", "delay": 500, "alignment": "right" }, "next": 6 }
         ],
         "next": null
     },
@@ -43,14 +43,14 @@
         ],
         "next": null
     },
-    { "id": 7, "type": "message", "content": "?", "delay": 1800, "alignment": "left", "next": 8 },
-    { "id": 8, "type": "message", "content": "Wait...", "delay": 1400, "alignment": "left", "next": 9 },
-    { "id": 9, "type": "message", "content": "Please don't tell me", "delay": 600, "alignment": "left", "next": 10 },
+    { "id": 7, "type": "message", "content": "?", "delay": 2400, "alignment": "left", "next": 8 },
+    { "id": 8, "type": "message", "content": "Wait...", "delay": 1800, "alignment": "left", "next": 9 },
+    { "id": 9, "type": "message", "content": "Please don't tell me", "delay": 1300, "alignment": "left", "next": 10 },
     {
         "id": 10,
         "type": "choice",
         "content": {
-            "text": "You lost all your contacts",
+            "text": "You lost all of your contacts",
             "delay": 1000,
             "alignment": "left"
         },
@@ -63,7 +63,7 @@
         "id": 11,
         "type": "choice",
         "content": {
-            "text": "Did you at least back them up?",
+            "text": "Did you at least back them up??",
             "delay": 1000,
             "alignment": "left"
         },
@@ -75,14 +75,14 @@
     { "id": 12, "type": "message", "content": "😓", "delay": 1600, "alignment": "left", "next": 13 },
     { "id": 13, "type": "message", "content": "You're hopeless", "delay": 1600, "alignment": "left", "next": 14 },
     { "id": 14, "type": "message", "content": "Hold on a sec", "delay": 2800, "alignment": "left", "next": 15 },
-    { "id": 15, "type": "message", "subtype": "image", "content": "attachments/ContactDetailsSerenay.png", "width": "w-", "delay": 1600, "alignment": "left", "next": 16, "flag": "updateSereNameToSerenay" },
+    { "id": 15, "type": "message", "subtype": "image", "content": "attachments/ContactDetailsSerenay.png", "width": "w-", "delay": 1800, "alignment": "left", "next": 16, "flag": "updateSereNameToSerenay" },
     { "id": 16, "type": "message", "content": "Did you get that?", "delay": 1600, "alignment": "left", "next": 17 },
     {
         "id": 17,
         "type": "choice",
         "content": {
-            "text": "I sent my contact info",
-            "delay": 1000,
+            "text": "I sent you my contact info",
+            "delay": 1300,
             "alignment": "left"
         },
         "choices": [
@@ -91,20 +91,20 @@
         "next": null
     },
     { "id": 18, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 19 },
-    { "id": 19, "type": "message", "content": "Well", "delay": 1600, "alignment": "left", "next": 20 },
-    { "id": 20, "type": "message", "content": "If you're going to have one contact on your phone", "delay": 1200, "alignment": "left", "next": 21 },
-    { "id": 21, "type": "message", "content": "It might as well be mine", "delay": 800, "alignment": "left", "next": 22 },
+    { "id": 19, "type": "message", "content": "Well", "delay": 2300, "alignment": "left", "next": 20 },
+    { "id": 20, "type": "message", "content": "If you're going to have one contact on your phone", "delay": 1500, "alignment": "left", "next": 21 },
+    { "id": 21, "type": "message", "content": "It might as well be mine", "delay": 1600, "alignment": "left", "next": 22 },
     {
         "id": 22,
         "type": "choice",
         "content": {
             "text": "Right?",
-            "delay": 1000,
+            "delay": 800,
             "alignment": "left"
         },
         "choices": [
             { "option": { "text": "Of course 🥰", "delay": 1500, "alignment": "right" }, "next": 23 },
-            { "option": { "text": "Could you send me Kaede's too?", "delay": 1500, "alignment": "right" }, "next": 25 }
+            { "option": { "text": "Could you send me Kaede's too?", "delay": 1200, "alignment": "right" }, "next": 25 }
         ],
         "next": null
     },
@@ -117,11 +117,11 @@
         "type": "choice",
         "content": {
             "text": "So stupid",
-            "delay": 500,
+            "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "She's an emergency contact", "delay": 300, "alignment": "right" }, "next": 28 }
+            { "option": { "text": "She's an emergency contact", "delay": 800, "alignment": "right" }, "next": 28 }
         ],
         "next": null
     },
@@ -135,8 +135,8 @@
     },
     { "id": 29, "type": "message", "content": "\"Responsible\"", "delay": 1500, "alignment": "left", "next": 30 },
     { "id": 30, "type": "message", "content": "Responsible my ass", "delay": 1000, "alignment": "left", "next": 31 },
-    { "id": 31, "type": "message", "content": "🙄", "delay": 1600, "alignment": "left", "next": 32 },
-    { "id": 32, "type": "message", "content": "You're lucky I'm used to this", "delay": 2000, "alignment": "left", "next": 33 },
+    { "id": 31, "type": "message", "content": "🙄", "delay": 2000, "alignment": "left", "next": 32 },
+    { "id": 32, "type": "message", "content": "You're lucky I'm used to this", "delay": 3800, "alignment": "left", "next": 33 },
     { "id": 33, "type": "message", "content": "[New Contact: Kaede Ikeda]", "delay": 800, "alignment": "left", "next": 34 },
     { "id": 34, "type": "message", "content": "[New Contact: Willian Becker]", "delay": 500, "alignment": "left", "next": 35 },
     { "id": 35, "type": "message", "content": "[New Contact: Ishtar Liwanag]", "delay": 2500, "alignment": "left", "next": 36 },
@@ -145,7 +145,7 @@
         "id": 37,
         "type": "choice",
         "content": {
-            "text": "I sent the group's info",
+            "text": "I sent the group's info too",
             "delay": 1000,
             "alignment": "left"
         },
@@ -155,19 +155,19 @@
         "next": null
     },
     { "id": 38, "type": "message", "content": "Good", "delay": 1600, "alignment": "left", "next": 39 },
-    { "id": 39, "type": "message", "content": "Anyway", "delay": 1600, "alignment": "left", "next": 40 },
+    { "id": 39, "type": "message", "content": "Anyway", "delay": 2200, "alignment": "left", "next": 40 },
     { "id": 40, "type": "message", "content": "I just wanted to make sure you got your phone working", "delay": 1600, "alignment": "left", "next": 41 },
-    { "id": 41, "type": "message", "content": "I have to get back to studying", "delay": 1600, "alignment": "left", "next": 42 },
-    { "id": 42, "type": "message", "content": "We’ll be done by 7", "delay": 1600, "alignment": "left", "next": 43 },
-    { "id": 43, "type": "message", "content": "Ummm", "delay": 1600, "alignment": "left", "next": 44 },
-    { "id": 44, "type": "message", "content": "That’s local time", "delay": 1600, "alignment": "left", "next": 45 },
-    { "id": 45, "type": "message", "content": "😓", "delay": 1600, "alignment": "left", "next": 46 },
+    { "id": 41, "type": "message", "content": "But I actually have to get back to studying", "delay": 1900, "alignment": "left", "next": 42 },
+    { "id": 42, "type": "message", "content": "But we’ll be done by 7", "delay": 1600, "alignment": "left", "next": 43 },
+    { "id": 43, "type": "message", "content": "Err", "delay": 1700, "alignment": "left", "next": 44 },
+    { "id": 44, "type": "message", "content": "That’s local time btw", "delay": 1000, "alignment": "left", "next": 45 },
+    { "id": 45, "type": "message", "content": "😓", "delay": 1700, "alignment": "left", "next": 46 },
     {
         "id": 46,
         "type": "choice",
         "content": {
             "text": "So in like four hours",
-            "delay": 1000,
+            "delay": 800,
             "alignment": "left"
         },
         "choices": [
@@ -175,209 +175,230 @@
         ],
         "next": null
     },
-    { "id": 47, "type": "message", "content": "I will", "delay": 1600, "alignment": "left", "next": 48 },
-    { "id": 48, "type": "message", "content": "Hope you're having a good day over there", "delay": 2500, "alignment": "left", "next": 49 },
-    { "id": 49, "type": "message", "content": "And", "delay": 3000, "alignment": "left", "next": 50 },
+    { "id": 47, "type": "message", "content": "I will", "delay": 2400, "alignment": "left", "next": 48 },
+    { "id": 48, "type": "message", "content": "Hope you're having a good day over there", "delay": 2800, "alignment": "left", "next": 49 },
+    { "id": 49, "type": "message", "content": "And...", "delay": 3800, "alignment": "left", "next": 50 },
+    { "id": 50, "type": "message", "content": "I might miss you", "delay": 1000, "alignment": "left", "next": 51 },
     {
-        "id": 50,
+        "id": 51,
         "type": "choice",
         "content": {
-            "text": "I miss you",
+            "text": "Just a little bit",
             "delay": 500,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "I miss you too ❤", "delay": 1500, "alignment": "right" }, "next": 51 }
+            { "option": { "text": "Aww, I miss you lots too 🥰", "delay": 1500, "alignment": "right" }, "next": 52 }
         ],
         "next": null
     },
-    { "id": 51, "type": "message", "content": "Hehe", "delay": 1600, "alignment": "left", "next": 52 },
-    { "id": 52, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 53 },
+    { "id": 52, "type": "message", "content": "Hehe", "delay": 1300, "alignment": "left", "next": 53 },
+    { "id": 53, "type": "message", "content": "Alright", "delay": 1900, "alignment": "left", "next": 54 },
+    { "id": 54, "type": "message", "content": "Don't get too used to that", "delay": 2000, "alignment": "left", "next": 55 },
+    { "id": 55, "type": "message", "content": "But I do gotta go", "delay": 2100, "alignment": "left", "next": 56 },
+    { "id": 56, "type": "message", "content": "So bye bye for now!", "delay": 1700, "alignment": "left", "next": 57 },
     {
-        "id": 53,
+        "id": 57,
         "type": "choice",
         "content": {
-            "text": "Bye bye for now then",
+            "text": "I'll talk to you soon",
             "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Bye sweetheart 🥰", "delay": 3000, "alignment": "right" }, "next": 54 }
+            { "option": { "text": "Bye sweetheart 😘", "delay": 4000, "alignment": "right" }, "next": 58 }
         ],
         "next": null
     },
-    { "id": 54, "type": "message", "content": "[a couple of hours later]", "delay": 3000, "alignment": "center", "next": 55 },
+    { "id": 58, "type": "message", "content": "[ a couple of hours later ]", "delay": 3000, "alignment": "center", "next": 59 },
     {
-        "id": 55,
+        "id": 59,
         "type": "choice",
         "content": {
-            "text": "Babe...",
+            "text": "Baaabe...",
             "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Yeees?", "delay": 1500, "alignment": "right" }, "next": 56 }
+            { "option": { "text": "Yeees?", "delay": 1500, "alignment": "right" }, "next": 60 }
         ],
         "next": null
     },
-    { "id": 56, "type": "message", "content": "I'm sorry", "delay": 1600, "alignment": "left", "next": 57 },
-    { "id": 57, "type": "message", "content": "I totally forgot", "delay": 1600, "alignment": "left", "next": 58 },
-    { "id": 58, "type": "message", "content": "I promised to go out with Kaede and Ishy tonight", "delay": 1600, "alignment": "left", "next": 59 },
-    { "id": 59, "type": "message", "content": "And you know they won't let me back out", "delay": 1600, "alignment": "left", "next": 60 },
-    { "id": 60, "type": "message", "content": "Not again anyway 😓", "delay": 1600, "alignment": "left", "next": 61 },
-    { "id": 61, "type": "message", "content": "So I think we have to postpone our call", "delay": 1600, "alignment": "left", "next": 62 },
+    { "id": 60, "type": "message", "content": "I'm sorry", "delay": 1800, "alignment": "left", "next": 61 },
+    { "id": 61, "type": "message", "content": "I totally forgot", "delay": 2700, "alignment": "left", "next": 62 },
+    { "id": 62, "type": "message", "content": "I promised to go out with Kaede and Ishy tonight", "delay": 2000, "alignment": "left", "next": 63 },
+    { "id": 63, "type": "message", "content": "And you know they won't let me back out", "delay": 2000, "alignment": "left", "next": 64 },
+    { "id": 64, "type": "message", "content": "Not again anyway 😓", "delay": 2000, "alignment": "left", "next": 65 },
+    { "id": 65, "type": "message", "content": "So I think we have to postpone our call", "delay": 1500, "alignment": "left", "next": 66 },
     {
-        "id": 62,
+        "id": 66,
         "type": "choice",
         "content": {
-            "text": "🙏",
+            "text": "Sorry sorry 🙏",
             "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "It's okay", "delay": 1500, "alignment": "right" }, "next": 63 },
-            { "option": { "text": "😢", "delay": 1500, "alignment": "right" }, "next": 69 }
+            { "option": { "text": "It's okay", "delay": 1500, "alignment": "right" }, "next": 67 },
+            { "option": { "text": "😢", "delay": 1500, "alignment": "right" }, "next": 75 }
         ],
         "next": null
     },
     {
-        "id": 63,
+        "id": 67,
         "type": "choice",
         "content": {
             "text": "Are you sure?",
-            "delay": 0,
+            "delay": 800,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "I'm very sure", "delay": 1500, "alignment": "right" }, "next": 64 }
+            { "option": { "text": "I'm sure", "delay": 1500, "alignment": "right" }, "next": 68 }
         ],
         "next": null
     },
-    { "id": 64, "type": "message", "content": "Okay...", "delay": 1600, "alignment": "left", "next": 65 },
-    { "id": 65, "type": "message", "content": "Well", "delay": 1600, "alignment": "left", "next": 66 },
-    { "id": 66, "type": "message", "content": "Our hours don't always line up", "delay": 1600, "alignment": "left", "next": 67 },
-    { "id": 67, "type": "message", "content": "So I still feel bad", "delay": 3500, "alignment": "left", "next": 68 },
     {
         "id": 68,
         "type": "choice",
         "content": {
-            "text": "... can I make it up to you?",
-            "delay": 500,
+            "text": "Are you sure you're sure?",
+            "delay": 800,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Oh?", "delay": 1800, "alignment": "right" }, "next": 69 }
+            { "option": { "text": "I'm sure I'm sure 😂", "delay": 1500, "alignment": "right" }, "next": 69 }
         ],
         "next": null
     },
-    { "id": 69, "type": "message", "content": "Ummm", "delay": 2100, "alignment": "left", "next": 70 },
-    { "id": 70, "type": "message", "content": "Well", "delay": 2400, "alignment": "left", "next": 75 },
-    { "id": 71, "type": "message", "content": "😟", "delay": 1600, "alignment": "left", "next": 72 },
-    { "id": 72, "type": "message", "content": "Don't make me feel worse", "delay": 1600, "alignment": "left", "next": 73 },
+    { "id": 69, "type": "message", "content": "Okay...", "delay": 2900, "alignment": "left", "next": 70 },
+    { "id": 70, "type": "message", "content": "It's just", "delay": 2000, "alignment": "left", "next": 71 },
+    { "id": 71, "type": "message", "content": "Our hours don't always line up", "delay": 1600, "alignment": "left", "next": 72 },
+    { "id": 72, "type": "message", "content": "So I still feel bad 😓", "delay": 3500, "alignment": "left", "next": 73 },
     {
         "id": 73,
         "type": "choice",
         "content": {
-            "text": "What if I make it up to you?",
-            "delay": 0,
-            "alignment": "left"
-        },
-        "choices": [
-            { "option": { "text": "Oh? How would you do that?", "delay": 1500, "alignment": "right" }, "next": 69 }
-        ],
-        "next": null
-    },
-    { "id": 74, "type": "message", "content": "Hmm...", "delay": 2300, "alignment": "left", "next": 75 },
-    {
-        "id": 75,
-        "type": "choice",
-        "content": {
-            "text": "You lost all your data, right?",
-            "delay": 800,
-            "alignment": "left"
-        },
-        "choices": [
-            { "option": { "text": "Yeah", "delay": 1800, "alignment": "right" }, "next": 76 }
-        ],
-        "next": null
-    },
-    {
-        "id": 76,
-        "type": "choice",
-        "content": {
-            "text": "Your photos too?",
-            "delay": 800,
-            "alignment": "left"
-        },
-        "choices": [
-            { "option": { "text": "... go on", "delay": 1800, "alignment": "right" }, "next": 77 }
-        ],
-        "next": null
-    },
-    { "id": 77, "type": "message", "content": "Well", "delay": 1800, "alignment": "left", "next": 78 },
-    { "id": 78, "type": "message", "content": "Maybe... ", "delay": 2800, "alignment": "left", "next": 79 },
-    {
-        "id": 79,
-        "type": "choice",
-        "content": {
-            "text": "... would sending you a pic make you feel better?",
+            "text": "... can I make it up to you somehow?",
             "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Like a funny meme?", "delay": 1500, "alignment": "right" }, "next": 80 },
-            { "option": { "text": "I think it would make me feel a lot better", "delay": 1500, "alignment": "right" }, "next": 89 }
+            { "option": { "text": "Oh? What did you have in mind?", "delay": 1800, "alignment": "right" }, "next": 74 }
         ],
         "next": null
     },
-    { "id": 80, "type": "message", "content": "No", "delay": 1600, "alignment": "left", "next": 81 },
-    { "id": 81, "type": "message", "content": "Not like a funny meme", "delay": 1000, "alignment": "left", "next": 82 },
-    { "id": 82, "type": "message", "content": "🙄", "delay": 1300, "alignment": "left", "next": 83 },
-    { "id": 83, "type": "message", "content": "A photo of", "delay": 2000, "alignment": "left", "next": 84 },
-    { "id": 84, "type": "message", "content": "...", "delay": 2000, "alignment": "left", "next": 85 },
+    { "id": 74, "type": "message", "content": "Ummm", "delay": 2100, "alignment": "left", "next": 75 },
+    { "id": 75, "type": "message", "content": "Well", "delay": 2400, "alignment": "left", "next": 83 },
+    { "id": 76, "type": "message", "content": "😟", "delay": 1600, "alignment": "left", "next": 77 },
+    { "id": 77, "type": "message", "content": "Don't make me feel worse", "delay": 1600, "alignment": "left", "next": 78 },
+    { "id": 78, "type": "message", "content": "I promise we'll talk in the morning", "delay": 2500, "alignment": "left", "next": 79 },
+    { "id": 79, "type": "message", "content": "And", "delay": 2800, "alignment": "left", "next": 80 },
+    { "id": 80, "type": "message", "content": "Maybe in the meantime", "delay": 2800, "alignment": "left", "next": 81 },
     {
-        "id": 85,
+        "id": 81,
+        "type": "choice",
+        "content": {
+            "text": "I find a way to make it up to you?",
+            "delay": 500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Oh? What sort of way?", "delay": 1500, "alignment": "right" }, "next": 85 }
+        ],
+        "next": null
+    },
+    { "id": 82, "type": "message", "content": "Umm... well", "delay": 2300, "alignment": "left", "next": 83 },
+    {
+        "id": 83,
+        "type": "choice",
+        "content": {
+            "text": "You lost all your data, right?",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Yeah", "delay": 1800, "alignment": "right" }, "next": 84 }
+        ],
+        "next": null
+    },
+    {
+        "id": 84,
+        "type": "choice",
+        "content": {
+            "text": "So your photos too, right?",
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "... go on", "delay": 1800, "alignment": "right" }, "next": 85 }
+        ],
+        "next": null
+    },
+    { "id": 85, "type": "message", "content": "Well", "delay": 1800, "alignment": "left", "next": 86 },
+    { "id": 86, "type": "message", "content": "Maybe... ", "delay": 2800, "alignment": "left", "next": 87 },
+    {
+        "id": 87,
+        "type": "choice",
+        "content": {
+            "text": "... would sending you one of those pics make you feel better?",
+            "delay": 2000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Like a funny meme?", "delay": 1500, "alignment": "right" }, "next": 88 },
+            { "option": { "text": "I think it would make me feel a lot better", "delay": 1500, "alignment": "right" }, "next": 97 }
+        ],
+        "next": null
+    },
+    { "id": 88, "type": "message", "content": "No", "delay": 1600, "alignment": "left", "next": 89 },
+    { "id": 89, "type": "message", "content": "Not like a funny meme", "delay": 1050, "alignment": "left", "next": 90 },
+    { "id": 90, "type": "message", "content": "🙄", "delay": 1300, "alignment": "left", "next": 91 },
+    { "id": 91, "type": "message", "content": "A photo of", "delay": 2500, "alignment": "left", "next": 92 },
+    { "id": 92, "type": "message", "content": "...", "delay": 2100, "alignment": "left", "next": 93 },
+    {
+        "id": 93,
         "type": "choice",
         "content": {
             "text": "Me",
-            "delay": 300,
+            "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "Yes please ma'am please", "delay": 1800, "alignment": "right" }, "next": 86 }
+            { "option": { "text": "Yes ma'am please ma'am", "delay": 1800, "alignment": "right" }, "next": 94 }
         ],
         "next": null
     },
-    { "id": 86, "type": "message", "content": "Yeah okay", "delay": 1600, "alignment": "left", "next": 87 },
-    { "id": 87, "type": "message", "content": "That's what I thought", "delay": 800, "alignment": "left", "next": 88 },
-    { "id": 88, "type": "message", "content": "😒", "delay": 1600, "alignment": "left", "next": 93 },
-    { "id": 89, "type": "message", "content": "Yeah", "delay": 1600, "alignment": "left", "next": 90 },
-    { "id": 90, "type": "message", "content": "I thought so", "delay": 1600, "alignment": "left", "next": 93 },
-    { "id": 91, "type": "message", "content": "Lucky boy", "delay": 1600, "alignment": "left", "next": 92 },
-    { "id": 92, "type": "message", "content": "😉", "delay": 1600, "alignment": "left", "next": 93 },
-    { "id": 93, "type": "message", "content": "One sec", "delay": 1800, "alignment": "left", "next": 94 },
-    { "id": 94, "type": "message", "content": "Let me find one", "delay": 1900, "alignment": "left", "next": 95 },
-    { "id": 95, "type": "message", "content": "Appropriate for the level of guilt", "delay": 1400, "alignment": "left", "next": 96 },
+    { "id": 94, "type": "message", "content": "Okay", "delay": 1600, "alignment": "left", "next": 95 },
+    { "id": 95, "type": "message", "content": "That's more what I thought", "delay": 800, "alignment": "left", "next": 96 },
+    { "id": 96, "type": "message", "content": "😒", "delay": 3000, "alignment": "left", "next": 101 },
+    { "id": 97, "type": "message", "content": "Yeah", "delay": 1600, "alignment": "left", "next": 98 },
+    { "id": 98, "type": "message", "content": "I thought so", "delay": 1600, "alignment": "left", "next": 101 },
+    { "id": 99, "type": "message", "content": "Lucky boy", "delay": 1600, "alignment": "left", "next": 100 },
+    { "id": 100, "type": "message", "content": "😉", "delay": 1600, "alignment": "left", "next": 101 },
+    { "id": 101, "type": "message", "content": "One sec", "delay": 1800, "alignment": "left", "next": 102 },
+    { "id": 102, "type": "message", "content": "Let me find one", "delay": 1900, "alignment": "left", "next": 103 },
+    { "id": 103, "type": "message", "content": "Appropriate to the level of guilt", "delay": 1700, "alignment": "left", "next": 104 },
     {
-        "id": 96,
+        "id": 104,
         "type": "choice",
         "content": {
             "text": "For abandoning you tonight",
-            "delay": 300,
+            "delay": 1000,
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "ngl I feel pretty bad", "delay": 1800, "alignment": "right" }, "next": 97 }
+            { "option": { "text": "Ngl I feel pretty bad", "delay": 1800, "alignment": "right" }, "next": 105 }
         ],
         "next": null
     },
-    { "id": 97, "type": "message", "content": "Yeah", "delay": 1600, "alignment": "left", "next": 98 },
-    { "id": 98, "type": "message", "content": "I'm sure you suddenly feel worse too", "delay": 1600, "alignment": "left", "next": 99 },
-    { "id": 99, "type": "message", "content": "😆", "delay": 1600, "alignment": "left", "next": 100 },
-    { "id": 100, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 101 },
-    { "id": 101, "type": "message", "content": "You always said you liked this one", "delay": 1600, "alignment": "left", "next": 102 },
+    { "id": 105, "type": "message", "content": "Yeah", "delay": 1600, "alignment": "left", "next": 106 },
+    { "id": 106, "type": "message", "content": "I'm sure you suddenly feel worse", "delay": 1600, "alignment": "left", "next": 107 },
+    { "id": 107, "type": "message", "content": "😆", "delay": 1600, "alignment": "left", "next": 108 },
+    { "id": 108, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 109 },
+    { "id": 109, "type": "message", "content": "You always said you liked this one...", "delay": 5200, "alignment": "left", "next": 110 },
+    { "id": 110, "type": "message", "content": "Hopefully you meant it", "delay": 5200, "alignment": "left", "next": 111 },
     {
-        "id": 102,
+        "id": 111,
         "type": "choice",
         "content": {
             "subtype": "image",
@@ -386,8 +407,276 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "text": "🥰", "delay": 1500, "alignment": "right" }, "next": 103 },
-            { "option": { "text": "🥵", "delay": 1500, "alignment": "right" }, "next": null }
+            { "option": { "text": "🥰", "delay": 1500, "alignment": "right" }, "next": 112 },
+            { "option": { "text": "🥵", "delay": 1500, "alignment": "right" }, "next": 115 }
+        ],
+        "next": null
+    },
+    {
+        "id": 112,
+        "type": "choice",
+        "content": {
+            "text": "To your liking then?",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "You always are", "delay": 1800, "alignment": "right" }, "next": 113 }
+        ],
+        "next": null
+    },
+    { "id": 113, "type": "message", "content": "Flatterer", "delay": 1600, "alignment": "left", "next": 114 },
+    { "id": 114, "type": "message", "content": "😊", "delay": 1600, "alignment": "left", "next": 119 },
+    { "id": 115, "type": "message", "content": "Alright", "delay": 1600, "alignment": "left", "next": 116 },
+    { "id": 116, "type": "message", "content": "Calm down horny boy 😂", "delay": 1900, "alignment": "left", "next": 117 },
+    { "id": 117, "type": "message", "content": "It's just a little skin", "delay": 2600, "alignment": "left", "next": 118 },
+    { "id": 118, "type": "message", "content": "But", "delay": 2200, "alignment": "left", "next": 122 },
+    { "id": 119, "type": "message", "content": "I'm glad you're still happy about an old pic like this", "delay": 1800, "alignment": "left", "next": 120 },
+    { "id": 120, "type": "message", "content": "Even one as tame as this", "delay": 2100, "alignment": "left", "next": 121 },
+    { "id": 121, "type": "message", "content": "...", "delay": 2600, "alignment": "left", "next": 122 },
+    { "id": 122, "type": "message", "content": "Makes me wonder how much you'll like some of the...", "delay": 1900, "alignment": "left", "next": 123 },
+    { "id": 123, "type": "message", "content": "Other pics", "delay": 1000, "alignment": "left", "next": 124 },
+    {
+        "id": 124,
+        "type": "choice",
+        "content": {
+            "text": "🙈",
+            "delay": 500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Probably a lot", "delay": 1000, "alignment": "right" }, "next": 125 }
+        ],
+        "next": null
+    },
+    { "id": 125, "type": "message", "content": "Hehe", "delay": 1100, "alignment": "left", "next": 126 },
+    { "id": 126, "type": "message", "content": "Yeah", "delay": 1600, "alignment": "left", "next": 127 },
+    {
+        "id": 127,
+        "type": "choice",
+        "content": {
+            "text": "Probably",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "You're feeling a bit flirty today 😁", "delay": 1200, "alignment": "right" }, "next": 128 }
+        ],
+        "next": null
+    },
+    { "id": 128, "type": "message", "content": "Oh", "delay": 1600, "alignment": "left", "next": 129 },
+    { "id": 129, "type": "message", "content": "Is that so? 😅", "delay": 3000, "alignment": "left", "next": 130 },
+    { "id": 130, "type": "message", "content": "Maybe you're right", "delay": 2500, "alignment": "left", "next": 131 },
+    { "id": 131, "type": "message", "content": "I guess studying has been going pretty well lately", "delay": 1900, "alignment": "left", "next": 132 },
+    { "id": 132, "type": "message", "content": "And then I'm seeing Kaede and Ishy tonight", "delay": 1600, "alignment": "left", "next": 133 },
+    { "id": 133, "type": "message", "content": "Willian tomorrow", "delay": 2100, "alignment": "left", "next": 134 },
+    { "id": 134, "type": "message", "content": "Then there's that beach trip this weekend", "delay": 2000, "alignment": "left", "next": 135 },
+    { "id": 135, "type": "message", "content": "Aaaaand", "delay": 1600, "alignment": "left", "next": 136 },
+    { "id": 136, "type": "message", "content": "I suppooose", "delay": 1900, "alignment": "left", "next": 137 },
+    { "id": 137, "type": "message", "content": "My boyfriend is kinda fun to text with 😓", "delay": 1600, "alignment": "left", "next": 138 },
+    { "id": 138, "type": "message", "content": "Just kinda tho", "delay": 1600, "alignment": "left", "next": 139 },
+    { "id": 139, "type": "message", "content": "😇", "delay": 2200, "alignment": "left", "next": 140 },
+    {
+        "id": 140,
+        "type": "choice",
+        "content": {
+            "text": "So I guess things are just going kinda well atm",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Well, let's keep it that way", "delay": 1800, "alignment": "right" }, "next": 141 }
+        ],
+        "next": null
+    },
+    {
+        "id": 141,
+        "type": "choice",
+        "content": {
+            "text": "😁",
+            "delay": 1500,
+            "alignment": "right"
+        },
+        "choices": [
+            { "option": { "text": "But I thought you didn't like the beach?", "delay": 1500, "alignment": "right" }, "next": 142 },
+            { "option": { "text": "What's the plan with the girls? (not implemented)", "delay": 1500, "alignment": "right" }, "next": 141 },
+            { "option": { "text": "What're you doing with Will tomorrow? (not implemented)", "delay": 1500, "alignment": "right" }, "next": 141 }
+        ],
+        "next": null
+    },
+    { "id": 142, "type": "message", "content": "Well", "delay": 1600, "alignment": "left", "next": 143 },
+    { "id": 143, "type": "message", "content": "I don't HATE the beach", "delay": 1600, "alignment": "left", "next": 144 },
+    {
+        "id": 144,
+        "type": "choice",
+        "content": {
+            "text": "It's pretty fun... sometimes",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Sometimes when?", "delay": 1800, "alignment": "right" }, "next": 145 }
+        ],
+        "next": null
+    },
+    { "id": 145, "type": "message", "content": "When there aren't lots of people", "delay": 1900, "alignment": "left", "next": 146 },
+    { "id": 146, "type": "message", "content": "When the sun isn't too bright", "delay": 1900, "alignment": "left", "next": 147 },
+    { "id": 147, "type": "message", "content": "And there's lots of shade", "delay": 1900, "alignment": "left", "next": 148 },
+    { "id": 148, "type": "message", "content": "And when the sand isn't too coarse", "delay": 1900, "alignment": "left", "next": 149 },
+    { "id": 149, "type": "message", "content": "And the water isn't too cold", "delay": 1900, "alignment": "left", "next": 150 },
+    {
+        "id": 150,
+        "type": "choice",
+        "content": {
+            "text": "Or the waves aren't too rough",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "I can tell you really love the beach, just from this conversation", "delay": 1800, "alignment": "right" }, "next": 151 }
+        ],
+        "next": null
+    },
+    { "id": 151, "type": "message", "content": "Yeah, well", "delay": 1600, "alignment": "left", "next": 152 },
+    { "id": 152, "type": "message", "content": "It's the beach that hates me tbh", "delay": 1600, "alignment": "left", "next": 153 },
+    {
+        "id": 153,
+        "type": "choice",
+        "content": {
+            "text": "Always trying to burn me to a crisp",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "The dangers of being a pale ass goth girl? 🧛‍♀️", "delay": 1800, "alignment": "right" }, "next": 154 }
+        ],
+        "next": null
+    },
+    { "id": 154, "type": "message", "content": "Of a pale girl, yes", "delay": 1600, "alignment": "left", "next": 155 },
+    {
+        "id": 155,
+        "type": "choice",
+        "content": {
+            "text": "Who occasionally likes to wear black",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "And has a bunch of tattoos", "delay": 1800, "alignment": "right" }, "next": 156 }
+        ],
+        "next": null
+    },
+    {
+        "id": 156,
+        "type": "choice",
+        "content": {
+            "text": "And has a few tattoos",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "And a bunch of piercings", "delay": 1600, "alignment": "right" }, "next": 157 }
+        ],
+        "next": null
+    },
+    {
+        "id": 157,
+        "type": "choice",
+        "content": {
+            "text": "And a few piercings",
+            "delay": 2300,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "In some very surprising places, too 👀", "delay": 800, "alignment": "right" }, "next": 158 }
+        ],
+        "next": null
+    },
+    { "id": 158, "type": "message", "content": "Alright", "delay": 500, "alignment": "left", "next": 159 },
+    { "id": 159, "type": "message", "content": "Well", "delay": 1000, "alignment": "left", "next": 160 },
+    {
+        "id": 160,
+        "type": "choice",
+        "content": {
+            "text": "That conversation is over",
+            "delay": 1200,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "😇", "delay": 2300, "alignment": "right" }, "next": 161 }
+        ],
+        "next": null
+    },
+    { "id": 161, "type": "message", "content": "ANYWAY", "delay": 2400, "alignment": "left", "next": 162 },
+    { "id": 162, "type": "message", "content": "As \"fun\" as this conversation is now 😒", "delay": 1900, "alignment": "left", "next": 163 },
+    { "id": 163, "type": "message", "content": "Some classmates are waiting for me", "delay": 1900, "alignment": "left", "next": 164 },
+    { "id": 164, "type": "message", "content": "So return to the books I must ", "delay": 3100, "alignment": "left", "next": 165 },
+    { "id": 165, "type": "message", "content": "We just have a couple more chapters to go", "delay": 2100, "alignment": "left", "next": 166 },
+    { "id": 166, "type": "message", "content": "Maybe another hour and a half", "delay": 1800, "alignment": "left", "next": 167 },
+    { "id": 167, "type": "message", "content": "So it’s the home stretch now 😤", "delay": 1800, "alignment": "left", "next": 168 },
+    {
+        "id": 168,
+        "type": "choice",
+        "content": {
+            "text": "Then it’s girls night",
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Good luck sweetheart!", "delay": 1000, "alignment": "right" }, "next": 169 }
+        ],
+        "next": null
+    },
+    {
+        "id": 169,
+        "type": "choice",
+        "choices": [
+            { "option": { "text": "Fuck those chapters up!", "delay": 1200, "alignment": "right" }, "next": 170 }
+        ],
+        "next": null
+    },
+    { "id": 170, "type": "message", "content": "Thanks", "delay": 1600, "alignment": "left", "next": 171 },
+    { "id": 171, "type": "message", "content": "I will 😆", "delay": 2200, "alignment": "left", "next": 172 },
+    {
+        "id": 172,
+        "type": "choice",
+        "content": {
+            "text": "I’ll text you when I’m on my way to the apartment",
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "Sounds good", "delay": 2300, "alignment": "right" }, "next": 173 }
+        ],
+        "next": null
+    },
+    { "id": 173, "type": "message", "content": "Okay", "delay": 1600, "alignment": "left", "next": 174 },
+    { "id": 174, "type": "message", "content": "I'll ttyl then!", "delay": 1600, "alignment": "left", "next": 175 },
+    { "id": 175, "type": "message", "content": "And text the others", "delay": 1600, "alignment": "left", "next": 176 },
+    {
+        "id": 176,
+        "type": "choice",
+        "content": {
+            "text": "Let them know you fixed your phone",
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "👍", "delay": 1000, "alignment": "right" }, "next": 177 }
+        ],
+        "next": null
+    },
+    {
+        "id": 177,
+        "recipient": "kaede",
+        "type": "choice",
+        "content": {
+            "text": "Let them know you fixed your phone",
+            "delay": 800,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "text": "👍", "delay": 2300, "alignment": "right" }, "next": 177 }
         ],
         "next": null
     }

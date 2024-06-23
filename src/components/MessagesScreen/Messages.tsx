@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { contactDataSere } = useContext(StoryContext);
+    const { contactDataSere, contactDataKaede } = useContext(StoryContext);
 
     return (
         <div className="h-dvh max-w-full">
@@ -29,6 +29,13 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <img className="w-20 mr-4 rounded-full" src={`/images/contacts/${contactDataSere.profileImg}`} />
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-bold">{contactDataSere.name}</p>
+                        <p className="text-slate-500">Contact request: an unknown n...</p>
+                    </div>
+                </div>
+                <div className="flex flex-row pt-4 px-3" onClick={() => navigateTo('TextingKaede')}>
+                    <img className="w-20 mr-4 rounded-full" src={`/images/contacts/${contactDataKaede.profileImg}`} />
+                    <div className="flex flex-col justify-center items-start">
+                        <p className="text-2xl font-bold">{contactDataKaede.name}</p>
                         <p className="text-slate-500">Contact request: an unknown n...</p>
                     </div>
                 </div>

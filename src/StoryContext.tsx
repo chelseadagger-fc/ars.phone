@@ -5,9 +5,13 @@ interface StoryContextType {
   story: Story;
   setStory: React.Dispatch<React.SetStateAction<Story>>;
   contactDataSere: {
-      profileImg: any; name: string 
-};
+      profileImg: string; name: string; discovered: boolean;
+  };
   setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  contactDataKaede: {
+    profileImg: string; name: string; discovered: boolean;
+  };
+  setContactDataKaede: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
@@ -23,6 +27,7 @@ interface StoryContextType {
 
 type Message = {
   id: number;
+  recipient?: "sere" | "kaede" | "ishtar" | "willian";
   type: "message";
   subtype?: "text" | "image" | "emoji";
   content: string;
@@ -42,6 +47,7 @@ type ChoiceOption = {
 
 type Choice = {
   id: number;
+  recipient?: "sere" | "kaede" | "ishtar" | "willian";
   type: "choice";
   content?: {
       text?: string;
@@ -73,8 +79,10 @@ const defaultState: StoryContextType = {
   setShowStartButton: () => { },
   showChoices: false,
   setShowChoices: () => { },
-  contactDataSere: { name: 'Unknown' },
+  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true },
   setContactDataSere: () => { },
+  contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false },
+  setContactDataKaede: () => { },
   handleChoice: () => { }
 };
 
@@ -89,7 +97,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string }>({ name: 'Unknown', profileImg: 'Unknown.png' });
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true});
+  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -203,7 +212,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
   
 
   return (
-    <StoryContext.Provider value={{ handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, displayedMessages }}>
+    <StoryContext.Provider value={{ handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );
