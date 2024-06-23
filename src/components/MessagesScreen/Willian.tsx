@@ -2,7 +2,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import React, { useContext } from "react";
 import './Messages.css';
 import { StoryContext } from '../../StoryContext';
-import { FaVideo  } from "react-icons/fa";
+import { FaVideo } from "react-icons/fa";
 import { TbDotsVertical } from "react-icons/tb";
 import { MdPhone } from "react-icons/md";
 
@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Willian: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataWillian, willianMessages, setCurrentId } = useContext(StoryContext);
+    const { showWillianChoices, willianChoices, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataWillian, willianMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -33,11 +33,11 @@ const Willian: React.FC<MessagesProps> = ({ navigateTo }) => {
             <div className="h-[82%] w-full flex flex-col justify-end text-left text-white overflow-y-auto">
                 {willianMessages}
             </div>
-            <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
+            <div className="bg-neutral-600 h-[10%] flex flex-col justify-around items-stretch rounded-xl mx-3 my-2 px-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
-                {showChoices && choices.map((choice, index) => (
+                {showWillianChoices && willianChoices.map((choice, index) => (
                     <button
-                    className="bg-neutral-600 rounded-lg w-full text-white text-lg mx-3 my-1 px-5 py-2 w-72"
+                    className={`bg-neutral-500 rounded-lg w-full text-white py-1 ${choices.length >= 3 ? 'text-sm' : 'text-lg'}`}
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >

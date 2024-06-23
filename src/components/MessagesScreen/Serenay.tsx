@@ -37,7 +37,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showSereChoices && sereChoices.map((choice, index) => (
                     <button
-                    className={`bg-neutral-500 rounded-lg w-full text-white py-1 ${choices.length >= 3 ? 'text-sm' : 'text-lg'}`}
+                    className={`bg-neutral-500 rounded-lg w-full text-white py-1 ${sereChoices.length >= 3 ? 'text-sm' : 'text-lg'}`}
                     key={index}
                     onClick={() => handleChoice(choice.next, choice.option)}
                     >

@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Ishtar: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataIshtar, ishtarMessages, setCurrentId } = useContext(StoryContext);
+    const { showIshtarChoices, ishtarChoices, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataIshtar, ishtarMessages, setCurrentId } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -35,7 +35,7 @@ const Ishtar: React.FC<MessagesProps> = ({ navigateTo }) => {
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
                 {showStartButton && <button onClick={startStory}>Start Story</button>}
-                {showChoices && choices.map((choice, index) => (
+                {showIshtarChoices && ishtarChoices.map((choice, index) => (
                     <button
                     className="bg-neutral-600 rounded-lg w-full text-white text-lg mx-3 my-1 px-5 py-2 w-72"
                     key={index}

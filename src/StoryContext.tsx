@@ -5,7 +5,7 @@ interface StoryContextType {
   story: Story;
   setStory: React.Dispatch<React.SetStateAction<Story>>;
   contactDataSere: {
-      profileImg: string; name: string; discovered: boolean;
+      profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
   setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataKaede: {
@@ -32,6 +32,14 @@ interface StoryContextType {
   setKaedeChoices: React.Dispatch<React.SetStateAction<string[]>>;
   showKaedeChoices: boolean;
   setShowKaedeChoices: React.Dispatch<React.SetStateAction<boolean>>;
+  willianChoices: string[];
+  setWillianChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  showWillianChoices: boolean;
+  setShowWillianChoices: React.Dispatch<React.SetStateAction<boolean>>;
+  ishtarChoices: string[];
+  setIshtarChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  showIshtarChoices: boolean;
+  setShowIshtarChoices: React.Dispatch<React.SetStateAction<boolean>>;
   choices: string[];
   setChoices: React.Dispatch<React.SetStateAction<string[]>>;
   showStartButton: boolean;
@@ -96,6 +104,10 @@ const defaultState: StoryContextType = {
   setSereChoices: () => { },
   kaedeChoices: [],
   setKaedeChoices: () => { },
+  willianChoices: [],
+  setWillianChoices: () => { },
+  ishtarChoices: [],
+  setIshtarChoices: () => { },
   showStartButton: false,
   setShowStartButton: () => { },
   showChoices: false,
@@ -104,7 +116,11 @@ const defaultState: StoryContextType = {
   setShowSereChoices: () => { },
   showKaedeChoices: false,
   setShowKaedeChoices: () => { },
-  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true },
+  showWillianChoices: false,
+  setShowWillianChoices: () => { },
+  showIshtarChoices: false,
+  setShowIshtarChoices: () => { },
+  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: ''},
   setContactDataSere: () => { },
   contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false },
   setContactDataKaede: () => { },
@@ -132,9 +148,13 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showSereChoices, setShowSereChoices] = useState<boolean>(false);
   const [kaedeChoices, setKaedeChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showKaedeChoices, setShowKaedeChoices] = useState<boolean>(false);
+  const [willianChoices, setWillianChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
+  const [showWillianChoices, setShowWillianChoices] = useState<boolean>(false);
+  const [ishtarChoices, setIshtarChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
+  const [showIshtarChoices, setShowIshtarChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true});
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: ''});
   const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false});
   const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false});
   const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false});
@@ -151,6 +171,12 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
     if (currentElement.flag === 'updateSereNameToSerenay') {
       setContactDataSere(prevState => ({ ...prevState, name: "Serenay", profileImg: "Serenay01.png"}));
+    }
+
+    if (currentElement.flag === 'friendsDiscovered') {
+      setContactDataKaede(prevState => ({ ...prevState, discovered: true }));
+      setContactDataWillian(prevState => ({ ...prevState, discovered: true }));
+      setContactDataIshtar(prevState => ({ ...prevState, discovered: true }));
     }
 
     if (currentElement.type === "message") {
@@ -231,6 +257,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setSereMessages(prevMessages => [...prevMessages, newSereMessage]);
+            setContactDataSere(prevState => ({ ...prevState, latestMessage: currentElement.content }));
             console.log(`${currentElement.id} added to sereMessages`)
         
             setTimeout(() => {
@@ -259,7 +286,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setWillianMessages(prevMessages => [...prevMessages, newWillianMessage]);
-        
+            console.log(`${currentElement.id} added to willianMessages`)
+
             setTimeout(() => {
               setCurrentId(currentElement.next);
             }, currentElement.delay);
@@ -272,6 +300,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setIshtarMessages(prevMessages => [...prevMessages, newIshtarMessage]);
+            console.log(`${currentElement.id} added to ishtarMessages`)
         
             setTimeout(() => {
               setCurrentId(currentElement.next);
@@ -297,6 +326,57 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     
     else if (currentElement.type === 'choice') {
       if (currentElement.content?.subtype === 'image') {
+        switch (currentElement.recipient) {
+          case 'sere': {
+            const choiceContent = (
+              <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+            );
+            setSereMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setSereChoices(currentElement.choices);
+              setShowSereChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'kaede': {
+            const choiceContent = (
+              <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+            );
+            setKaedeMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setKaedeChoices(currentElement.choices);
+              setShowKaedeChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'willian': {
+            const choiceContent = (
+              <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+            );
+            setWillianMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setWillianChoices(currentElement.choices);
+              setShowWillianChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+          case 'ishtar': {
+            const choiceContent = (
+              <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
+            );
+            setIshtarMessages(prevMessages => [...prevMessages, choiceContent]);
+        
+            setTimeout(() => {
+              setIshtarChoices(currentElement.choices);
+              setShowIshtarChoices(true);
+            }, currentElement.content.delay);
+            break;
+          }
+        }
+
         const choiceContent = (
             <img key={`choice-content-${currentElement.id}`} className={`image ${currentElement.content.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content.text}`} />
         );
@@ -325,6 +405,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
               </p>
             );
             setSereMessages(prevMessages => [...prevMessages, choiceContent]);
+            setContactDataSere(prevState => ({ ...prevState, latestMessage: currentElement.content.text || "[missing string]" }));
             console.log(`${currentElement.id} added to sereMessages`);
         
             setTimeout(() => {
@@ -356,8 +437,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setWillianMessages(prevMessages => [...prevMessages, choiceContent]);
         
             setTimeout(() => {
-              setChoices(currentElement.choices);
-              setShowChoices(true);
+              setWillianChoices(currentElement.choices);
+              setShowWillianChoices(true);
             }, currentElement.content.delay);
             break;
           }
@@ -370,8 +451,8 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             setIshtarMessages(prevMessages => [...prevMessages, choiceContent]);
         
             setTimeout(() => {
-              setChoices(currentElement.choices);
-              setShowChoices(true);
+              setIshtarChoices(currentElement.choices);
+              setShowIshtarChoices(true);
             }, currentElement.content.delay);
             break;
           }
@@ -409,7 +490,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   } , [currentId]);
 
   const startStory = () => {
-    setCurrentId(173);
+    setCurrentId(1);
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');
@@ -426,6 +507,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
           </p>
         );
         setSereMessages(prevMessages => [...prevMessages, choiceMessage]);
+        setContactDataSere(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
           setCurrentId(next);
@@ -483,7 +565,7 @@ const handleChoice = (next: number, option: ChoiceOption) => {
   
 
   return (
-    <StoryContext.Provider value={{ sereChoices, kaedeChoices, showSereChoices, showKaedeChoices, willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
+    <StoryContext.Provider value={{ sereChoices, kaedeChoices, willianChoices, ishtarChoices, showSereChoices, showKaedeChoices, showWillianChoices, showIshtarChoices, willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
       {children}
     </StoryContext.Provider>
   );
