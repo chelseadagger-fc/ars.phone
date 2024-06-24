@@ -493,12 +493,12 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     }
   } , [currentId]);
 
-  const startStory = () => {
-    setCurrentId(1);
+  const startStory = (id: number) => {
+    setCurrentId(id);
     setDisplayedMessages([]);
     setShowStartButton(false);
     console.log('Story started');
-};
+  };
 
 const handleChoice = (next: number, option: ChoiceOption) => {
     switch (option.recipient) {

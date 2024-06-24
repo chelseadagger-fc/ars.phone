@@ -707,10 +707,10 @@
         "next": null
     },
     { "id": 173, "type": "message", "recipient": "sere", "content": "Okay", "delay": 1600, "alignment": "left", "next": 174 },
-    { "id": 174, "type": "message", "recipient": "sere", "content": "I'll ttyl then!", "delay": 4000, "alignment": "left", "next": 175 },
-    { "id": 175, "type": "message", "recipient": "sere", "content": "Oh", "delay": 1000, "alignment": "left", "next": 176 },
+    { "id": 174, "type": "message", "recipient": "sere", "content": "I'll ttyl then!", "delay": 4000, "alignment": "left", "next": 175, "flag":"updateSereNameToSerenay" },
+    { "id": 175, "type": "message", "recipient": "sere", "content": "Oh", "delay": 1000, "alignment": "left", "next": 176, "flag":"friendsDiscovered" },
     { "id": 176, "type": "message", "recipient": "sere", "content": "Also", "delay": 1800, "alignment": "left", "next": 177 },
-    { "id": 177, "type": "message", "recipient": "sere", "content": "Make sure to text the others", "delay": 1650, "alignment": "left", "next": 178, "flag":"friendsDiscovered" },
+    { "id": 177, "type": "message", "recipient": "sere", "content": "Make sure to text the others", "delay": 1650, "alignment": "left", "next": 178 },
     {
         "id": 178,
         "type": "choice",
@@ -1128,5 +1128,365 @@
         ],
         "next": null
     },
-    { "id": 229, "type": "message", "recipient": "ishtar", "content": "✌", "delay": 1600, "alignment": "left", "next": 230 }
+    { "id": 230, "type": "message", "recipient": "sere", "content": "[ a couple of hours later]", "delay": 5000, "alignment": "center", "next": 231, "flag": "friendsDiscovered" },
+    { "id": 231, "type": "message", "recipient": "sere", "content": "Done with study group", "delay": 1900, "alignment": "left", "next": 232, "flag":"updateSereNameToSerenay" },
+    {
+        "id": 232,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Getting on the tram now",
+            "delay": 1000,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Studying went well?", "delay": 1800, "alignment": "right" }, "next": 233 }
+        ],
+        "next": null
+    },
+    { "id": 233, "type": "message", "recipient": "sere", "content": "Yep", "delay": 2000, "alignment": "left", "next": 234 },
+    {
+        "id": 234,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Midterm is going to be a breeze",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "What's this midterm about again?", "delay": 1800, "alignment": "right" }, "next": 235 }
+        ],
+        "next": null
+    },
+    { "id": 235, "type": "message", "recipient": "sere", "content": "Oh", "delay": 2100, "alignment": "left", "next": 236 },
+    { "id": 236, "type": "message", "recipient": "sere", "content": "It's just for one of my cartography classes", "delay": 2000, "alignment": "left", "next": 237 },
+    { "id": 237, "type": "message", "recipient": "sere", "content": "Course plotting at relativistic speeds", "delay": 1700, "alignment": "left", "next": 238 },
+    { "id": 238, "type": "message", "recipient": "sere", "content": "Accounting for gravity wells", "delay": 1700, "alignment": "left", "next": 239 },
+    { "id": 239, "type": "message", "recipient": "sere", "content": "Some time dilation offset stuff", "delay": 1700, "alignment": "left", "next": 240 },
+    { "id": 240, "type": "message", "recipient": "sere", "content": "That sort of thing", "delay": 2700, "alignment": "left", "next": 241 },
+    {
+        "id": 241,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "I'm not that worried",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Of course you aren't", "delay": 1800, "alignment": "right" }, "next": 242 }
+        ],
+        "next": null
+    },
+    {
+        "id": 242,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "What's that supposed to mean? 😨",
+            "delay": 2500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "That my girlfriend is equal parts cute and very very smart", "delay": 1800, "alignment": "right" }, "next": 243 }
+        ],
+        "next": null
+    },
+    {
+        "id": 243,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "And cool? 😁",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "So what's the plan for tonight? ", "delay": 1800, "alignment": "right" }, "next": 244 }
+        ],
+        "next": null
+    },
+    { "id": 244, "type": "message", "recipient": "sere", "content": "😓", "delay": 1100, "alignment": "left", "next": 245 },
+    {
+        "id": 245,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Jerk",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "❤", "delay": 1800, "alignment": "right" }, "next": 246 }
+        ],
+        "next": null
+    },
+    { "id": 246, "type": "message", "recipient": "sere", "content": "💔", "delay": 1800, "alignment": "left", "next": 247 },
+    { "id": 247, "type": "message", "recipient": "sere", "content": "Anyway", "delay": 2400, "alignment": "left", "next": 248 },
+    { "id": 248, "type": "message", "recipient": "sere", "content": "I think the plan is some bar that Ishy found", "delay": 1800, "alignment": "left", "next": 249 },
+    { "id": 249, "type": "message", "recipient": "sere", "content": "Apparently popular with west campus", "delay": 2400, "alignment": "left", "next": 250 },
+    { "id": 250, "type": "message", "recipient": "sere", "content": "Maybe I can find a better boyfriend while I’m there", "delay": 1000, "alignment": "left", "next": 251 },
+    {    "id": 251,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "🙄",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "He won’t be as funny", "delay": 1800, "alignment": "right" }, "next": 252 },
+            { "option": { "recipient": "sere", "text": "Or girlfriend", "delay": 1800, "alignment": "right" }, "next": 256 }
+        ],
+        "next": null
+    },
+    {
+        "id": 252,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "He won't be as dumb either",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "So I AM funny? 😁", "delay": 1800, "alignment": "right" }, "next": 253 }
+        ],
+        "next": null
+    },
+    { "id": 253, "type": "message", "recipient": "sere", "content": "You're impossible", "delay": 1200, "alignment": "left", "next": 254 },
+    { "id": 254, "type": "message", "recipient": "sere", "content": "Is what you are", "delay": 800, "alignment": "left", "next": 255 },
+    {
+        "id": 255,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "😒",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "😇", "delay": 1000, "alignment": "right" }, "next": 263 }
+        ],
+        "next": null
+    },
+    { "id": 256, "type": "message", "recipient": "sere", "content": "OMG", "delay": 2100, "alignment": "left", "next": 257 },
+    { "id": 257, "type": "message", "recipient": "sere", "content": "I tell you about ONE embarrassing dream", "delay": 2100, "alignment": "left", "next": 258 },
+    { "id": 258, "type": "message", "recipient": "sere", "content": "...", "delay": 1100, "alignment": "left", "next": 259 },
+    { "id": 259, "type": "message", "recipient": "sere", "content": "You know what", "delay": 1300, "alignment": "left", "next": 260 },
+    { "id": 260, "type": "message", "recipient": "sere", "content": "Nevermind", "delay": 2100, "alignment": "left", "next": 261 },
+    { "id": 261, "type": "message", "recipient": "sere", "content": "I'm not letting you tease me about this", "delay": 1000, "alignment": "left", "next": 262 },
+    {
+        "id": 262,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "AGAIN",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "😇", "delay": 1400, "alignment": "right" }, "next": 263 }
+        ],
+        "next": null
+    },
+    {
+        "id": 263,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "delay": 0,
+            "alignment": "none"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Well, try to have some fun", "delay": 1400, "alignment": "right" }, "next": 264 }
+        ],
+        "next": null
+    },
+    {
+        "id": 264,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "delay": 0,
+            "alignment": "none"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "You deserve a break from studying all week", "delay": 2600, "alignment": "right" }, "next": 265 }
+        ],
+        "next": null
+    },
+    { "id": 265, "type": "message", "recipient": "sere", "content": "Well, you know I'm not super big on bars", "delay": 1300, "alignment": "left", "next": 266 },
+    { "id": 266, "type": "message", "recipient": "sere", "content": "They’re okay", "delay": 1300, "alignment": "left", "next": 267 },
+    { "id": 267, "type": "message", "recipient": "sere", "content": "For the first hour or so", "delay": 2400, "alignment": "left", "next": 268 },
+    { "id": 268, "type": "message", "recipient": "sere", "content": "But the ones Ishy chooses are so loud", "delay": 2400, "alignment": "left", "next": 269 },
+    { "id": 269, "type": "message", "recipient": "sere", "content": "And the ones Kaede chooses", "delay": 1300, "alignment": "left", "next": 270 },
+    { "id": 270, "type": "message", "recipient": "sere", "content": "Are just full of dudes hitting on her", "delay": 2800, "alignment": "left", "next": 271 },
+    {
+        "id": 271,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "And sometimes I'm hit in the crossfire 😣",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Well, WE met in a bar", "delay": 1500, "alignment": "right" }, "next": 272 }
+        ],
+        "next": null
+    },
+    {
+        "id": 272,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "delay": 0,
+            "alignment": "none"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Who chose that one?", "delay": 2200, "alignment": "right" }, "next": 273 }
+        ],
+        "next": null
+    },
+    { "id": 273, "type": "message", "recipient": "sere", "content": "...", "delay": 1500, "alignment": "left", "next": 274 },
+    { "id": 274, "type": "message", "recipient": "sere", "content": "Kaede", "delay": 2500, "alignment": "left", "next": 275 },
+    { "id": 275, "type": "message", "recipient": "sere", "content": "And I'm pretty sure you were flirting with her first", "delay": 2000, "alignment": "left", "next": 276 },
+    { "id": 276, "type": "message", "recipient": "sere", "content": "Like all the other dumb boys 🙄", "delay": 2000, "alignment": "left", "next": 277 },
+    {
+        "id": 277,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "You're all slaves to the fox ears",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Jealous? 😁", "delay": 1800, "alignment": "right" }, "next": 278 },
+            { "option": { "recipient": "sere", "text": "You were hiding in a corner!", "delay": 1800, "alignment": "right" }, "next": 285 },
+            { "option": { "recipient": "sere", "text": "I prefer elf ears tbh", "delay": 2300, "alignment": "right" }, "next": 296 }
+        ],
+        "next": null
+    },
+    { "id": 278, "type": "message", "recipient": "sere", "content": "You're so lucky I'm not", "delay": 2400, "alignment": "left", "next": 279 },
+    {
+        "id": 279,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Or you would have been dead long ago 😒",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "I've been behaving!", "delay": 1800, "alignment": "right" }, "next": 280 }
+        ],
+        "next": null
+    },
+    { "id": 280, "type": "message", "recipient": "sere", "content": "Relatively", "delay": 1600, "alignment": "left", "next": 281 },
+    { "id": 281, "type": "message", "recipient": "sere", "content": "But between you, Kaede and Ishy", "delay": 2400, "alignment": "left", "next": 282 },
+    { "id": 282, "type": "message", "recipient": "sere", "content": "I think you would all die if you couldn't flirt for a day", "delay": 2400, "alignment": "left", "next": 283 },
+    { "id": 283, "type": "message", "recipient": "sere", "content": "Me and Willian are the only normal ones in this group", "delay": 800, "alignment": "left", "next": 284 },
+    { "id": 284, "type": "message", "recipient": "sere", "content": "🙄", "delay": 4000, "alignment": "left", "next": 304 },
+    {
+        "id": 285,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "I was not hiding!",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "You were reading a book!", "delay": 1800, "alignment": "right" }, "next": 286 }
+        ],
+        "next": null
+    },
+    { "id": 286, "type": "message", "recipient": "sere", "content": "I was NOT reading a book", "delay": 1500, "alignment": "left", "next": 287 },
+    { "id": 287, "type": "message", "recipient": "sere", "content": "I am not THAT socially stunted", "delay": 2700, "alignment": "left", "next": 288 },
+    { "id": 288, "type": "message", "recipient": "sere", "content": "...", "delay": 1500, "alignment": "left", "next": 289 },
+    {
+        "id": 289,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "I was writing in a notebook",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Is that better? 🤔", "delay": 2400, "alignment": "right" }, "next": 290 }
+        ],
+        "next": null
+    },
+    { "id": 290, "type": "message", "recipient": "sere", "content": "An idea for my thesis came to me", "delay": 2400, "alignment": "left", "next": 291 },
+    { "id": 291, "type": "message", "recipient": "sere", "content": "It's not my fault it happened at a bar", "delay": 900, "alignment": "left", "next": 292 },
+    {
+        "id": 292,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "😓",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Well, I hope it at least helped with your paper", "delay": 1800, "alignment": "right" }, "next": 293 }
+        ],
+        "next": null
+    },
+    { "id": 293, "type": "message", "recipient": "sere", "content": "It didn't", "delay": 2800, "alignment": "left", "next": 294 },
+    { "id": 294, "type": "message", "recipient": "sere", "content": "Someone ended up", "delay": 1300, "alignment": "left", "next": 295 },
+    { "id": 295, "type": "message", "recipient": "sere", "content": "Bothering me all night 🙄", "delay": 3000, "alignment": "left", "next": 304 },
+    {
+        "id": 296,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Uh huh...",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Especially elves with antlers 🦌", "delay": 2300, "alignment": "right" }, "next": 297 }
+        ],
+        "next": null
+    },
+    {
+        "id": 297,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "text": "Uh huh......",
+            "delay": 1500,
+            "alignment": "left"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "Really, I do", "delay": 2000, "alignment": "right" }, "next": 298 }
+        ],
+        "next": null
+    },
+    {
+        "id": 298,
+        "recipient": "sere", 
+        "type": "choice",
+        "content": {
+            "delay": 1500,
+            "alignment": "none"
+        },
+        "choices": [
+            { "option": { "recipient": "sere", "text": "They're fun to hold on to", "delay": 800, "alignment": "right" }, "next": 299 }
+        ],
+        "next": null
+    },
+    { "id": 299, "type": "message", "recipient": "sere", "content": "OKAY OKAY", "delay": 1000, "alignment": "left", "next": 300 },
+    { "id": 300, "type": "message", "recipient": "sere", "content": "That's enough", "delay": 1000, "alignment": "left", "next": 301 },
+    { "id": 301, "type": "message", "recipient": "sere", "content": "I believe you", "delay": 1600, "alignment": "left", "next": 302 },
+    { "id": 302, "type": "message", "recipient": "sere", "content": "You horny boy", "delay": 800, "alignment": "left", "next": 303 },
+    { "id": 303, "type": "message", "recipient": "sere", "content": "😩", "delay": 3500, "alignment": "left", "next": 304 },
+    { "id": 304, "type": "message", "recipient": "sere", "content": "Oh", "delay": 2800, "alignment": "left", "next": 305 },
+    { "id": 305, "type": "message", "recipient": "sere", "content": "And on that note", "delay": 1800, "alignment": "left", "next": 306 },
+    { "id": 306, "type": "message", "recipient": "sere", "content": "My stop is coming up", "delay": 5000, "alignment": "left", "next": 307 }
 ]

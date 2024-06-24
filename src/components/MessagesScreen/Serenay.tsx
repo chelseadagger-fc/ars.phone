@@ -34,7 +34,6 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                 {sereMessages}
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-col justify-center items-center rounded-xl my-2 mx-3 px-2">
-                {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showSereChoices && sereChoices.map((choice, index) => (
                     <button
                     className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${sereChoices.length === 1 ? 'text-lg py-2' : sereChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}

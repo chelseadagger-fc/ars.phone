@@ -34,7 +34,6 @@ const Willian: React.FC<MessagesProps> = ({ navigateTo }) => {
                 {willianMessages}
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-col justify-center items-center rounded-xl mx-3 my-2 px-2">
-                {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showWillianChoices && willianChoices.map((choice, index) => (
                     <button
                     className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${willianChoices.length === 1 ? 'text-lg py-2' : willianChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}

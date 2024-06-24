@@ -34,7 +34,6 @@ const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
                 {kaedeMessages}
             </div>
             <div className="bg-neutral-600 h-[10%] flex flex-row justify-center items-center rounded-xl mx-3 my-2">
-                {showStartButton && <button onClick={startStory}>Start Story</button>}
                 {showKaedeChoices && kaedeChoices.map((choice, index) => (
                     <button
                     className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${kaedeChoices.length === 1 ? 'text-lg py-2' : kaedeChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
