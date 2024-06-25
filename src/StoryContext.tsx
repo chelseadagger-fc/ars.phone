@@ -503,70 +503,70 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     console.log('Story started');
   };
 
-const handleChoice = (choices) => {
-    switch (choices.option.recipient) {
+const handleChoice = (next, option) => {
+    switch (option.recipient) {
       case 'sere': {
         setShowChoices(false);
         setShowSereChoices(false);
         const choiceMessage = (
-          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
-              {choices.option.text}
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
           </p>
         );
         setSereMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataSere(prevState => ({ ...prevState, latestMessage: choices.option.text }));
+        setContactDataSere(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
-          setCurrentId(choices.next);
-      }, choices.option.delay);
+          setCurrentId(next);
+      }, option.delay);
         break;
       }
       case 'kaede': {
         setShowChoices(false);
         setShowKaedeChoices(false);
         const choiceMessage = (
-          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
-              {choices.option.text}
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
           </p>
         );
         setKaedeMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataKaede(prevState => ({ ...prevState, latestMessage: choices.option.text }));
+        setContactDataKaede(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
-          setCurrentId(choices.next);
-      }, choices.option.delay);
+          setCurrentId(next);
+      }, option.delay);
         break;
       }
       case 'willian': {
         setShowChoices(false);
         setShowWillianChoices(false);
         const choiceMessage = (
-          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
-              {choices.option.text}
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
           </p>
         );
         setWillianMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataWillian(prevState => ({ ...prevState, latestMessage: choices.option.text }));
+        setContactDataWillian(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
-          setCurrentId(choices.next);
-      }, choices.option.delay);
+          setCurrentId(next);
+      }, option.delay);
         break;
       }
       case 'ishtar': {
         setShowChoices(false);
         setShowIshtarChoices(false);
         const choiceMessage = (
-          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
-              {choices.option.text}
+          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
+              {option.text}
           </p>
         );
         setIshtarMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataIshtar(prevState => ({ ...prevState, latestMessage: choices.option.text }));
+        setContactDataIshtar(prevState => ({ ...prevState, latestMessage: option.text }));
 
         setTimeout(() => {
-          setCurrentId(choices.next);
-      }, choices.option.delay);
+          setCurrentId(next);
+      }, option.delay);
         break;
       } 
     }

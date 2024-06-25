@@ -11,7 +11,7 @@
             "alignment": "left"
         },
         "choices": [
-            { "option": { "recipient": "sere", "text": "Sort of", "delay": 1500, "alignment": "right" }, "next": 4 }
+            { "option": { "recipient": "sere", "text": "Sort of", "delay": 1500, "alignment": "right", "next": 4 } }
         ],
         "next": null
     },
