@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Willian: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { showWillianChoices, willianChoices, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataWillian, willianMessages, setCurrentId } = useContext(StoryContext);
+    const { showWillianChoices, willianChoices, handleChoice, contactDataWillian, willianMessages } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -36,9 +36,9 @@ const Willian: React.FC<MessagesProps> = ({ navigateTo }) => {
             <div className="bg-neutral-600 h-[10%] flex flex-col justify-center items-center rounded-xl mx-3 my-2 px-2">
                 {showWillianChoices && willianChoices.map((choice, index) => (
                     <button
-                    className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${willianChoices.length === 1 ? 'text-lg py-2' : willianChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
-                    key={index}
-                    onClick={() => handleChoice(choice.next, choice.option)}
+                        className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${willianChoices.length === 1 ? 'text-lg py-2' : willianChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
+                        key={index}
+                        onClick={() => handleChoice(choice.option.next, choice.option)}
                     >
                         {choice.option.text}
                     </button>

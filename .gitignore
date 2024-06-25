@@ -14,7 +14,9 @@ dev-dist
 *.local
 nsfw/
 nsfw/*
-*Ch01.json
+android
+android/*
+
 
 # Editor directories and files
 .vscode/*

@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { startStory, sereChoices, showSereChoices, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataSere, sereMessages, displayedMessages, setCurrentId } = useContext(StoryContext);
+    const { sereChoices, showSereChoices, handleChoice, contactDataSere, sereMessages } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -38,7 +38,7 @@ const Serenay: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <button
                     className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${sereChoices.length === 1 ? 'text-lg py-2' : sereChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
                     key={index}
-                    onClick={() => handleChoice(choice.next, choice.option)}
+                    onClick={() => handleChoice(choice.option.next, choice.option)}
                     >
                         {choice.option.text}
                     </button>

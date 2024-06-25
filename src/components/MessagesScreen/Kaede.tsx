@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { showKaedeChoices, kaedeChoices, kaedeMessages, startStory, handleChoice, choices, showChoices, showStartButton, setShowStartButton, story, contactDataKaede, displayedMessages, setCurrentId } = useContext(StoryContext);
+    const { showKaedeChoices, kaedeChoices, kaedeMessages, handleChoice, contactDataKaede } = useContext(StoryContext);
  
     return (
         <div className="h-dvh max-w-full flex flex-col justify-between bg-neutral-800">
@@ -38,7 +38,7 @@ const Kaede: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <button
                     className={`bg-stone-500/80 rounded-lg w-11/12 text-white border-solid border-1 font-noto border-black ${kaedeChoices.length === 1 ? 'text-lg py-2' : kaedeChoices.length === 2 ? 'text-md my-1 py-1' : 'text-sm mt-1'}`}
                     key={index}
-                    onClick={() => handleChoice(choice.next, choice.option)}
+                    onClick={() => handleChoice(choice.option.next, choice.option)}
                     >
                         {choice.option.text}
                     </button>

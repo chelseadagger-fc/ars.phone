@@ -2,8 +2,6 @@ import { createContext, useState, useEffect, ReactNode } from 'react';
 import data from './components/StoryData/Ch01.json';
 
 interface StoryContextType {
-  story: Story;
-  setStory: React.Dispatch<React.SetStateAction<Story>>;
   contactDataSere: {
       profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
@@ -24,29 +22,34 @@ interface StoryContextType {
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
   setShowChoices: React.Dispatch<React.SetStateAction<boolean>>;
-  sereChoices: string[];
-  setSereChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  sereChoices: { option: ChoiceOption; next: number }[];
+  setSereChoices: React.Dispatch<React.SetStateAction<{option: ChoiceOption, next: number}[]>>;
   showSereChoices: boolean;
   setShowSereChoices: React.Dispatch<React.SetStateAction<boolean>>;
-  kaedeChoices: string[];
-  setKaedeChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  kaedeChoices: { option: ChoiceOption; next: number }[];
+  setKaedeChoices: React.Dispatch<React.SetStateAction<{option: ChoiceOption, next: number}[]>>;
   showKaedeChoices: boolean;
   setShowKaedeChoices: React.Dispatch<React.SetStateAction<boolean>>;
-  willianChoices: string[];
-  setWillianChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  willianChoices: { option: ChoiceOption; next: number }[];
+  setWillianChoices: React.Dispatch<React.SetStateAction<{option: ChoiceOption, next: number}[]>>;
   showWillianChoices: boolean;
   setShowWillianChoices: React.Dispatch<React.SetStateAction<boolean>>;
-  ishtarChoices: string[];
-  setIshtarChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  ishtarChoices: { option: ChoiceOption; next: number }[];
+  setIshtarChoices: React.Dispatch<React.SetStateAction<{option: ChoiceOption, next: number}[]>>;
   showIshtarChoices: boolean;
   setShowIshtarChoices: React.Dispatch<React.SetStateAction<boolean>>;
-  choices: string[];
-  setChoices: React.Dispatch<React.SetStateAction<string[]>>;
+  sereMessages: JSX.Element[];
+  kaedeMessages: JSX.Element[];
+  willianMessages: JSX.Element[];
+  ishtarMessages: JSX.Element[];
+  choices: { option: ChoiceOption; next: number }[];
+  setChoices: React.Dispatch<React.SetStateAction<ChoiceOption[]>>;
   showStartButton: boolean;
   setShowStartButton: React.Dispatch<React.SetStateAction<boolean>>;
   displayedMessages: JSX.Element[];
   setDisplayedMessages: React.Dispatch<React.SetStateAction<JSX.Element[]>>;
-  handleChoice: (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center" | "none"; }) => void;
+  handleChoice: (next: number, option: { text: string; delay: number; alignment: "left" | "right" | "center" | "none"; recipient?: string }) => void;
+  startStory: (id: number) => void;
 }
 
 type Message = {
@@ -68,6 +71,7 @@ type ChoiceOption = {
   alignment: "left" | "right" | "center" | "none";
   subtype?: "text" | "image" | "emoji";
   recipient?: "sere" | "kaede" | "ishtar" | "willian";
+  next: number;
 };
 
 type Choice = {
@@ -80,7 +84,7 @@ type Choice = {
       subtype?: "text" | "image" | "emoji";
       alignment: "left" | "right" | "center" | "none";
   };
-  choices: string[];
+  choices: { option: ChoiceOption; next: number }[];
   next: number | null;
   flag?: string;
 };
@@ -88,12 +92,6 @@ type Choice = {
 type StoryElement = Message | Choice;
 
 const defaultState: StoryContextType = {
-  story: {
-    id: '',
-    title: '',
-    content: ''
-  },
-  setStory: () => { },
   displayedMessages: [],
   setDisplayedMessages: () => { },
   currentId: null,
@@ -120,7 +118,7 @@ const defaultState: StoryContextType = {
   setShowWillianChoices: () => { },
   showIshtarChoices: false,
   setShowIshtarChoices: () => { },
-  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: ''},
+  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '' },
   setContactDataSere: () => { },
   contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataKaede: () => { },
@@ -128,13 +126,19 @@ const defaultState: StoryContextType = {
   setContactDataWillian: () => { },
   contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataIshtar: () => { },
-  handleChoice: () => { }
+  handleChoice: () => { },
+  sereMessages: [],
+  kaedeMessages: [],
+  willianMessages: [],
+  ishtarMessages: [],
+  startStory: function (): void {
+    throw new Error('Function not implemented.');
+  }
 };
 
 const StoryContext = createContext<StoryContextType>(defaultState);
 
 const StoryProvider = ({ children }: { children: ReactNode }) => {
-  const [story, setStory] = useState({ messages: [] });
   const [displayedMessages, setDisplayedMessages] = useState<JSX.Element[]>([]);
   const [sereMessages, setSereMessages] = useState<JSX.Element[]>([]);
   const [kaedeMessages, setKaedeMessages] = useState<JSX.Element[]>([]);
@@ -159,7 +163,6 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
-    setStory({ messages: storyData });
 
     if (currentId === null) return;
 
@@ -462,7 +465,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
           }
         }
       } else {
-        switch (currentElement.choices.recipient) {
+        switch (currentElement.recipient) {
           case 'sere': {
             setSereChoices(currentElement.choices);
             setShowSereChoices(true);
@@ -500,79 +503,120 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
     console.log('Story started');
   };
 
-const handleChoice = (next: number, option: ChoiceOption) => {
-    switch (option.recipient) {
+const handleChoice = (choices) => {
+    switch (choices.option.recipient) {
       case 'sere': {
         setShowChoices(false);
         setShowSereChoices(false);
         const choiceMessage = (
-          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-              {option.text}
+          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
+              {choices.option.text}
           </p>
         );
         setSereMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataSere(prevState => ({ ...prevState, latestMessage: option.text }));
+        setContactDataSere(prevState => ({ ...prevState, latestMessage: choices.option.text }));
 
         setTimeout(() => {
-          setCurrentId(next);
-      }, option.delay);
+          setCurrentId(choices.next);
+      }, choices.option.delay);
         break;
       }
       case 'kaede': {
         setShowChoices(false);
         setShowKaedeChoices(false);
         const choiceMessage = (
-          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-              {option.text}
+          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
+              {choices.option.text}
           </p>
         );
         setKaedeMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataKaede(prevState => ({ ...prevState, latestMessage: option.text }));
+        setContactDataKaede(prevState => ({ ...prevState, latestMessage: choices.option.text }));
 
         setTimeout(() => {
-          setCurrentId(next);
-      }, option.delay);
+          setCurrentId(choices.next);
+      }, choices.option.delay);
         break;
       }
       case 'willian': {
         setShowChoices(false);
         setShowWillianChoices(false);
         const choiceMessage = (
-          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-              {option.text}
+          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
+              {choices.option.text}
           </p>
         );
         setWillianMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataWillian(prevState => ({ ...prevState, latestMessage: option.text }));
+        setContactDataWillian(prevState => ({ ...prevState, latestMessage: choices.option.text }));
 
         setTimeout(() => {
-          setCurrentId(next);
-      }, option.delay);
+          setCurrentId(choices.next);
+      }, choices.option.delay);
         break;
       }
       case 'ishtar': {
         setShowChoices(false);
         setShowIshtarChoices(false);
         const choiceMessage = (
-          <p key={`choice-${next}`} className={`message ${option.alignment}`}>
-              {option.text}
+          <p key={`choice-${choices.next}`} className={`message ${choices.option.alignment}`}>
+              {choices.option.text}
           </p>
         );
         setIshtarMessages(prevMessages => [...prevMessages, choiceMessage]);
-        setContactDataIshtar(prevState => ({ ...prevState, latestMessage: option.text }));
+        setContactDataIshtar(prevState => ({ ...prevState, latestMessage: choices.option.text }));
 
         setTimeout(() => {
-          setCurrentId(next);
-      }, option.delay);
+          setCurrentId(choices.next);
+      }, choices.option.delay);
         break;
       } 
-    };
+    }
   }
 
   
 
   return (
-    <StoryContext.Provider value={{ sereChoices, kaedeChoices, willianChoices, ishtarChoices, showSereChoices, showKaedeChoices, showWillianChoices, showIshtarChoices, willianMessages, ishtarMessages, sereMessages, kaedeMessages, handleChoice, choices, showChoices, startStory, showStartButton, story, setCurrentId, contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, displayedMessages }}>
+    <StoryContext.Provider value={{ 
+      sereChoices, 
+      kaedeChoices, 
+      willianChoices, 
+      ishtarChoices, 
+      showSereChoices, 
+      showKaedeChoices, 
+      showWillianChoices, 
+      showIshtarChoices, 
+      willianMessages, 
+      ishtarMessages, 
+      sereMessages, 
+      kaedeMessages, 
+      handleChoice, 
+      choices, 
+      showChoices, 
+      startStory, 
+      showStartButton, 
+      setCurrentId, 
+      contactDataSere, 
+      contactDataKaede, 
+      contactDataWillian, 
+      contactDataIshtar, 
+      displayedMessages, 
+      setContactDataSere: () => {}, 
+      setContactDataKaede: () => {}, 
+      setContactDataWillian: () => {}, 
+      setContactDataIshtar: () => {},
+      currentId, 
+      setShowChoices, 
+      setSereChoices, 
+      setShowSereChoices, 
+      setKaedeChoices, 
+      setShowKaedeChoices, 
+      setWillianChoices, 
+      setShowWillianChoices, 
+      setIshtarChoices, 
+      setShowIshtarChoices,
+      setChoices: () => {},
+      setShowStartButton,
+      setDisplayedMessages
+    }}>
       {children}
     </StoryContext.Provider>
   );
