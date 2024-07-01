@@ -14,6 +14,8 @@ dev-dist
 *.local
 nsfw/
 nsfw/*
+StoryData/
+StoryData/*
 android
 android/*
 

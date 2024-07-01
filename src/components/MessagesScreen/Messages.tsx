@@ -30,8 +30,8 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-medium font-titillium text-white">{contactDataSere.name}</p>
                         <p className="text-slate-500 text-left">
-                            {contactDataSere.latestMessage.length > 35
-                            ? `${contactDataSere.latestMessage.slice(0, 35)}...`
+                            {contactDataSere.latestMessage.length > 28
+                            ? `${contactDataSere.latestMessage.slice(0, 28)}...`
                             : contactDataSere.latestMessage}
                         </p>
                     </div>
@@ -42,8 +42,8 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                         <div className="flex flex-col justify-center items-start">
                             <p className="text-2xl font-medium font-titillium text-white">{contactDataKaede.name}</p>
                             <p className="text-slate-500 text-left">
-                                {contactDataKaede.latestMessage.length > 35
-                                    ? `${contactDataKaede.latestMessage.slice(0, 35)}...`
+                                {contactDataKaede.latestMessage.length > 28
+                                    ? `${contactDataKaede.latestMessage.slice(0, 28)}...`
                                     : contactDataKaede.latestMessage}
                             </p>    
                         </div>
@@ -55,8 +55,8 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-medium font-titillium text-white">{contactDataWillian.name}</p>
                         <p className="text-slate-500 text-left">
-                        {contactDataWillian.latestMessage.length > 35
-                            ? `${contactDataWillian.latestMessage.slice(0, 35)}...`
+                        {contactDataWillian.latestMessage.length > 28
+                            ? `${contactDataWillian.latestMessage.slice(0, 28)}...`
                             : contactDataWillian.latestMessage}
                         </p>
                     </div>
@@ -68,8 +68,8 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                     <div className="flex flex-col justify-center items-start">
                         <p className="text-2xl font-medium font-titillium text-white">{contactDataIshtar.name}</p>
                         <p className="text-slate-500 text-left">
-                                {contactDataIshtar.latestMessage.length > 35
-                                    ? `${contactDataIshtar.latestMessage.slice(0, 35)}...`
+                                {contactDataIshtar.latestMessage.length > 28
+                                    ? `${contactDataIshtar.latestMessage.slice(0, 28)}...`
                                     : contactDataIshtar.latestMessage}
                             </p>    
                     </div>

@@ -19,10 +19,9 @@
 
 .message.center {
     background-color: #525252;
+    color: yellow;
     align-self: center;
     font-weight: 600;
-    margin-top: 6rem;
-    margin-bottom: 2rem;
 }
 
 .message.none {

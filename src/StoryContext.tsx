@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import data from './components/StoryData/Ch01.json';
+import data from './components/StoryData/Ch01.v2.json';
 
 interface StoryContextType {
   contactDataSere: {
@@ -89,7 +89,20 @@ type Choice = {
   flag?: string;
 };
 
-type StoryElement = Message | Choice;
+type GroupMessage = {
+  id: number;
+  type: "group-message";
+  recipient: string;
+  sender: string;
+  content: string;
+  subtype?: "text" | "image" | "emoji";
+  delay: number;
+  alignment: "left" | "right" | "center" | "none";
+  next: number | null;
+  flag?: string;
+}
+
+type StoryElement = Message | Choice | GroupMessage;
 
 const defaultState: StoryContextType = {
   displayedMessages: [],
@@ -228,14 +241,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
           break;
         }
         default : {
-          const newMessage = (
-            <img key={currentElement.id} className={`image ${currentElement.alignment} w-4/6 my-3 rounded-xl`} src={`/images/${currentElement.content}`} />
-          );
-          setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-    
-          setTimeout(() => {
-            setCurrentId(currentElement.next);
-          }, currentElement.delay);
+          console.log('No recipient specified for image message');
         }
       }
       } else if (currentElement.subtype === "emoji") {
@@ -312,16 +318,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             break;
           }
           default: {
-            const newMessage = (
-              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
-                {currentElement.content}
-              </p>
-            );
-            setDisplayedMessages(prevMessages => [...prevMessages, newMessage]);
-          
-            setTimeout(() => {
-              setCurrentId(currentElement.next);
-            }, currentElement.delay);
+            console.log('No recipient specified for emoji message');
             break;
           }
         }
@@ -487,8 +484,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
             break;
           }
           default: {
-            setChoices(currentElement.choices);
-            setShowChoices(true);
+            console.log('No recipient specified for choice message');
             break;
           }
         }
