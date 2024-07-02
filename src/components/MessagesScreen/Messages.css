@@ -19,7 +19,6 @@
 
 .message.center {
     background-color: #525252;
-    color: yellow;
     align-self: center;
     font-weight: 600;
 }
@@ -43,4 +42,61 @@
     background-color: rgb(3 105 161);
     align-self: flex-end;
     margin-right: 1rem;
+}
+
+/* .group-container {
+    display: flex;
+    flex-direction: column;
+    margin: 4px 0;
+    margin-left: 1rem;
+    align-items: left;
+    justify-content: center;
+} */
+
+.group-message {
+    padding: 7px 12px;
+    margin: 0;
+    border-radius: 12px;
+    max-width: 80%;
+}
+
+.group-message.left {
+    align-self: flex-start;
+    background-color: #525252;
+}
+
+.group-message.right {
+    align-self: flex-end;
+    background-color: rgb(3 105 161);
+    margin-right: 1rem;
+}
+
+.group-message.center {
+    background-color: #525252;
+    align-self: center;
+    font-weight: 600;
+}
+
+.group-message.none {
+    display: none;
+}
+
+.sndr-sere {
+	background-color: rgb(3 105 161);
+}
+
+.sndr-kaede {
+    background-color: rgb(236 72 153);
+}
+
+.sndr-willian {
+background-color: rgb(6 95 70);
+}
+
+.sndr-ishtar {
+	background-color: rgb(154 52 18);
+}
+
+.sndr-amir {
+    background-color: rgb(3 105 161);
 }

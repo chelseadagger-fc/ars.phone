@@ -46,7 +46,7 @@ interface StoryContextType {
   kaedeMessages: JSX.Element[];
   willianMessages: JSX.Element[];
   ishtarMessages: JSX.Element[];
-  groupChatMainMessages: JSX.Element[];
+  groupMainMessages: JSX.Element[];
   choices: { option: ChoiceOption; next: number }[];
   setChoices: React.Dispatch<React.SetStateAction<ChoiceOption[]>>;
   showStartButton: boolean;
@@ -100,6 +100,8 @@ type GroupMessage = {
   recipient: string;
   sender: string;
   content: string;
+  initialMsg?: boolean;
+  showPfp?: boolean;
   subtype?: "text" | "image" | "emoji";
   delay: number;
   alignment: "left" | "right" | "center" | "none";
@@ -151,10 +153,8 @@ const defaultState: StoryContextType = {
   kaedeMessages: [],
   willianMessages: [],
   ishtarMessages: [],
-  groupChatMainMessages: [],
-  startStory: function (): void {
-    throw new Error('Function not implemented.');
-  }
+  groupMainMessages: [],
+  startStory: () => { }
 };
 
 const StoryContext = createContext<StoryContextType>(defaultState);
@@ -165,7 +165,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [kaedeMessages, setKaedeMessages] = useState<JSX.Element[]>([]);
   const [willianMessages, setWillianMessages] = useState<JSX.Element[]>([]);
   const [ishtarMessages, setIshtarMessages] = useState<JSX.Element[]>([]);
-  const [groupChatMainMessages, setGroupChatMainMessages] = useState<JSX.Element[]>([]);
+  const [groupMainMessages, setGroupMainMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [sereChoices, setSereChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
@@ -508,12 +508,94 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
     // GROUP CHAT SECTION
     else if (currentElement.type === 'group-message') {
+      const groupMessageSenderPfp = (() => {
+        switch (currentElement.sender) {
+          case 'sere':
+            return `/images/contacts/${contactDataSere.profileImg}`;
+          case 'kaede':
+            return `/images/contacts/${contactDataKaede.profileImg}`;
+          case 'willian':
+            return `/images/contacts/${contactDataWillian.profileImg}`;
+          case 'ishtar':
+            return `/images/contacts/${contactDataIshtar.profileImg}`;
+          case 'amir':
+            return `/images/contacts/Amir01.png`;
+          default:
+            return '/images/contacts/default-pfp.png';
+        }
+      })();
+
+      const groupMessageSenderName = (() => {
+        switch (currentElement.sender) {
+          case 'sere':
+            return `${contactDataSere.name}`;
+          case 'kaede':
+            return `${contactDataKaede.name}`;
+          case 'willian':
+            return `${contactDataWillian.name}`;
+          case 'ishtar':
+            return `${contactDataIshtar.name}`;
+          case 'amir':
+            return 'Amir';
+          default:
+            return '/images/contacts/default-pfp.png';
+        }
+      })();
+
+      // const newGroupMessage = (
+      //   <div className='flex flex-row w-full'>
+      //     <div className='h-7 w-7'>
+      //       {currentElement.type === "group-message" && currentElement.initialMsg === true && currentElement.sender !== 'amir' ? (
+      //         <img className="w-7 h-7 rounded-full" src={groupMessageSenderPfp} />) : null
+      //       }         
+      //     </div>
+      //     <div className="flex flex-col my-2 ml-4 items-left justify-center">
+      //       {currentElement.type === "group-message" && currentElement.initialMsg === true && currentElement.sender !== 'amir' ? (
+      //         <div className='flex flex-row items-center align-center mt-2'>
+
+      //           <p className='text-sm pl-1'>{groupMessageSenderName}</p>
+      //         </div>
+      //       ) : null}
+      //       <p key={currentElement.id} className={`group-message ${currentElement.alignment} sndr-${currentElement.sender}`}>
+      //       {currentElement.content}
+      //       </p>
+      //     </div>
+      //   </div>
+      // );
+
       const newGroupMessage = (
-        <p key={currentElement.id} className={`group-message ${currentElement.alignment}`}>
-            {currentElement.content}
-        </p>
+        <div className='w-full flex flex-row'>
+          {currentElement.type === "group-message" && currentElement.sender !== 'amir' ? (
+            <div className="w-full flex flex-row my-1">
+              <div className="w-12 h-12">
+                {currentElement.initialMsg === true ? (
+                  <img className="w-9 h-9 rounded-full mt-4 ml-1" src={groupMessageSenderPfp} />
+                ) : null }
+              </div>
+              <div className='flex flex-col w-5/6'>
+                {currentElement.initialMsg === true ? (
+                  <p className='text-xs pl-1'>{groupMessageSenderName}</p>
+                ) : null }
+                <p key={currentElement.id} className={`group-message ${currentElement.alignment} sndr-${currentElement.sender}`}>
+                  {currentElement.content}
+                </p>
+              </div>
+
+            </div>
+          ) : (
+            <div className="w-full flex flex-col">
+              <p key={currentElement.id} className={`message ${currentElement.alignment}`}>
+                {currentElement.content}
+              </p>
+            </div>
+
+          ) }
+        </div>
       );
-      setGroupChatMainMessages(prevMessages => [...prevMessages, newGroupMessage]);
+
+
+      setGroupMainMessages(prevMessages => [...prevMessages, newGroupMessage]);
+      setGroupDataMain(prevState => ({ ...prevState, latestMessage: currentElement.content || "[missing string]" }));
   
       setTimeout(() => {
         setCurrentId(currentElement.next);
@@ -613,7 +695,7 @@ const handleChoice = (next, option) => {
         ishtarMessages, 
         sereMessages, 
         kaedeMessages, 
-        groupChatMainMessages,
+        groupMainMessages,
         handleChoice, 
         choices, 
         showChoices, 
