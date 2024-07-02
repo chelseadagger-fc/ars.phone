@@ -11,7 +11,7 @@ interface MessagesProps {
 
 const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
 
-    const { contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar } = useContext(StoryContext);
+    const { contactDataSere, contactDataKaede, contactDataWillian, contactDataIshtar, groupDataMain } = useContext(StoryContext);
 
 
     return (
@@ -71,6 +71,19 @@ const Messages: React.FC<MessagesProps> = ({ navigateTo }) => {
                                 {contactDataIshtar.latestMessage.length > 28
                                     ? `${contactDataIshtar.latestMessage.slice(0, 28)}...`
                                     : contactDataIshtar.latestMessage}
+                            </p>    
+                    </div>
+                </div>
+                )}
+                {groupDataMain.discovered && (
+                <div className="flex flex-row pt-4 px-3" onClick={() => navigateTo('TextingGroupChatMain')}>
+                    <img className="w-20 mr-4 rounded-full" src={`/images/contacts/${groupDataMain.profileImg}`} />
+                    <div className="flex flex-col justify-center items-start">
+                        <p className="text-2xl font-medium font-titillium text-white">{groupDataMain.name}</p>
+                        <p className="text-slate-500 text-left">
+                                {groupDataMain.latestMessage.length > 28
+                                    ? `${groupDataMain.latestMessage.slice(0, 28)}...`
+                                    : groupDataMain.latestMessage}
                             </p>    
                     </div>
                 </div>

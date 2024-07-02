@@ -6,6 +6,7 @@ import Serenay from './components/MessagesScreen/Serenay'
 import Kaede from './components/MessagesScreen/Kaede'
 import Ishtar from './components/MessagesScreen/Ishtar'
 import Willian from './components/MessagesScreen/Willian'
+import GroupChatMain from './components/MessagesScreen/GroupChatMain'
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
         {activeScreen === 'TextingKaede' && <Kaede navigateTo={navigateTo} />}
         {activeScreen === 'TextingWillian' && <Willian navigateTo={navigateTo} />}
         {activeScreen === 'TextingIshtar' && <Ishtar navigateTo={navigateTo} />}
+        {activeScreen === 'TextingGroupChatMain' && <GroupChatMain navigateTo={navigateTo} />}
     </div>
 
   )

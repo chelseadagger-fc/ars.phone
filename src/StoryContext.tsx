@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import data from './components/StoryData/Ch01.v2.json';
+import data from './components/StoryData/Ch02.json';
 
 interface StoryContextType {
   contactDataSere: {
@@ -18,6 +18,10 @@ interface StoryContextType {
     profileImg: string; name: string; discovered: boolean; latestMessage: string;
   };
   setContactDataIshtar: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  groupDataMain: {
+    profileImg: string; name: string; discovered: boolean; latestMessage: string;
+  };
+  setGroupDataMain: React.Dispatch<React.SetStateAction<{ name: string }>>;
   currentId: number | null;
   setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
   showChoices: boolean;
@@ -42,6 +46,7 @@ interface StoryContextType {
   kaedeMessages: JSX.Element[];
   willianMessages: JSX.Element[];
   ishtarMessages: JSX.Element[];
+  groupChatMainMessages: JSX.Element[];
   choices: { option: ChoiceOption; next: number }[];
   setChoices: React.Dispatch<React.SetStateAction<ChoiceOption[]>>;
   showStartButton: boolean;
@@ -139,11 +144,14 @@ const defaultState: StoryContextType = {
   setContactDataWillian: () => { },
   contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' },
   setContactDataIshtar: () => { },
+  groupDataMain: { name: 'nerd chat (PLUS KAEDE!! ✌)', profileImg: 'Unknown.png', discovered: false, latestMessage: '[added to group chat!]' },
+  setGroupDataMain: () => { },
   handleChoice: () => { },
   sereMessages: [],
   kaedeMessages: [],
   willianMessages: [],
   ishtarMessages: [],
+  groupChatMainMessages: [],
   startStory: function (): void {
     throw new Error('Function not implemented.');
   }
@@ -157,6 +165,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [kaedeMessages, setKaedeMessages] = useState<JSX.Element[]>([]);
   const [willianMessages, setWillianMessages] = useState<JSX.Element[]>([]);
   const [ishtarMessages, setIshtarMessages] = useState<JSX.Element[]>([]);
+  const [groupChatMainMessages, setGroupChatMainMessages] = useState<JSX.Element[]>([]);
   const [currentId, setCurrentId] = useState<number | null>(null);
   const [showChoices, setShowChoices] = useState<boolean>(false);
   const [sereChoices, setSereChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
@@ -173,6 +182,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' });
   const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]' });
   const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' });
+  const [groupDataMain, setGroupDataMain] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'nerd chat (PLUS KAEDE!! ✌)', profileImg: 'Unknown.png', discovered: false, latestMessage: '[added to group chat!]' });
 
   useEffect(() => {
     const storyData: StoryElement[] = data as StoryElement[];
@@ -191,6 +201,10 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
       setContactDataKaede(prevState => ({ ...prevState, discovered: true }));
       setContactDataWillian(prevState => ({ ...prevState, discovered: true }));
       setContactDataIshtar(prevState => ({ ...prevState, discovered: true }));
+    }
+
+    if (currentElement.flag === 'groupChatDiscovered') {
+      setGroupDataMain(prevState => ({ ...prevState, discovered: true }));
     }
 
     if (currentElement.type === "message") {
@@ -325,6 +339,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
       } 
     }
     
+    // CHOICE SECTION
     else if (currentElement.type === 'choice') {
       if (currentElement.content?.subtype === 'image') {
         switch (currentElement.recipient) {
@@ -490,6 +505,20 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
         }
       }
     }
+
+    // GROUP CHAT SECTION
+    else if (currentElement.type === 'group-message') {
+      const newGroupMessage = (
+        <p key={currentElement.id} className={`group-message ${currentElement.alignment}`}>
+            {currentElement.content}
+        </p>
+      );
+      setGroupChatMainMessages(prevMessages => [...prevMessages, newGroupMessage]);
+  
+      setTimeout(() => {
+        setCurrentId(currentElement.next);
+      }, currentElement.delay);
+    }
   } , [currentId]);
 
   const startStory = (id: number) => {
@@ -571,51 +600,54 @@ const handleChoice = (next, option) => {
   
 
   return (
-    <StoryContext.Provider value={{ 
-      sereChoices, 
-      kaedeChoices, 
-      willianChoices, 
-      ishtarChoices, 
-      showSereChoices, 
-      showKaedeChoices, 
-      showWillianChoices, 
-      showIshtarChoices, 
-      willianMessages, 
-      ishtarMessages, 
-      sereMessages, 
-      kaedeMessages, 
-      handleChoice, 
-      choices, 
-      showChoices, 
-      startStory, 
-      showStartButton, 
-      setCurrentId, 
-      contactDataSere, 
-      contactDataKaede, 
-      contactDataWillian, 
-      contactDataIshtar, 
-      displayedMessages, 
-      setContactDataSere: () => {}, 
-      setContactDataKaede: () => {}, 
-      setContactDataWillian: () => {}, 
-      setContactDataIshtar: () => {},
-      currentId, 
-      setShowChoices, 
-      setSereChoices, 
-      setShowSereChoices, 
-      setKaedeChoices, 
-      setShowKaedeChoices, 
-      setWillianChoices, 
-      setShowWillianChoices, 
-      setIshtarChoices, 
-      setShowIshtarChoices,
-      setChoices: () => {},
-      setShowStartButton,
-      setDisplayedMessages
-    }}>
-      {children}
-    </StoryContext.Provider>
-  );
+      <StoryContext.Provider value={{ 
+        sereChoices, 
+        kaedeChoices, 
+        willianChoices, 
+        ishtarChoices, 
+        showSereChoices, 
+        showKaedeChoices, 
+        showWillianChoices, 
+        showIshtarChoices, 
+        willianMessages, 
+        ishtarMessages, 
+        sereMessages, 
+        kaedeMessages, 
+        groupChatMainMessages,
+        handleChoice, 
+        choices, 
+        showChoices, 
+        startStory, 
+        showStartButton, 
+        setCurrentId, 
+        contactDataSere, 
+        contactDataKaede, 
+        contactDataWillian, 
+        contactDataIshtar, 
+        displayedMessages, 
+        setContactDataSere: () => {}, 
+        setContactDataKaede: () => {}, 
+        setContactDataWillian: () => {}, 
+        setContactDataIshtar: () => {},
+        currentId, 
+        setShowChoices, 
+        setSereChoices, 
+        setShowSereChoices, 
+        setKaedeChoices, 
+        setShowKaedeChoices, 
+        setWillianChoices, 
+        setShowWillianChoices, 
+        setIshtarChoices, 
+        setShowIshtarChoices,
+        setChoices: () => {},
+        setShowStartButton,
+        setDisplayedMessages,
+        groupDataMain,
+        setGroupDataMain: () => {}
+      }}>
+        {children}
+      </StoryContext.Provider>
+    );
 };
 
 export { StoryProvider, StoryContext };
