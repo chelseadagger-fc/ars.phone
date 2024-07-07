@@ -66,7 +66,7 @@ type Message = {
   delay: number;
   alignment: "left" | "right" | "center" | "none";
   next: number | null;
-  flag?: string;
+  flag?: string[];
   width?: string;
 };
 
@@ -91,7 +91,7 @@ type Choice = {
   };
   choices: { option: ChoiceOption; next: number }[];
   next: number | null;
-  flag?: string;
+  flag?: string[];
 };
 
 type GroupMessage = {
@@ -106,7 +106,7 @@ type GroupMessage = {
   delay: number;
   alignment: "left" | "right" | "center" | "none";
   next: number | null;
-  flag?: string;
+  flag?: string[];
 }
 
 type StoryElement = Message | Choice | GroupMessage;
@@ -193,17 +193,17 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
 
     if (!currentElement) return;
 
-    if (currentElement.flag === 'updateSereNameToSerenay') {
+    if (currentElement.flag && currentElement.flag.includes('updateSereNameToSerenay')) {
       setContactDataSere(prevState => ({ ...prevState, name: "Serenay", profileImg: "Serenay01.png"}));
     }
 
-    if (currentElement.flag === 'friendsDiscovered') {
+    if (currentElement.flag && currentElement.flag.includes('friendsDiscovered')) {
       setContactDataKaede(prevState => ({ ...prevState, discovered: true }));
       setContactDataWillian(prevState => ({ ...prevState, discovered: true }));
       setContactDataIshtar(prevState => ({ ...prevState, discovered: true }));
     }
 
-    if (currentElement.flag === 'groupChatDiscovered') {
+    if (currentElement.flag && currentElement.flag.includes('groupChatDiscovered')) {
       setGroupDataMain(prevState => ({ ...prevState, discovered: true }));
     }
 
@@ -542,45 +542,23 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
         }
       })();
 
-      // const newGroupMessage = (
-      //   <div className='flex flex-row w-full'>
-      //     <div className='h-7 w-7'>
-      //       {currentElement.type === "group-message" && currentElement.initialMsg === true && currentElement.sender !== 'amir' ? (
-      //         <img className="w-7 h-7 rounded-full" src={groupMessageSenderPfp} />) : null
-      //       }         
-      //     </div>
-      //     <div className="flex flex-col my-2 ml-4 items-left justify-center">
-      //       {currentElement.type === "group-message" && currentElement.initialMsg === true && currentElement.sender !== 'amir' ? (
-      //         <div className='flex flex-row items-center align-center mt-2'>
-
-      //           <p className='text-sm pl-1'>{groupMessageSenderName}</p>
-      //         </div>
-      //       ) : null}
-      //       <p key={currentElement.id} className={`group-message ${currentElement.alignment} sndr-${currentElement.sender}`}>
-      //       {currentElement.content}
-      //       </p>
-      //     </div>
-      //   </div>
-      // );
-
       const newGroupMessage = (
         <div className='w-full flex flex-row'>
           {currentElement.type === "group-message" && currentElement.sender !== 'amir' ? (
             <div className="w-full flex flex-row my-1">
-              <div className="w-12 h-12">
+              <div className="w-12 max-h-12">
                 {currentElement.initialMsg === true ? (
-                  <img className="w-9 h-9 rounded-full mt-4 ml-1" src={groupMessageSenderPfp} />
+                  <img className="w-9 h-9 rounded-full mt-6 ml-1" src={groupMessageSenderPfp} />
                 ) : null }
               </div>
               <div className='flex flex-col w-5/6'>
                 {currentElement.initialMsg === true ? (
-                  <p className='text-xs pl-1'>{groupMessageSenderName}</p>
+                  <p className='text-xs pl-1 mt-2 mb-[1px]'>{groupMessageSenderName}</p>
                 ) : null }
                 <p key={currentElement.id} className={`group-message ${currentElement.alignment} sndr-${currentElement.sender}`}>
                   {currentElement.content}
                 </p>
               </div>
-
             </div>
           ) : (
             <div className="w-full flex flex-col">
@@ -601,6 +579,7 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
         setCurrentId(currentElement.next);
       }, currentElement.delay);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   } , [currentId]);
 
   const startStory = (id: number) => {

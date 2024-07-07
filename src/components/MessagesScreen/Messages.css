@@ -62,6 +62,7 @@
 
 .group-message.left {
     align-self: flex-start;
+    /* disable bg color for sndr colors */
     background-color: #525252;
 }
 
