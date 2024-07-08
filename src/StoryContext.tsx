@@ -3,19 +3,19 @@ import data from './components/StoryData/Ch02.json';
 
 interface StoryContextType {
   contactDataSere: {
-      profileImg: string; name: string; discovered: boolean; latestMessage: string;
+      profileImg: string; name: string; discovered: boolean; latestMessage: string; status: string;
   };
   setContactDataSere: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataKaede: {
-    profileImg: string; name: string; discovered: boolean; latestMessage: string;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string; status: string;
   };
   setContactDataKaede: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataWillian: {
-    profileImg: string; name: string; discovered: boolean; latestMessage: string;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string; status: string;
   };
   setContactDataWillian: React.Dispatch<React.SetStateAction<{ name: string }>>;
   contactDataIshtar: {
-    profileImg: string; name: string; discovered: boolean; latestMessage: string;
+    profileImg: string; name: string; discovered: boolean; latestMessage: string; status: string;
   };
   setContactDataIshtar: React.Dispatch<React.SetStateAction<{ name: string }>>;
   groupDataMain: {
@@ -138,13 +138,13 @@ const defaultState: StoryContextType = {
   setShowWillianChoices: () => { },
   showIshtarChoices: false,
   setShowIshtarChoices: () => { },
-  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '' },
+  contactDataSere: { name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '', status: 'available' },
   setContactDataSere: () => { },
-  contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' },
+  contactDataKaede: { name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]', status: 'available'  },
   setContactDataKaede: () => { },
-  contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]' },
+  contactDataWillian: { name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]', status: 'available'  },
   setContactDataWillian: () => { },
-  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' },
+  contactDataIshtar: { name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]', status: 'available'  },
   setContactDataIshtar: () => { },
   groupDataMain: { name: 'nerd chat (PLUS KAEDE!! ✌)', profileImg: 'Unknown.png', discovered: false, latestMessage: '[added to group chat!]' },
   setGroupDataMain: () => { },
@@ -178,10 +178,10 @@ const StoryProvider = ({ children }: { children: ReactNode }) => {
   const [showIshtarChoices, setShowIshtarChoices] = useState<boolean>(false);
   const [choices, setChoices] = useState<{ option: ChoiceOption; next: number }[]>([]);
   const [showStartButton, setShowStartButton] = useState<boolean>(true);
-  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '' });
-  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]' });
-  const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]' });
-  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]' });
+  const [contactDataSere, setContactDataSere] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string, status: string }>({ name: 'Unknown', profileImg: 'Unknown.png', discovered: true, latestMessage: '[New contact pending]', status: 'available'  });
+  const [contactDataKaede, setContactDataKaede] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string, status: string }>({ name: 'Kaede', profileImg: 'Kaede01.png', discovered: false, latestMessage: '[New contact added]', status: 'available'  });
+  const [contactDataWillian, setContactDataWillian] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string, status: string }>({ name: 'Willian', profileImg: 'Willian01.png', discovered: false, latestMessage: '[New contact added]', status: 'away'  });
+  const [contactDataIshtar, setContactDataIshtar] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string, status: string }>({ name: 'Ishtar', profileImg: 'Ishtar02.png', discovered: false, latestMessage: '[New contact added]', status: 'dnd' });
   const [groupDataMain, setGroupDataMain] = useState<{ name: string, profileImg: string, discovered: boolean, latestMessage: string }>({ name: 'nerd chat (PLUS KAEDE!! ✌)', profileImg: 'Unknown.png', discovered: false, latestMessage: '[added to group chat!]' });
 
   useEffect(() => {
